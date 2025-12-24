@@ -64,3 +64,19 @@ $('.circle-img img').on('click', function () {
     }, 300);
 
 });
+
+const galleryImages = document.querySelectorAll('.g-img');
+const overlay = document.querySelector('.slideshow-overlay');
+const overlayImg = document.querySelector('.slideshow-img');
+const closeBtn = document.querySelector('.close-slideshow');
+
+galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+        overlayImg.src = img.src;
+        overlay.classList.add('active');
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    overlay.classList.remove('active');
+});

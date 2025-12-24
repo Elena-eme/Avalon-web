@@ -154,8 +154,8 @@ body {
 }
 
 .card {
-    width: 180px;
-    height: 260px;
+    width: 220px;
+    height: 320px;
     perspective: 1000px;
     transition: transform 0.4s ease;
 }
@@ -246,25 +246,98 @@ body {
 }
 
 /* ================= GALLERY ================= */
-
 .gallery {
     background: #6b566f;
-    padding: 80px 20px;
+    padding: 100px 20px;
     color: #fff;
 }
 
-.gallery-grid {
-    display: flex;
-    gap: 20px;
-}
-
-.gallery-grid img {
-    width: 100%;
-}
-
 .gallery-text {
-    margin-top: 30px;
-    max-width: 500px;
+    width: 30%;
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.9;
+
+    margin-left: auto;
+    margin-right: 140px; 
+    text-align: left;
+}
+
+.gallery-collage {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    height: 620px;
+    margin: 0 auto;
+}
+
+.g-img {
+    position: absolute;
+    width: 320px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+
+/* POSICIONES DESCOLOCADAS */
+.g1 { top: 0; left: -90px; width: 590px;}
+.g2 { top: 190px; right: 0; width: 560px; }
+.g3 { bottom: -60px; left: 140px; width: 520px; }
+.g4 { top: -50px; right: 90px; width: 300px; }
+
+
+.g-img:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.slideshow-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+    z-index: 2000;
+}
+
+.slideshow-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.slideshow-img {
+    max-width: 80%;
+    max-height: 80%;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+.close-slideshow {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .gallery-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gallery-collage,
+    .gallery-text {
+        width: 100%;
+    }
+
+    .gallery-text {
+        margin-top: 40px;
+    }
 }
 
 /* ================= FOOTER ================= */
