@@ -159,7 +159,7 @@ body {
 }
 
 /* ================= SECCIÓN 1 ================= */
-
+/* ================= SECCIÓN EDITORIAL ================= */
 .editorial {
     padding: 140px 40px;
     background: #f4f2ed;
@@ -169,6 +169,14 @@ body {
     position: relative;
     min-height: 420px;
     margin-bottom: 160px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.editorial-block.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .editorial-img {
@@ -178,10 +186,9 @@ body {
 
 .editorial-img img {
     width: 100%;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
 }
 
-/* posiciones */
 .editorial-img.left {
     left: 80px;
     top: 0;
@@ -199,24 +206,16 @@ body {
 .editorial-text {
     position: absolute;
     max-width: 320px;
-}
-
-.editorial-text h3 {
-    font-size: 22px;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
+    font-family: "Hubballi", sans-serif;
 }
 
 .editorial-text p {
     font-size: 14px;
     line-height: 1.7;
     opacity: 0.85;
-    font-family: "Hubballi", sans-serif;
     font-weight: 400;
-    font-style: normal;
 }
 
-/* posiciones */
 .editorial-text.right {
     right: 120px;
     top: 160px;
@@ -231,6 +230,7 @@ body {
     top: 220px;
 }
 
+/* Clases para la animación */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -241,6 +241,7 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 /* ================= CARDS ================= */
 
@@ -459,16 +460,28 @@ body {
 
 /* ================= FOOTER ================= */
 
-.footer {
-    background: url("../img/footer image.jpg") center/cover no-repeat;
-    padding: 80px 20px;
-    color: #fff;
-}
-
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
+}
+
+.footer {
+    background: url("../img/footer\ image.png") center/cover no-repeat;
+    padding: 80px 20px;
+    color: #333; 
+    text-align: center;
+    position: relative;
+}
+
+.footer-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 80px;
+    font-weight: 600;
+    color: #333; /* Gris oscuro */
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave para el texto */
 }
 
 .footer input,
