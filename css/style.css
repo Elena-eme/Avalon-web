@@ -31,12 +31,27 @@ body {
     display: flex;
     align-items: center;
     gap: 30px;
+    
 }
 
 .header-nav a {
+    display: inline-block;
+    width: 90px;  
+    text-align: center;
     text-decoration: none;
     color: #333;
-    font-size: 14px;
+    font-size: 15px;
+    font-family: "Hubballi", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+   transition: 
+        font-size 0.25s ease,
+        font-weight 0.25s ease;
+}
+
+.header-nav a:hover {
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .header-right {
@@ -118,6 +133,9 @@ body {
     margin-bottom: 20px;
     text-decoration: none;
     color: #333;
+    font-family: "Hubballi", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* ================= OVERLAY ================= */
@@ -140,12 +158,111 @@ body {
     object-fit: cover;
 }
 
+/* ================= SECCIÓN 1 ================= */
+
+.editorial {
+    padding: 140px 40px;
+    background: #f4f2ed;
+}
+
+.editorial-block {
+    position: relative;
+    min-height: 420px;
+    margin-bottom: 160px;
+}
+
+.editorial-img {
+    position: absolute;
+    width: 420px;
+}
+
+.editorial-img img {
+    width: 100%;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+}
+
+/* posiciones */
+.editorial-img.left {
+    left: 80px;
+    top: 0;
+}
+
+.editorial-img.right {
+    right: 80px;
+    top: 0;
+}
+
+.editorial-img.down {
+    top: 120px;
+}
+
+.editorial-text {
+    position: absolute;
+    max-width: 320px;
+}
+
+.editorial-text h3 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.editorial-text p {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.85;
+    font-family: "Hubballi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* posiciones */
+.editorial-text.right {
+    right: 120px;
+    top: 160px;
+}
+
+.editorial-text.left {
+    left: 120px;
+    top: 120px;
+}
+
+.editorial-text.down {
+    top: 220px;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ================= CARDS ================= */
 
 .cards-section {
     padding: 100px 20px;
     text-align: center;
 }
+
+.cards-title {
+    font-family: "Playfair Display", serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 38px;
+    letter-spacing: 6px;
+    margin-bottom: 70px; 
+    color: #3b3b3b;
+    font-weight: 300;
+    font-family: "Hubballi", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 
 .cards {
     display: flex;

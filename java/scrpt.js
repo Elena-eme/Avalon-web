@@ -80,3 +80,15 @@ galleryImages.forEach(img => {
 closeBtn.addEventListener('click', () => {
     overlay.classList.remove('active');
 });
+
+$(window).on("scroll", function () {
+    $(".reveal").each(function () {
+        let top = $(this).offset().top;
+        let scroll = $(window).scrollTop();
+        let windowHeight = $(window).height();
+
+        if (scroll + windowHeight > top + 100) {
+            $(this).addClass("visible");
+        }
+    });
+});
