@@ -39,3 +39,28 @@ $(document).ready(function () {
     });
 
 });
+
+// CÍRCULO → CARTA ALEATORIA
+// CÍRCULO → ELEVA Y GIRA CARTA ALEATORIA
+$('.circle-img img').on('click', function () {
+
+    const cards = $('.card');
+
+    // Resetear todas
+    cards.removeClass('raised flip');
+
+    // Elegir índice aleatorio
+    const randomIndex = Math.floor(Math.random() * cards.length);
+
+    // Carta elegida
+    const selectedCard = $(cards[randomIndex]);
+
+    // Elevar
+    selectedCard.addClass('raised');
+
+    // Pequeño delay para dramatismo antes del giro
+    setTimeout(() => {
+        selectedCard.addClass('flip');
+    }, 300);
+
+});
