@@ -458,33 +458,144 @@ body {
 
 /* ================= FOOTER ================= */
 
+.footer {
+    background: url("https://i.pinimg.com/1200x/b7/4f/60/b74f600f431430dc79ada534ad348187.jpg") center / cover no-repeat;
+    padding: 140px 40px 80px;
+    color: #eee;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== CARTAS CENTRALES ===== */
+
+.footer-cards {
+    position: relative;
+    height: 320px;
+    margin-bottom: 110px;
+    overflow: hidden;
+}
+
+.footer-cards .card {
+    position: absolute;
+    bottom: -150px; 
+    width: 240px;
+    height:310px;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    transform-origin: bottom center;
+    transition:
+        bottom 0.45s ease,
+        transform 0.45s ease;
+    cursor: pointer;
+    background: #000;
+}
+
+.footer-cards .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== POSICIONES TIPO BARAJA (6) ===== */
+
+.footer-cards .card-1 {
+    left: 10%;
+    transform: rotate(-12deg);
+}
+
+.footer-cards .card-2 {
+    left: 24%;
+    transform: rotate(-6deg);
+}
+
+.footer-cards .card-3 {
+    left: 38%;
+    transform: rotate(-2deg);
+}
+
+.footer-cards .card-4 {
+    left: 52%;
+    transform: rotate(3deg);
+}
+
+.footer-cards .card-5 {
+    left: 66%;
+    transform: rotate(7deg);
+}
+
+.footer-cards .card-6 {
+    left: 80%;
+    transform: rotate(12deg);
+}
+
+/* ===== HOVER: SE LEVANTAN ===== */
+
+.footer-cards .card:hover {
+    bottom: 0;
+    transform: rotate(0deg) scale(1.06);
+    z-index: 10;
+}
+
+/* ===== CONTENIDO DEL FOOTER ===== */
+
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-}
-
-.footer {
-    background: url("../img/footer\ image.png") center/cover no-repeat;
-    padding: 80px 20px;
-    color: #333; 
-    text-align: center;
+    gap: 40px;
     position: relative;
+    z-index: 2;
 }
 
-.footer-title {
-    font-family: "Poppins", sans-serif;
-    font-size: 80px;
+.footer-content h4 {
+    margin-bottom: 15px;
+    font-size: 16px;
     font-weight: 600;
-    color: #333; /* Gris oscuro */
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave para el texto */
+    letter-spacing: 1px;
 }
+
+.footer-content a {
+    display: block;
+    margin-bottom: 8px;
+    color: #ccc;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-content a:hover {
+    opacity: 0.7;
+}
+
+.footer-content p {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* ===== INPUTS ===== */
 
 .footer input,
 .footer button {
     width: 100%;
     padding: 8px;
     margin-top: 8px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.footer input {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.footer button {
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.footer button:hover {
+    background: #ddd;
 }
