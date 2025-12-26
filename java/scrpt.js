@@ -82,13 +82,10 @@ closeBtn.addEventListener('click', () => {
 });
 
 $(window).on("scroll", function () {
-    $(".reveal").each(function () {
-        let top = $(this).offset().top;
-        let scroll = $(window).scrollTop();
-        let windowHeight = $(window).height();
+    const trigger = $(".editorial").offset().top - $(window).height() + 200;
 
-        if (scroll + windowHeight > top + 100) {
-            $(this).addClass("visible");
-        }
-    });
+    if ($(window).scrollTop() > trigger) {
+        $(".ed-img, .ed-text").addClass("visible");
+    }
 });
+

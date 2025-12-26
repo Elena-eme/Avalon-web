@@ -161,83 +161,81 @@ body {
 /* ================= SECCIÓN 1 ================= */
 /* ================= SECCIÓN EDITORIAL ================= */
 .editorial {
-    padding: 140px 40px;
     background: #f4f2ed;
+    padding: 160px 0;
+    overflow: hidden;
 }
 
-.editorial-block {
+.editorial-container {
     position: relative;
-    min-height: 420px;
-    margin-bottom: 160px;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 1200px;
 }
 
-.editorial-block.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.editorial-img {
+.ed-img {
     position: absolute;
-    width: 420px;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.2s ease;
 }
 
-.editorial-img img {
+.ed-img img {
     width: 100%;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    display: block;
 }
 
-.editorial-img.left {
-    left: 80px;
+/* Imagen grande izquierda */
+.ed-img-1 {
     top: 0;
+    left: 0;
+    width: 520px;
 }
 
-.editorial-img.right {
-    right: 80px;
+/* Imagen pequeña arriba derecha */
+.ed-img-2 {
     top: 0;
+    right: 0;
+    width: 280px;
 }
 
-.editorial-img.down {
-    top: 120px;
+/* Imagen pequeña abajo izquierda */
+.ed-img-3 {
+    top: 520px;
+    left: 160px;
+    width: 280px;
 }
 
-.editorial-text {
+/* Imagen grande abajo derecha */
+.ed-img-4 {
+    top: 560px;
+    right: 0;
+    width: 520px;
+}
+.ed-text {
     position: absolute;
-    max-width: 320px;
-    font-family: "Hubballi", sans-serif;
-}
-
-.editorial-text p {
-    font-size: 14px;
-    line-height: 1.7;
-    opacity: 0.85;
-    font-weight: 400;
-}
-
-.editorial-text.right {
-    right: 120px;
-    top: 160px;
-}
-
-.editorial-text.left {
-    left: 120px;
-    top: 120px;
-}
-
-.editorial-text.down {
-    top: 220px;
-}
-
-/* Clases para la animación */
-.reveal {
+    max-width: 340px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #444;
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
+    transform: translateY(60px);
+    transition: all 1.2s ease;
 }
 
-.reveal.visible {
+/* Texto centro derecha */
+.ed-text-1 {
+    top: 280px;
+    right: 360px;
+}
+
+/* Texto abajo centro */
+.ed-text-2 {
+    top: 820px;
+    left: 360px;
+}
+.ed-img.visible,
+.ed-text.visible {
     opacity: 1;
     transform: translateY(0);
 }
