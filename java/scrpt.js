@@ -89,3 +89,33 @@ $(window).on("scroll", function () {
     }
 });
 
+// CATALOGO
+
+
+$(document).ready(function () {
+
+    const $grid = $('.catalog-grid');
+
+    $(document).ready(function () {
+
+    const $grid = $('.catalog-grid');
+
+    $('.view-btn').on('click', function () {
+
+        const view = $(this).data('view');
+
+        // Botones
+        $('.view-btn').removeClass('active');
+        $(this).addClass('active');
+
+        // Cambiar vista
+        $grid
+            .removeClass('view-1 view-2 view-3 view-4 view-5')
+            .addClass(view);
+    });
+
+});
+
+});
+
+

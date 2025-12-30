@@ -599,3 +599,225 @@ body {
 .footer button:hover {
     background: #ddd;
 }
+
+/* ================= CATALOG HERO ================= */
+
+.catalog-hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+}
+
+.hero-split img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.catalog-title {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: #fff;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+
+/* ================= CONTROLES DE VISTA ================= */
+
+.catalog-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    padding: 40px 60px 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.catalog-controls span {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.catalog-controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.catalog-controls button.active,
+.catalog-controls button:hover {
+    color: #000;
+    transform: scale(1.15);
+}
+
+
+/* ================= PRODUCT GRID ================= */
+
+.catalog-grid {
+    display: grid;
+    gap: 80px 40px;
+    padding: 60px;
+    transition: all 0.4s ease;
+}
+
+/* Cards */
+.product-card {
+    text-align: center;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-card img {
+    width: 100%;
+    
+    display: block;
+    object-fit: cover;
+}
+
+.product-name {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Offsets */
+.offset-left {
+    transform: translateX(-40px);
+}
+
+.offset-right {
+    transform: translateX(40px);
+}
+
+
+/* ================= OFFSETS EDITORIALES ================= */
+
+.offset-left {
+    transform: translateX(-40px);
+}
+
+.offset-right {
+    transform: translateX(40px);
+}
+
+
+/* ================= VISTAS ================= */
+.catalog-grid.view-1 { grid-template-columns: repeat(3, 1fr); }
+.catalog-grid.view-2 { grid-template-columns: repeat(3, 1fr); }
+.catalog-grid.view-3 { grid-template-columns: repeat(4, 1fr); }
+.catalog-grid.view-4 { grid-template-columns: repeat(5, 1fr); }
+.catalog-grid.view-5 { grid-template-columns: repeat(6, 1fr); }
+
+/* VISTA 1 – MUY GRANDE */
+.catalog-grid.view-1 .product-card img {
+    height: 520px;
+}
+
+/* VISTA 2 */
+.catalog-grid.view-2 .product-card img {
+    height: 440px;
+}
+
+/* VISTA 3 (DEFAULT – 4 columnas) */
+.catalog-grid.view-3 .product-card img {
+    height: 360px;
+}
+
+/* VISTA 4 */
+.catalog-grid.view-4 .product-card img {
+    height: 300px;
+}
+
+/* VISTA 5 – COMPACTO */
+.catalog-grid.view-5 .product-card img {
+    height: 240px;
+}
+
+
+/* ================= EDITORIAL ================= */
+
+.catalog-editorial {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 70vh;
+    margin-top: 120px;
+}
+
+.editorial-block {
+    position: relative;
+    overflow: hidden;
+}
+
+.editorial-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.editorial-block span {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.editorial-block.right span {
+    left: auto;
+    right: 40px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+    .catalog-grid {
+        padding: 40px;
+        gap: 60px 20px;
+    }
+
+    .catalog-grid.view-4,
+    .catalog-grid.view-5 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog-controls {
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 20px;
+        gap: 40px;
+    }
+
+    .offset-left,
+    .offset-right {
+        transform: none;
+    }
+}
