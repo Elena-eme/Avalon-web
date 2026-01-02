@@ -917,3 +917,55 @@ body {
     font-size: 24px;
     cursor: pointer;
 }
+
+
+/* === JUEGO ARTURO === */
+
+.hero {
+    position: relative;       /* importante para que .arturo-game se posicione sobre la imagen */
+    width: 100%;
+    height: 115vh;
+}
+
+.arturo-game {
+    position: absolute;
+    top: 25%;                /* más centrado verticalmente */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 60%;             /* área de movimiento */
+    pointer-events: none;     /* permite que el mousedown se registre en las imágenes */
+}
+
+.artifact {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    pointer-events: all;      /* reactiva eventos para mover */
+}
+
+.artifact:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+.artifact img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
