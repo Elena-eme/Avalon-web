@@ -947,11 +947,16 @@ body {
     justify-content: center;
     transition: transform 0.2s ease;
     pointer-events: all;      /* reactiva eventos para mover */
+
+     /* Aura brillante */
+    box-shadow: 0 0 20px 5px rgba(255, 255, 200, 0.6);
+    border-radius: 12px;  /* bordes suavizados para que el aura se vea mejor */
 }
 
 .artifact:active {
     cursor: grabbing;
     transform: scale(1.1);
+    box-shadow: 0 0 30px 10px rgba(255, 255, 220, 0.8); /* aura más intensa al mover */
 }
 
 .artifact img {
@@ -959,6 +964,8 @@ body {
     max-height: 100%;
     object-fit: contain;
     pointer-events: none;
+      /* Brillo extra suave sobre la imagen */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 220, 0.7));
 }
 
 
