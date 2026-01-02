@@ -42,33 +42,44 @@ $(document).ready(function () {
 
 // CÍRCULO → CARTA ALEATORIA
 // CÍRCULO → ELEVA Y GIRA CARTA ALEATORIA
-$('.circle-img img').on('click', function () {
+if ($('.circle-img img').length) {
+    $('.circle-img img').on('click', function () {
 
-    const cards = $('.card');
+        const cards = $('.card');
+        cards.removeClass('raised flip');
 
-    // Resetear todas
-    cards.removeClass('raised flip');
+        const randomIndex = Math.floor(Math.random() * cards.length);
+        const selectedCard = $(cards[randomIndex]);
 
-    // Elegir índice aleatorio
-    const randomIndex = Math.floor(Math.random() * cards.length);
+        selectedCard.addClass('raised');
 
-    // Carta elegida
-    const selectedCard = $(cards[randomIndex]);
+        setTimeout(() => {
+            selectedCard.addClass('flip');
+        }, 300);
+    });
+}
 
-    // Elevar
-    selectedCard.addClass('raised');
-
-    // Pequeño delay para dramatismo antes del giro
-    setTimeout(() => {
-        selectedCard.addClass('flip');
-    }, 300);
-
-});
 
 const galleryImages = document.querySelectorAll('.g-img');
 const overlay = document.querySelector('.slideshow-overlay');
 const overlayImg = document.querySelector('.slideshow-img');
 const closeBtn = document.querySelector('.close-slideshow');
+
+if (galleryImages.length && overlay && overlayImg && closeBtn) {
+
+    galleryImages.forEach(img => {
+        img.addEventListener('click', () => {
+            overlayImg.src = img.src;
+            overlay.classList.add('active');
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+
+}
+
 
 galleryImages.forEach(img => {
     img.addEventListener('click', () => {
@@ -116,5 +127,38 @@ $(document).ready(function () {
 
 });
 
+// JUEGO ESPADA OCULTA
+$(document).ready(function () {
 
+    const sword = $('#avalon-sword');
+    const modal = $('#sword-modal');
 
+    // ⛔ Si no existe (por si acaso), salimos
+    if (!sword.length || !modal.length) return;
+
+    function placeSword() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 120);
+        sword.css({ left: x + 'px', top: y + 'px' });
+    }
+
+    placeSword();
+    sword.fadeIn();
+
+    sword.on('click', function () {
+        modal.addClass('active');
+    });
+
+    $('.close-sword').on('click', function () {
+        modal.removeClass('active');
+    });
+
+    $('#claim-sword').on('click', function () {
+        const email = $('#sword-email').val();
+        if (!email) return alert('Introduce tu correo');
+
+        modal.removeClass('active');
+        sword.fadeOut();
+    });
+
+});

@@ -176,6 +176,8 @@ body {
     object-fit: cover;
 }
 
+
+
 /* ================= SECCIÓN 1 ================= */
 /* ================= SECCIÓN EDITORIAL ================= */
 .editorial {
@@ -838,4 +840,80 @@ body {
     .offset-right {
         transform: none;
     }
+}
+
+
+/* ================= ESPADA SECRETA ================= */
+
+#avalon-sword {
+    position: fixed;
+    width: 70px;
+    cursor: pointer;
+    z-index: 1500;
+    display: none;
+    filter: drop-shadow(0 0 12px rgba(255,215,160,.6));
+    animation: swordGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes swordGlow {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* ================= MODAL ESPADA ================= */
+
+.sword-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+    z-index: 2000;
+}
+
+.sword-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sword-modal-content {
+    background: #f4f2ed;
+    padding: 40px;
+    max-width: 420px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+
+.sword-modal-content h2 {
+    font-family: "Averia Serif Libre", serif;
+    margin-bottom: 15px;
+}
+
+.sword-modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #999;
+}
+
+.sword-modal-content button {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.close-sword {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 24px;
+    cursor: pointer;
 }
