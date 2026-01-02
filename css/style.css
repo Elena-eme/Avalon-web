@@ -144,16 +144,31 @@ body {
     padding: 100px 20px;
     transition: 0.4s;
     z-index: 1001;
+
+     /* Fondo transparente con efecto blur */
+    background: rgba(255, 255, 255, 0.15); /* ligera transparencia */
+    backdrop-filter: blur(10px); /* desenfoque del fondo */
+    -webkit-backdrop-filter: blur(10px); /* soporte Safari */
+
+    /* Aura/brillo alrededor del menú */
+    box-shadow: 0 0 30px 10px rgba(255, 255, 200, 0.5);
+    border-radius: 12px;
 }
 
 .side-menu a {
     display: block;
     margin-bottom: 20px;
     text-decoration: none;
-    color: #333;
+    color: #fff; /* cambia a blanco para resaltar sobre fondo transparente */
     font-family: "Hubballi", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-weight: 400;
+    font-style: normal;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.side-menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 220, 0.8);
 }
 
 /* ================= OVERLAY ================= */
