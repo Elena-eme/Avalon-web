@@ -91,31 +91,30 @@ $(window).on("scroll", function () {
 
 // CATALOGO
 
-
 $(document).ready(function () {
-
-    const $grid = $('.catalog-grid');
-
-    $(document).ready(function () {
 
     const $grid = $('.catalog-grid');
 
     $('.view-btn').on('click', function () {
 
-        const view = $(this).data('view');
+        const cols = $(this).data('cols');
 
         // Botones
         $('.view-btn').removeClass('active');
         $(this).addClass('active');
 
-        // Cambiar vista
-        $grid
-            .removeClass('view-1 view-2 view-3 view-4 view-5')
-            .addClass(view);
+        // Limpiar vistas
+        $grid.removeClass('view-1 view-2 view-3 view-4 view-5');
+
+        // Aplicar vista correcta
+        if (cols === 2) $grid.addClass('view-1');
+        if (cols === 3) $grid.addClass('view-2');
+        if (cols === 4) $grid.addClass('view-3');
+        if (cols === 5) $grid.addClass('view-4');
+        if (cols === 6) $grid.addClass('view-5');
     });
 
 });
 
-});
 
 
