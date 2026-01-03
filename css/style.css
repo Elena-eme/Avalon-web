@@ -1202,8 +1202,9 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: radial-gradient(circle at center, #f4cca3, #f4f2ed);
+    background: radial-gradient(circle at center, #472945, #cbbbcd);
     color: #fff;
+    
 }
 
 .swords-container {
@@ -1235,17 +1236,24 @@ body {
 .about-text {
     position: relative;
     max-width: 600px;
+    font-family: "Hubballi", sans-serif;
+    font-weight: 400;
     text-align: center;
     opacity: 0;
     transition: opacity 1s ease;
 }
 
 .about-text h2 {
-    font-size: 3rem;
+    font-size: 4.5rem;
     margin-bottom: 20px;
+    font-family: "Fasthand", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .about-text p {
+    font-family: "Hubballi", sans-serif;
+    font-weight: 400;
     font-size: 1.2rem;
     line-height: 1.6;
 }
