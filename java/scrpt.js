@@ -89,17 +89,23 @@ galleryImages.forEach(img => {
     });
 });
 
-closeBtn.addEventListener('click', () => {
-    overlay.classList.remove('active');
-});
+if (closeBtn && overlay) {
+    closeBtn.addEventListener('click', () => {
+        overlay.classList.remove('active');
+    });
+}
+
 
 $(window).on("scroll", function () {
-    const trigger = $(".editorial").offset().top - $(window).height() + 200;
-
-    if ($(window).scrollTop() > trigger) {
-        $(".ed-img, .ed-text").addClass("visible");
+    const editorial = $(".editorial");
+    if (editorial.length) { // Solo si existe
+        const trigger = editorial.offset().top - $(window).height() + 200;
+        if ($(window).scrollTop() > trigger) {
+            $(".ed-img, .ed-text").addClass("visible");
+        }
     }
 });
+
 
 // CATALOGO
 
