@@ -861,10 +861,10 @@ body {
 /* ================= ESPADA SECRETA ================= */
 
 #avalon-sword {
-    position: fixed;
+    position: absolute;   /* 🔥 clave */
     width: 70px;
     cursor: pointer;
-    z-index: 1500;
+    z-index: 50;
     display: none;
     filter: drop-shadow(0 0 12px rgba(255,215,160,.6));
     animation: swordGlow 2.5s infinite ease-in-out;

@@ -128,19 +128,26 @@ $(document).ready(function () {
 
 });
 
-// JUEGO ESPADA OCULTA
+// JUEGO ESPADA OCULTA (posición libre en TODO el documento)
 $(document).ready(function () {
 
     const sword = $('#avalon-sword');
     const modal = $('#sword-modal');
 
-    // ⛔ Si no existe (por si acaso), salimos
     if (!sword.length || !modal.length) return;
 
     function placeSword() {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 120);
-        sword.css({ left: x + 'px', top: y + 'px' });
+
+        const docWidth = $(document).width();
+        const docHeight = $(document).height();
+
+        const x = Math.random() * (docWidth - 100);
+        const y = Math.random() * (docHeight - 120);
+
+        sword.css({
+            left: x + 'px',
+            top: y + 'px'
+        });
     }
 
     placeSword();
@@ -156,7 +163,10 @@ $(document).ready(function () {
 
     $('#claim-sword').on('click', function () {
         const email = $('#sword-email').val();
-        if (!email) return alert('Introduce tu correo');
+        if (!email) {
+            alert('Introduce tu correo');
+            return;
+        }
 
         modal.removeClass('active');
         sword.fadeOut();
