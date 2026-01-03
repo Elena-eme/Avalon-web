@@ -191,7 +191,7 @@ $(function () {
         containment: 'body',
         scroll: false,
         stop: function () {
-            checkWin(); // 🔥 SE COMPRUEBA SIEMPRE AL SOLTAR
+            checkWin(); // SE COMPRUEBA SIEMPRE AL SOLTAR
         }
     });
 
@@ -227,3 +227,30 @@ $(function () {
     });
 
 });
+
+// ================= GLOW - ABSOLUTE HERO =================
+document.addEventListener("DOMContentLoaded", function() {
+    const glowContainer = document.querySelector('.magic-glow');
+    if (!glowContainer) return;
+
+    const numGlows = 30; // número de brillos
+
+    for (let i = 0; i < numGlows; i++) {
+        const span = document.createElement('span');
+
+        // posiciones aleatorias dentro del contenedor
+        const top = Math.random() * 100;
+        const left = Math.random() * 100;
+        span.style.top = top + '%';
+        span.style.left = left + '%';
+
+        // duración y retraso aleatorio
+        span.style.animationDuration = (2 + Math.random() * 3) + 's';
+        span.style.animationDelay = Math.random() * 3 + 's';
+
+        glowContainer.appendChild(span);
+    }
+});
+
+
+

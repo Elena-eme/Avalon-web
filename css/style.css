@@ -1064,6 +1064,87 @@ body {
 
 
 
+/* ================== ABOUT HERO ================== */
+.about-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* asegura que ocupe toda la pantalla */
+    overflow: hidden;
+}
+
+.about-hero .hero-img {
+    width: 100%;
+    height: 100%;
+    position: relative; /* necesario para que magic-glow se posicione encima */
+    overflow: hidden;
+}
+
+.about-hero .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-hero .magic-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; /* encima de la imagen */
+}
+
+/* brillos visibles */
+.about-hero .magic-glow span {
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,150,0.9) 0%, rgba(255,220,100,0.5) 40%, rgba(255,180,0,0) 70%);
+    opacity: 1;
+    transform: scale(0); /* empezamos desde pequeño */
+    filter: blur(1.5px);
+    animation: glowScale 3s ease-in-out infinite;
+}
+
+@keyframes glowScale {
+    0% {
+        transform: scale(0);
+        opacity: 0.3;
+    }
+    30% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+    60% {
+        transform: scale(2);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* título encima de todo */
+.about-hero .catalog-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 4rem;
+    text-shadow: 0 0 15px rgba(255,255,255,0.7);
+    z-index: 2;
+}
+
+
+
+
+
 
 
 
