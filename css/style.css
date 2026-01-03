@@ -1290,6 +1290,7 @@ body {
   opacity: 1; /* ya no ocultamos el texto */
   transition: opacity 1s ease;
   z-index: 1; /* aseguramos que esté debajo del puzzle */
+  font-family: "Hubballi", sans-serif;
 }
 
 

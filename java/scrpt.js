@@ -272,11 +272,24 @@ $(window).on("scroll", function () {
 // ================= ABOUT PUZZLE =================
 const container = document.querySelector('.swords-puzzle');
 const correctPositions = {
-  'piece-left-top': { top: 0, left: 0 },
-  'piece-left-bottom': { top: 0, left: 200 },
-  'piece-right-top': { top: 200, left: 0 },
-  'piece-right-bottom': { top: 200, left: 200 }
+  'piece-left-top': {
+    top: 50,
+    left: 50
+  },
+  'piece-left-bottom': {
+    top: 50,
+    left: 200
+  },
+  'piece-right-top': {
+    top: 200,
+    left: 50
+  },
+  'piece-right-bottom': {
+    top: 200,
+    left: 200
+  }
 };
+
 
 // Hover: ordenar piezas
 container.addEventListener('mouseenter', () => {
