@@ -1062,7 +1062,7 @@ body {
     cursor: pointer;
 }
 
-
+/* ================== SOBRE AVALON ================== */
 
 /* ================== ABOUT HERO ================== */
 .about-hero {
@@ -1142,12 +1142,155 @@ body {
 }
 
 
+/* ================== ABOUT COLLAGE ================== */
+.about-collage {
+    position: relative;
+    padding: 50px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.collage-text {
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    font-size: 4vw; /* tamaño responsivo */
+    font-weight: bold;
+    color: #000;
+    line-height: 1.2;
+}
+
+.collage-text span {
+    position: absolute;
+    display: inline-block;
+}
+
+.collage-text span:nth-child(1) { top: 20px; left: 10%; }
+.collage-text span:nth-child(2) { top: 120px; left: 5%; }
+.collage-text span:nth-child(3) { top: 200px; left: 20%; }
+.collage-text span:nth-child(4) { top: 50px; left: 50%; font-size: 6vw; }
+.collage-text span:nth-child(5) { top: 180px; left: 60%; font-size: 5vw; }
+
+.collage-images {
+    position: relative;
+    width: 100%;
+    height: 600px;
+}
+
+.collage-images img {
+    position: absolute;
+    width: 100px; 
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* posiciones aleatorias */
+.collage-images img:nth-child(1) { top: 50px; left: 20%; transform: rotate(-10deg);}
+.collage-images img:nth-child(2) { top: 150px; left: 10%; transform: rotate(5deg);}
+.collage-images img:nth-child(3) { top: 100px; left: 60%; transform: rotate(15deg);}
+.collage-images img:nth-child(4) { top: 250px; left: 50%; transform: rotate(-5deg);}
+.collage-images img:nth-child(5) { top: 200px; left: 80%; transform: rotate(10deg);}
 
 
 
+/* ================== ABOUT SWORDS ================== */
+.about-swords {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #f4cca3, #f4f2ed);
+    color: #fff;
+}
+
+.swords-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+}
+
+.sword {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    transform-origin: center center;
+    transition: all 1s ease;
+}
+
+.sword-left {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.sword-right {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.about-text {
+    position: relative;
+    max-width: 600px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.about-text h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
 
 
+/* ================== ABOUT PUZZLE ================== */
+.about-puzzle {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f4f2ed;
+  color: #000000;
+}
 
+.swords-puzzle {
+  position: relative; /* importante para que las piezas absolutas se ubiquen dentro */
+  width: 400px;
+  height: 400px;
+  margin-bottom: 50px; /* espacio para el texto debajo */
+}
+
+/* Piezas arrastrables */
+.puzzle-piece {
+  width: 150px;
+  position: absolute;
+  cursor: grab;
+  transition: all 0.5s ease; /* transición suave */
+}
+
+/* Posiciones correctas al hacer hover */
+.swords-puzzle:hover #piece-left-top { top: 0; left: 0; }
+.swords-puzzle:hover #piece-left-bottom { top: 0; left: 200px; }
+.swords-puzzle:hover #piece-right-top { top: 200px; left: 0; }
+.swords-puzzle:hover #piece-right-bottom { top: 200px; left: 200px; }
+
+.about-text {
+  max-width: 600px;
+  text-align: center;
+  opacity: 1; /* ya no ocultamos el texto */
+  transition: opacity 1s ease;
+  z-index: 1; /* aseguramos que esté debajo del puzzle */
+}
 
 
 

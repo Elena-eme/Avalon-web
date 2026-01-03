@@ -253,4 +253,56 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+// ================= ABOUT SWORDS =================
+$(window).on("scroll", function () {
+    const scrollPos = $(window).scrollTop();
+    const trigger = $(".about-swords").offset().top - $(window).height() / 2;
+
+    if (scrollPos > trigger) {
+        // Mover las espadas hacia los lados
+        $(".sword-left").css("transform", "translate(-200%, -50%) rotate(-45deg)");
+        $(".sword-right").css("transform", "translate(100%, -50%) rotate(45deg)");
+
+        // Mostrar el texto
+        $(".about-text").css("opacity", "1");
+    }
+});
+
+
+// ================= ABOUT PUZZLE =================
+const container = document.querySelector('.swords-puzzle');
+const correctPositions = {
+  'piece-left-top': { top: 0, left: 0 },
+  'piece-left-bottom': { top: 0, left: 200 },
+  'piece-right-top': { top: 200, left: 0 },
+  'piece-right-bottom': { top: 200, left: 200 }
+};
+
+// Hover: ordenar piezas
+container.addEventListener('mouseenter', () => {
+  for (const [id, pos] of Object.entries(correctPositions)) {
+    const piece = document.getElementById(id);
+    piece.style.top = pos.top + 'px';
+    piece.style.left = pos.left + 'px';
+  }
+});
+
+// Hover out: volver a posiciones aleatorias
+container.addEventListener('mouseleave', () => {
+  const pieces = document.querySelectorAll('.puzzle-piece');
+  const maxX = container.clientWidth - 150;
+  const maxY = container.clientHeight - 150;
+
+  pieces.forEach(piece => {
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    piece.style.top = randomY + 'px';
+    piece.style.left = randomX + 'px';
+  });
+});
+
+
+
+
+
 
