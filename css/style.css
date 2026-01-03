@@ -952,6 +952,11 @@ body {
     pointer-events: none;     /* permite que el mousedown se registre en las imágenes */
 }
 
+#arturo-win {
+    z-index: 99999 !important;
+}
+
+
 .artifact {
     width: 250px;
     height: 250px;
@@ -981,6 +986,80 @@ body {
     pointer-events: none;
       /* Brillo extra suave sobre la imagen */
     filter: drop-shadow(0 0 8px rgba(255, 255, 220, 0.7));
+}
+
+/* === POSTAL ARTURO === */
+.arturo-postcard {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s;
+    z-index: 3000;
+}
+
+.arturo-postcard.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.postcard-inner {
+    background: #f4f2ed;
+    padding: 40px;
+    width: 420px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    transform: rotate(-3deg);
+    animation: postcardIn .6s ease forwards;
+    position: relative;
+}
+
+@keyframes postcardIn {
+    from {
+        transform: scale(.7) rotate(-8deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(-3deg);
+        opacity: 1;
+    }
+}
+
+.postcard-inner h2 {
+    margin-bottom: 15px;
+    font-family: "Averia Serif Libre", serif;
+}
+
+.postcard-inner p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.postcard-inner input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.postcard-inner button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.close-postcard {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 22px;
+    cursor: pointer;
 }
 
 

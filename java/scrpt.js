@@ -174,61 +174,50 @@ $(document).ready(function () {
 
 });
 
+// ================= JUEGO ARTURO – CHECK ABSOLUTO =================
+$(function () {
 
-// JUEGO ARTURO
-document.addEventListener('DOMContentLoaded', () => {
-    const artifacts = document.querySelectorAll('.artifact');
-    const container = document.querySelector('.arturo-game');
+    const correctOrder = [1, 3, 4, 5, 2];
+    const $win = $('#arturo-win');
 
-    // Posiciones iniciales aleatorias + rotaciones
-    artifacts.forEach(item => {
-        const containerRect = container.getBoundingClientRect();
-        const x = Math.random() * (containerRect.width - item.offsetWidth);
-        const y = Math.random() * (containerRect.height - item.offsetHeight);
-        const rotate = (Math.random() * 20) - 10; // rotación entre -10° y +10°
-
-        item.style.left = x + 'px';
-        item.style.top = y + 'px';
-        item.style.transform = `rotate(${rotate}deg)`;
-    });
-
-    let dragged = null;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    artifacts.forEach(item => {
-        item.addEventListener('mousedown', e => {
-            dragged = item;
-            const rect = dragged.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-            dragged.style.zIndex = 1000;
-        });
-    });
-
-    document.addEventListener('mousemove', e => {
-        if (!dragged) return;
-
-        const containerRect = container.getBoundingClientRect();
-        let x = e.clientX - containerRect.left - offsetX;
-        let y = e.clientY - containerRect.top - offsetY;
-
-        // Limitar dentro del contenedor
-        x = Math.max(0, Math.min(containerRect.width - dragged.offsetWidth, x));
-        y = Math.max(0, Math.min(containerRect.height - dragged.offsetHeight, y));
-
-        dragged.style.left = x + 'px';
-        dragged.style.top = y + 'px';
-    });
-
-    document.addEventListener('mouseup', () => {
-        if (dragged) {
-            dragged.style.zIndex = 10;
-            dragged = null;
+    // DRAG REAL
+    $('.artifact').draggable({
+        containment: 'body',
+        scroll: false,
+        stop: function () {
+            checkWin(); // 🔥 SE COMPRUEBA SIEMPRE AL SOLTAR
         }
     });
+
+    function checkWin() {
+
+        const items = $('.artifact');
+
+        if (items.length !== correctOrder.length) {
+            return;
+        }
+
+        const sorted = items
+            .toArray()
+            .sort((a, b) => {
+                return $(a).offset().left - $(b).offset().left;
+            })
+            .map(el => parseInt($(el).data('order'), 10));
+
+        console.log('ORDEN ACTUAL:', sorted); // 👈 DEBUG CLAVE
+
+        if (JSON.stringify(sorted) === JSON.stringify(correctOrder)) {
+            console.log('✅ ORDEN CORRECTO');
+            showWin();
+        }
+    }
+
+    function showWin() {
+        $win.addClass('active');
+    }
+
+    $('.close-postcard').on('click', function () {
+        $win.removeClass('active');
+    });
+
 });
-
-
-
-
