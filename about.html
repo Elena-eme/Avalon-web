@@ -47,8 +47,10 @@
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <input type="text" class="search-input" placeholder="Buscar en Avalon...">
         </div>
-        <i class="fa-solid fa-basket-shopping basket-icon"></i>
+        <i  id="cart-icon" class="fa-solid fa-basket-shopping basket-icon"></i>
     </div>
+    
+    
 </header>
 
 <aside class="side-menu">
@@ -58,6 +60,31 @@
     <a href="#">Contacto</a>
 </aside>
 
+<div class="overlay"></div>
+
+<!-- Ventana flotante del carrito -->
+<div id="cart-popup">
+  <div class="cart-header">
+    <span>ORDER SUMMARY</span>
+    <button id="cart-close">&times;</button>
+  </div>
+  <div class="cart-items">
+    <div class="cart-item">
+      <img src="https://i.pinimg.com/1200x/3b/5a/97/3b5a976cf90676adca345cf26a042090.jpg" alt="Chair">
+      <div class="item-info">
+        <span class="item-name">Onyx Wood Chair</span>
+        <span class="item-size">Size: 80x80</span>
+        <span class="item-price">$4,699.00</span>
+      </div>
+      <button class="remove-item">×</button>
+    </div>
+    <!-- Más items aquí -->
+  </div>
+  <div class="cart-footer">
+    <span>Grand Total: $9,097.00</span>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+</div>
 
     <!-- HERO CATALOGO -->
 <section class="about-hero">
@@ -202,9 +229,7 @@
 
 </footer>
 
-<script src="java/jquery-3.7.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
 <script src="java/scrpt.js"></script>
 </body>
 </html>

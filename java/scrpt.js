@@ -347,5 +347,34 @@ $(document).ready(function() {
     });
 });
 
+// ------------------ CARRITO COMPRA POP UP
+$(document).ready(function () {
+    const $cart = $('#cart-popup');
+    const $overlay = $('.overlay');
+
+    // Abrir carrito
+    $('#cart-icon').on('click', function (e) {
+        e.stopPropagation();
+        $cart.fadeIn();
+        $overlay.addClass('active');
+    });
+
+    // Cerrar con X
+    $('#cart-close').on('click', function () {
+        $cart.fadeOut();
+        $overlay.removeClass('active');
+    });
+
+    // Cerrar al click fuera
+    $overlay.on('click', function () {
+        $cart.fadeOut();
+        $overlay.removeClass('active');
+    });
+});
+
+
+
+
+
 
 

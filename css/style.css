@@ -131,6 +131,75 @@ body {
         width: 130px;
     }
 }
+/* -----------------CART POPUP------------------------ */
+
+#cart-popup {
+    position: fixed;
+    top: 60px;      
+    right: 20px;   
+    background: #f7f4eb;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    display: none;  
+    z-index: 10000;
+    width: 300px;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+#cart-popup .cart-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#cart-popup .cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#cart-popup .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#cart-popup .cart-item img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+#cart-popup .cart-footer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+#cart-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
 
 /* ================= SIDE MENU ================= */
 
