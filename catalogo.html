@@ -14,9 +14,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Hubballi&family=Krona+One&family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&family=Hubballi&family=Krona+One&family=Pinyon+Script&family=Poppins&display=swap" rel="stylesheet">
 </head>
+
+<body>
 
 <!-- ESPADA SECRETA -->
 <img src="img/sword.png" id="avalon-sword" alt="Espada Avalon">
@@ -27,18 +28,15 @@
         <span class="close-sword">&times;</span>
         <h2>Has encontrado la espada de AVALON</h2>
         <p>El destino te concede un <strong>15% de descuento</strong></p>
-
         <input type="email" id="sword-email" placeholder="Tu correo sagrado">
         <button id="claim-sword">Reclamar recompensa</button>
     </div>
 </div>
 
-<body>
-
+<!-- OVERLAY GLOBAL -->
 <div class="overlay"></div>
 
-
-
+<!-- HEADER -->
 <header class="header">
     <div class="header-left">
         <div class="hamburger">
@@ -47,8 +45,8 @@
     </div>
 
     <nav class="header-nav">
-        <a href="#">Catálogo</a>
-        <a href="index.html"><img src="img/logo.png" class="logo"></a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="index.html"><img src="img/logo.png" class="logo" alt="Avalon"></a>
         <a href="#">Contacto</a>
     </nav>
 
@@ -57,10 +55,11 @@
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <input type="text" class="search-input" placeholder="Buscar en Avalon...">
         </div>
-        <i  id="cart-icon" class="fa-solid fa-basket-shopping basket-icon"></i>
+        <i id="cart-icon" class="fa-solid fa-basket-shopping basket-icon"></i>
     </div>
 </header>
 
+<!-- SIDE MENU -->
 <aside class="side-menu">
     <a href="index.html">Inicio</a>
     <a href="catalogo.html">Colecciones</a>
@@ -68,227 +67,161 @@
     <a href="#">Contacto</a>
 </aside>
 
-<div class="overlay"></div>
-
-<!-- Ventana flotante del carrito -->
+<!-- CARRITO -->
 <div id="cart-popup">
-  <div class="cart-header">
-    <span>ORDER SUMMARY</span>
-    <button id="cart-close">&times;</button>
-  </div>
-  <div class="cart-items">
-    <div class="cart-item">
-      <img src="https://i.pinimg.com/1200x/3b/5a/97/3b5a976cf90676adca345cf26a042090.jpg" alt="Chair">
-      <div class="item-info">
-        <span class="item-name">Onyx Wood Chair</span>
-        <span class="item-size">Size: 80x80</span><div class="overlay"></div>
-
-<!-- Ventana flotante del carrito -->
-<div id="cart-popup">
-  <div class="cart-header">
-    <span>ORDER SUMMARY</span>
-    <button id="cart-close">&times;</button>
-  </div>
-  <div class="cart-items">
-    <div class="cart-item">
-      <img src="https://i.pinimg.com/1200x/3b/5a/97/3b5a976cf90676adca345cf26a042090.jpg" alt="Anillo">
-      <div class="item-info">
-        <span class="item-name">Ginebra Ring</span>
-        <span class="item-size">Size: S</span>
-        <span class="item-price">32€</span>
-        <span class="item-material">Plata</span>
-
-      </div>
-      <button class="remove-item">×</button>
+    <div class="cart-header">
+        <span>ORDER SUMMARY</span>
+        <button id="cart-close">&times;</button>
     </div>
-    <!-- Más items aquí -->
-  </div>
-  <div class="cart-footer">
-    <span>Grand Total: 32€ </span>
-    <button class="checkout-btn">Procedimiento de Pago</button>
-  </div>
+
+    <div class="cart-items">
+        <div class="cart-item">
+            <img src="https://i.pinimg.com/1200x/3b/5a/97/3b5a976cf90676adca345cf26a042090.jpg" alt="Anillo">
+            <div class="item-info">
+                <span class="item-name">Ginebra Ring</span>
+                <span class="item-price">32€</span>
+                <span class="item-size">Size: S</span>
+                <span class="item-material">Plata</span>
+            </div>
+            <button class="remove-item">×</button>
+        </div>
+    </div>
+
+    <div class="cart-footer">
+        <span>Grand Total: 32€</span>
+        <button class="checkout-btn">Procedimiento de Pago</button>
+    </div>
 </div>
 
-    <!-- HERO CATALOGO -->
-    <section class="catalog-hero">
-        <div class="hero-split">
-            <img src="https://i.pinimg.com/1200x/49/92/3d/49923dfcceef537a5da8374dd86b2ef8.jpg" alt="">
-            <img src="https://i.pinimg.com/736x/a0/a7/19/a0a719b13a569a96922bec447cd84951.jpg" alt="">
-        </div>
-
-        <h1 class="catalog-title">WINTERING</h1>
-    </section>
-
-   <div class="catalog-controls">
-    <span>VISTA</span>
-        <button class="view-btn" data-view="view-1">1</button>
-        <button class="view-btn" data-view="view-2">2</button>
-        <button class="view-btn active" data-view="view-3">3</button>
-        <button class="view-btn" data-view="view-4">4</button>
-        <button class="view-btn" data-view="view-5">5</button>
+<!-- HERO CATALOGO -->
+<section class="catalog-hero">
+    <div class="hero-split">
+        <img src="https://i.pinimg.com/1200x/49/92/3d/49923dfcceef537a5da8374dd86b2ef8.jpg" alt="">
+        <img src="https://i.pinimg.com/736x/a0/a7/19/a0a719b13a569a96922bec447cd84951.jpg" alt="">
     </div>
+    <h1 class="catalog-title">WINTERING</h1>
+</section>
 
+<!-- CONTROLES -->
+<div class="catalog-controls">
+    <span>VISTA</span>
+    <button class="view-btn" data-view="view-2">2</button>
+    <button class="view-btn" data-view="view-4">4</button>
+    <button class="view-btn active" data-view="view-6">6</button>
 
+</div>
 
-    <!-- GRID PRODUCTOS -->
-    <section class="catalog-grid view-1">
-
-     
+<!-- GRID PRODUCTOS -->
+<section class="catalog-grid view-3">
 
     <!-- FILA 1 -->
-    <div class="product-card offset-left">
-        <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg">
-        <p class="product-name">Lancelot build hood</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg">
+    <p class="product-name">The Excalibur Veil</p>
+</div>
 
-    <div class="product-card">
-        <img src="https://i.pinimg.com/736x/f2/6c/63/f26c630378288001fb8bb386d0ba4b11.jpg">
-        <p class="product-name">Set Avalon</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/736x/f2/6c/63/f26c630378288001fb8bb386d0ba4b11.jpg">
+    <p class="product-name">Lady of the Lake Skin</p>
+</div>
 
-    <div class="product-card offset-right">
-        <img src="https://i.pinimg.com/1200x/20/d9/d6/20d9d6e3a5dba7fb11cbc99b8601a444.jpg">
-        <p class="product-name">Scalibur Shine</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/736x/28/7a/9c/287a9c9d2aae357b872b94f9793f1445.jpg">
+    <p class="product-name">Avalon Dusk Dress</p>
+</div>
 
-    <!-- FILA 2 -->
-    <div class="product-card offset-right">
-        <img src="https://i.pinimg.com/1200x/63/c7/4f/63c74f390017623845a28ae99814340b.jpg">
-        <p class="product-name">Nude Body</p>
-    </div>
+<!-- FILA 2 -->
+<div class="product-card">
+    <img src="https://i.pinimg.com/1200x/14/ef/cd/14efcdb55143374cb2d902d62e5d0cca.jpg">
+    <p class="product-name">Morgana Sheer Armor</p>
+</div>
 
-    <div class="product-card">
-        <img src="https://i.pinimg.com/1200x/28/06/94/280694b7e58ebd41077a46ae7a1f85b7.jpg">
-        <p class="product-name">Second Skin</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/736x/aa/17/5f/aa175f48b185277cb799fbaadb1a1720.jpg">
+    <p class="product-name">Guinevere Second Skin</p>
+</div>
 
-    <div class="product-card offset-left">
-        <img src="https://i.pinimg.com/736x/c9/79/79/c97979e5c9928e8d2f9e87dc44736b97.jpg">
-        <p class="product-name">Mesh Pants</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/736x/34/eb/59/34eb59c24afb32bc98d0e7f0721442eb.jpg">
+    <p class="product-name">Round Table Silhouette</p>
+</div>
 
-    <!-- FILA 3 -->
-    <div class="product-card offset-left">
-        <img src="https://i.pinimg.com/1200x/1d/d4/10/1dd4103fe6aa10c6e3bdd768b6ce8445.jpg">
-        <p class="product-name">Sheer Long Dress</p>
-    </div>
+<!-- FILA 3 -->
+<div class="product-card">
+    <img src="https://i.pinimg.com/1200x/a4/93/ed/a493edf8fc1ed23d347f00701fd31f56.jpg">
+    <p class="product-name">Merlin’s Whisper Mesh</p>
+</div>
 
-    <div class="product-card">
-        <img src="https://i.pinimg.com/1200x/0a/37/4b/0a374b403137dc9141249f3481ccfc26.jpg">
-        <p class="product-name">Nude Mesh</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/736x/cc/3a/d6/cc3ad6cb26cdeb2fd8503f59412f0237.jpg">
+    <p class="product-name">Lakeborn Transparency</p>
+</div>
 
-    <div class="product-card offset-right">
-        <img src="https://i.pinimg.com/736x/a0/a7/19/a0a719b13a569a96922bec447cd84951.jpg">
-        <p class="product-name">Transparent Layer</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/736x/2b/1b/71/2b1b71173a9be2cabeb7708cf4de97a1.jpg">
+    <p class="product-name">Exile of Camelot</p>
+</div>
 
-    <!-- FILA 4 -->
-    <div class="product-card offset-right">
-        <img src="https://i.pinimg.com/originals/3c/54/d3/3c54d3a5519eda79991a818b75841889.gif">
-        <p class="product-name">Runway Mesh</p>
-    </div>
+<!-- FILA 4 -->
+<div class="product-card">
+    <img src="https://i.pinimg.com/1200x/c2/cf/8c/c2cf8c1d1927083c0608e1d909a6e5b5.jpg">
+    <p class="product-name">Sword in the Stone</p>
+</div>
 
-    <div class="product-card">
-        <img src="https://i.pinimg.com/1200x/49/92/3d/49923dfcceef537a5da8374dd86b2ef8.jpg">
-        <p class="product-name">Second Skin Dress</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/1200x/ba/f4/01/baf4014a89f8e30eed0baa8418273c09.jpg">
+    <p class="product-name">Veil of the Fallen King</p>
+</div>
 
-    <div class="product-card offset-left">
-        <img src="https://i.pinimg.com/736x/04/f2/e5/04f2e583dc6346680b63fb90c96faddb.jpg">
-        <p class="product-name">Editorial Look</p>
-    </div>
+<div class="product-card">
+    <img src="https://i.pinimg.com/1200x/6b/b5/a6/6bb5a6233d91b55a6055c4e6d2f604cb.jpg">
+    <p class="product-name">Avalon Afterlight</p>
+</div>
 
-    <!-- FILA 5 -->
-    <div class="product-card offset-left">
-        <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg">
-        <p class="product-name">Final Mesh</p>
-    </div>
 
-    <div class="product-card">
-        <img src="https://i.pinimg.com/1200x/63/c7/4f/63c74f390017623845a28ae99814340b.jpg">
-        <p class="product-name">Layered Nude</p>
-    </div>
-
-    <div class="product-card offset-right">
-        <img src="https://i.pinimg.com/1200x/20/d9/d6/20d9d6e3a5dba7fb11cbc99b8601a444.jpg">
-        <p class="product-name">Mesh Finale</p>
-    </div>
+    
 
 </section>
 
 
-       
- 
-
-    <!-- BLOQUES EDITORIALES -->
-    <section class="catalog-editorial">
-        <div class="editorial-block left">
-            <img src="https://i.pinimg.com/originals/3c/54/d3/3c54d3a5519eda79991a818b75841889.gif">
-            <span>NEW COLLECTION</span>
-        </div>
-
-        <div class="editorial-block right">
-            <img src="https://i.pinimg.com/736x/04/f2/e5/04f2e583dc6346680b63fb90c96faddb.jpg">
-            <span>ACCESSORIES</span>
-        </div>
-    </section>
-
-
-
-
-<footer class="footer">
-
-    <!-- SECCIÓN FOTOS TIPO CARTAS -->
-    <div class="footer-cards">
-        <div class="card card-1">
-            <img src="https://i.pinimg.com/1200x/28/06/94/280694b7e58ebd41077a46ae7a1f85b7.jpg" alt="">
-        </div>
-        <div class="card card-2">
-            <img src="https://i.pinimg.com/1200x/63/c7/4f/63c74f390017623845a28ae99814340b.jpg" alt="">
-        </div>
-        <div class="card card-3">
-            <img src="https://i.pinimg.com/1200x/1d/d4/10/1dd4103fe6aa10c6e3bdd768b6ce8445.jpg" alt="">
-        </div>
-        <div class="card card-4">
-            <img src="https://i.pinimg.com/736x/c9/79/79/c97979e5c9928e8d2f9e87dc44736b97.jpg" alt="">
-        </div>
-         <div class="card card-5">
-            <img src="https://i.pinimg.com/1200x/0a/37/4b/0a374b403137dc9141249f3481ccfc26.jpg"></div>
-        <div class="card card-6">
-            <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg"></div>
+<!-- EDITORIAL -->
+<section class="catalog-editorial">
+    <div class="editorial-block left">
+        <img src="https://i.pinimg.com/originals/3c/54/d3/3c54d3a5519eda79991a818b75841889.gif">
+        <span>NEW COLLECTION</span>
     </div>
 
-    <!-- CONTENIDO FOOTER -->
+    <div class="editorial-block right">
+        <img src="https://i.pinimg.com/736x/04/f2/e5/04f2e583dc6346680b63fb90c96faddb.jpg">
+        <span>ACCESSORIES</span>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
     <div class="footer-content">
         <div>
             <h4>Menú</h4>
             <a href="#">Catálogo</a>
             <a href="#">Contacto</a>
         </div>
-
         <div>
             <h4>Contacto</h4>
             <p>info@avalon.com</p>
             <p>Madrid, España</p>
         </div>
-
-        <div>
-            <h4>Buscar</h4>
-            <input type="text">
-        </div>
-
         <div>
             <h4>Newsletter</h4>
             <input type="email">
             <button>Suscribirse</button>
         </div>
     </div>
-
 </footer>
 
+<!-- SCRIPTS -->
 <script src="java/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="java/scrpt.js"></script>
+
 </body>
 </html>

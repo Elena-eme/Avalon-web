@@ -118,6 +118,24 @@ $(document).ready(function () {
 
 });
 
+$(document).ready(function () {
+
+    $('.view-btn').on('click', function () {
+        const view = $(this).data('view');
+
+        // botón activo
+        $('.view-btn').removeClass('active');
+        $(this).addClass('active');
+
+        // cambiar clase del grid
+        $('.catalog-grid')
+            .removeClass('view-2 view-4 view-6')
+            .addClass(view);
+    });
+
+});
+
+
 /* ================= ESPADA OCULTA ================= */
 $(document).ready(function () {
 
