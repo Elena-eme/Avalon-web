@@ -259,24 +259,40 @@ if (container) {
 /* ================= CARRITO ================= */
 $(document).ready(function () {
 
-    if (!$('#cart-popup').length || !$('.overlay').length || !$('#cart-icon').length) return;
+    const cart = $('#cart-popup');
+    const overlay = $('.overlay');
 
-    const $cart = $('#cart-popup');
-    const $overlay = $('.overlay');
-
+    // ABRIR carrito
     $('#cart-icon').on('click', function (e) {
-        e.stopPropagation();
-        $cart.fadeIn();
-        $overlay.addClass('active');
+        e.preventDefault();
+        cart.addClass('active');
+        overlay.addClass('active');
     });
 
+    // CERRAR carrito (X)
     $('#cart-close').on('click', function () {
-        $cart.fadeOut();
-        $overlay.removeClass('active');
+        cart.removeClass('active');
+        overlay.removeClass('active');
     });
 
-    $overlay.on('click', function () {
-        $cart.fadeOut();
-        $overlay.removeClass('active');
+    // CERRAR haciendo click fuera
+    overlay.on('click', function () {
+        cart.removeClass('active');
+        overlay.removeClass('active');
+    });
+
+});
+$(document).ready(function () {
+
+    // Eliminar item del carrito
+    $(document).on('click', '.remove-item', function () {
+        $(this).closest('.cart-item').remove();
+    });
+
+});
+$(document).on('click', '.remove-item', function () {
+    $(this).closest('.cart-item').slideUp(200, function () {
+        $(this).remove();
     });
 });
+
