@@ -5,6 +5,9 @@
     <title>AVALON</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -33,7 +36,7 @@
     </div>
 </div>
 
-<!-- OVERLAY GLOBAL -->
+<!-- OVERLAY -->
 <div class="overlay"></div>
 
 <!-- HEADER -->
@@ -93,7 +96,7 @@
     </div>
 </div>
 
-<!-- HERO CATALOGO -->
+<!-- HERO -->
 <section class="catalog-hero">
     <div class="hero-split">
         <img src="https://i.pinimg.com/1200x/49/92/3d/49923dfcceef537a5da8374dd86b2ef8.jpg" alt="">
@@ -103,86 +106,79 @@
 </section>
 
 <!-- CONTROLES -->
-<div class="catalog-controls">
+<div class="catalog-controls d-flex justify-content-center gap-3 my-4">
     <span>VISTA</span>
     <button class="view-btn" data-view="view-2">2</button>
     <button class="view-btn" data-view="view-4">4</button>
     <button class="view-btn active" data-view="view-6">6</button>
-
 </div>
 
-<!-- GRID PRODUCTOS -->
-<section class="catalog-grid view-3">
+<!-- GRID PRODUCTOS (Bootstrap solo como contenedor) -->
+<section class="container-fluid px-4">
+    <div class="catalog-grid view-3">
 
-    <!-- FILA 1 -->
-<div class="product-card">
-    <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg">
-    <p class="product-name">The Excalibur Veil</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg">
+            <p class="product-name">The Excalibur Veil</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/736x/f2/6c/63/f26c630378288001fb8bb386d0ba4b11.jpg">
-    <p class="product-name">Lady of the Lake Skin</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/736x/f2/6c/63/f26c630378288001fb8bb386d0ba4b11.jpg">
+            <p class="product-name">Lady of the Lake Skin</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/736x/28/7a/9c/287a9c9d2aae357b872b94f9793f1445.jpg">
-    <p class="product-name">Avalon Dusk Dress</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/736x/28/7a/9c/287a9c9d2aae357b872b94f9793f1445.jpg">
+            <p class="product-name">Avalon Dusk Dress</p>
+        </div>
 
-<!-- FILA 2 -->
-<div class="product-card">
-    <img src="https://i.pinimg.com/1200x/14/ef/cd/14efcdb55143374cb2d902d62e5d0cca.jpg">
-    <p class="product-name">Morgana Sheer Armor</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/1200x/14/ef/cd/14efcdb55143374cb2d902d62e5d0cca.jpg">
+            <p class="product-name">Morgana Sheer Armor</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/736x/aa/17/5f/aa175f48b185277cb799fbaadb1a1720.jpg">
-    <p class="product-name">Guinevere Second Skin</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/736x/aa/17/5f/aa175f48b185277cb799fbaadb1a1720.jpg">
+            <p class="product-name">Guinevere Second Skin</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/736x/34/eb/59/34eb59c24afb32bc98d0e7f0721442eb.jpg">
-    <p class="product-name">Round Table Silhouette</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/736x/34/eb/59/34eb59c24afb32bc98d0e7f0721442eb.jpg">
+            <p class="product-name">Round Table Silhouette</p>
+        </div>
 
-<!-- FILA 3 -->
-<div class="product-card">
-    <img src="https://i.pinimg.com/1200x/a4/93/ed/a493edf8fc1ed23d347f00701fd31f56.jpg">
-    <p class="product-name">Merlin’s Whisper Mesh</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/1200x/a4/93/ed/a493edf8fc1ed23d347f00701fd31f56.jpg">
+            <p class="product-name">Merlin’s Whisper Mesh</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/736x/cc/3a/d6/cc3ad6cb26cdeb2fd8503f59412f0237.jpg">
-    <p class="product-name">Lakeborn Transparency</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/736x/cc/3a/d6/cc3ad6cb26cdeb2fd8503f59412f0237.jpg">
+            <p class="product-name">Lakeborn Transparency</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/736x/2b/1b/71/2b1b71173a9be2cabeb7708cf4de97a1.jpg">
-    <p class="product-name">Exile of Camelot</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/736x/2b/1b/71/2b1b71173a9be2cabeb7708cf4de97a1.jpg">
+            <p class="product-name">Exile of Camelot</p>
+        </div>
 
-<!-- FILA 4 -->
-<div class="product-card">
-    <img src="https://i.pinimg.com/1200x/c2/cf/8c/c2cf8c1d1927083c0608e1d909a6e5b5.jpg">
-    <p class="product-name">Sword in the Stone</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/1200x/c2/cf/8c/c2cf8c1d1927083c0608e1d909a6e5b5.jpg">
+            <p class="product-name">Sword in the Stone</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/1200x/ba/f4/01/baf4014a89f8e30eed0baa8418273c09.jpg">
-    <p class="product-name">Veil of the Fallen King</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/1200x/ba/f4/01/baf4014a89f8e30eed0baa8418273c09.jpg">
+            <p class="product-name">Veil of the Fallen King</p>
+        </div>
 
-<div class="product-card">
-    <img src="https://i.pinimg.com/1200x/6b/b5/a6/6bb5a6233d91b55a6055c4e6d2f604cb.jpg">
-    <p class="product-name">Avalon Afterlight</p>
-</div>
+        <div class="product-card">
+            <img src="https://i.pinimg.com/1200x/6b/b5/a6/6bb5a6233d91b55a6055c4e6d2f604cb.jpg">
+            <p class="product-name">Avalon Afterlight</p>
+        </div>
 
-
-    
-
+    </div>
 </section>
-
 
 <!-- EDITORIAL -->
 <section class="catalog-editorial">
@@ -249,6 +245,7 @@
 </footer>
 
 <!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="java/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 <script src="java/scrpt.js"></script>
