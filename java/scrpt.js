@@ -316,6 +316,36 @@ container.addEventListener('mouseleave', () => {
 
 
 
+$(document).ready(function() {
+    $('.editorial-line').each(function() {
+        const $line = $(this);
+
+        // posición inicial
+        let x = 0, y = 0;
+
+        // velocidades aleatorias pequeñas
+        let dx = (Math.random() * 0.3) - 0.15; 
+        let dy = (Math.random() * 0.3) - 0.15;
+
+        // límites del movimiento
+        const limit = 5; // px
+
+        function floatLine() {
+            x += dx;
+            y += dy;
+
+            // invertir dirección si alcanza límites
+            if (x > limit || x < -limit) dx *= -1;
+            if (y > limit || y < -limit) dy *= -1;
+
+            $line.css('transform', `translate(${x}px, ${y}px)`);
+
+            requestAnimationFrame(floatLine);
+        }
+
+        floatLine();
+    });
+});
 
 
 
