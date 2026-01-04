@@ -1,49 +1,52 @@
 $(document).ready(function () {
 
     // HAMBURGER
-  $('.hamburger').click(function () {
-    $('.side-menu').addClass('open').css('left', '0');
-    $('.overlay').css({
-        opacity: 1,
-        pointerEvents: 'all'
-    });
-});
+    if ($('.hamburger').length && $('.side-menu').length && $('.overlay').length) {
+        $('.hamburger').click(function () {
+            $('.side-menu').addClass('open').css('left', '0');
+            $('.overlay').css({
+                opacity: 1,
+                pointerEvents: 'all'
+            });
+        });
 
-$('.overlay').click(function () {
-    $('.side-menu').removeClass('open').css('left', '-250px');
-    $('.overlay').css({
-        opacity: 0,
-        pointerEvents: 'none'
-    });
-});
-
+        $('.overlay').click(function () {
+            $('.side-menu').removeClass('open').css('left', '-250px');
+            $('.overlay').css({
+                opacity: 0,
+                pointerEvents: 'none'
+            });
+        });
+    }
 
     // FLIP CARDS
-    $('.card').click(function () {
-        $(this).toggleClass('flip');
-    });
+    if ($('.card').length) {
+        $('.card').click(function () {
+            $(this).toggleClass('flip');
+        });
+    }
 
 });
 
 $(document).ready(function () {
 
-    // LUPA DESENFUNDA
-    $('.search-icon').on('click', function (e) {
-        e.stopPropagation();
-        $('.search-container').toggleClass('active');
-        $('.search-input').focus();
-    });
+    // LUPA
+    if ($('.search-icon').length && $('.search-container').length) {
+        $('.search-icon').on('click', function (e) {
+            e.stopPropagation();
+            $('.search-container').toggleClass('active');
+            $('.search-input').focus();
+        });
 
-    // CERRAR AL CLICAR FUERA
-    $(document).on('click', function () {
-        $('.search-container').removeClass('active');
-    });
+        $(document).on('click', function () {
+            $('.search-container').removeClass('active');
+        });
+    }
 
 });
 
 // CÍRCULO → CARTA ALEATORIA
-// CÍRCULO → ELEVA Y GIRA CARTA ALEATORIA
-if ($('.circle-img img').length) {
+if ($('.circle-img img').length && $('.card').length) {
     $('.circle-img img').on('click', function () {
 
         const cards = $('.card');
@@ -60,7 +63,7 @@ if ($('.circle-img img').length) {
     });
 }
 
-
+/* ================= SLIDESHOW ================= */
 const galleryImages = document.querySelectorAll('.g-img');
 const overlay = document.querySelector('.slideshow-overlay');
 const overlayImg = document.querySelector('.slideshow-img');
@@ -78,27 +81,12 @@ if (galleryImages.length && overlay && overlayImg && closeBtn) {
     closeBtn.addEventListener('click', () => {
         overlay.classList.remove('active');
     });
-
 }
 
-
-galleryImages.forEach(img => {
-    img.addEventListener('click', () => {
-        overlayImg.src = img.src;
-        overlay.classList.add('active');
-    });
-});
-
-if (closeBtn && overlay) {
-    closeBtn.addEventListener('click', () => {
-        overlay.classList.remove('active');
-    });
-}
-
-
+/* ================= EDITORIAL SCROLL ================= */
 $(window).on("scroll", function () {
     const editorial = $(".editorial");
-    if (editorial.length) { // Solo si existe
+    if (editorial.length) {
         const trigger = editorial.offset().top - $(window).height() + 200;
         if ($(window).scrollTop() > trigger) {
             $(".ed-img, .ed-text").addClass("visible");
@@ -106,25 +94,21 @@ $(window).on("scroll", function () {
     }
 });
 
-
-// CATALOGO
-
+/* ================= CATALOGO ================= */
 $(document).ready(function () {
 
     const $grid = $('.catalog-grid');
+    if (!$grid.length || !$('.view-btn').length) return;
 
     $('.view-btn').on('click', function () {
 
         const cols = $(this).data('cols');
 
-        // Botones
         $('.view-btn').removeClass('active');
         $(this).addClass('active');
 
-        // Limpiar vistas
         $grid.removeClass('view-1 view-2 view-3 view-4 view-5');
 
-        // Aplicar vista correcta
         if (cols === 2) $grid.addClass('view-1');
         if (cols === 3) $grid.addClass('view-2');
         if (cols === 4) $grid.addClass('view-3');
@@ -134,7 +118,7 @@ $(document).ready(function () {
 
 });
 
-// JUEGO ESPADA OCULTA (posición libre en TODO el documento)
+/* ================= ESPADA OCULTA ================= */
 $(document).ready(function () {
 
     const sword = $('#avalon-sword');
@@ -150,10 +134,7 @@ $(document).ready(function () {
         const x = Math.random() * (docWidth - 100);
         const y = Math.random() * (docHeight - 120);
 
-        sword.css({
-            left: x + 'px',
-            top: y + 'px'
-        });
+        sword.css({ left: x + 'px', top: y + 'px' });
     }
 
     placeSword();
@@ -173,53 +154,40 @@ $(document).ready(function () {
             alert('Introduce tu correo');
             return;
         }
-
         modal.removeClass('active');
         sword.fadeOut();
     });
 
 });
 
-// ================= JUEGO ARTURO – CHECK ABSOLUTO =================
+/* ================= JUEGO ARTURO ================= */
 $(function () {
+
+    if (!$('.artifact').length || !$('#arturo-win').length) return;
 
     const correctOrder = [1, 3, 4, 5, 2];
     const $win = $('#arturo-win');
 
-    // DRAG REAL
     $('.artifact').draggable({
         containment: 'body',
         scroll: false,
         stop: function () {
-            checkWin(); // SE COMPRUEBA SIEMPRE AL SOLTAR
+            checkWin();
         }
     });
 
     function checkWin() {
 
         const items = $('.artifact');
+        if (items.length !== correctOrder.length) return;
 
-        if (items.length !== correctOrder.length) {
-            return;
-        }
-
-        const sorted = items
-            .toArray()
-            .sort((a, b) => {
-                return $(a).offset().left - $(b).offset().left;
-            })
+        const sorted = items.toArray()
+            .sort((a, b) => $(a).offset().left - $(b).offset().left)
             .map(el => parseInt($(el).data('order'), 10));
 
-        console.log('ORDEN ACTUAL:', sorted); // 👈 DEBUG CLAVE
-
         if (JSON.stringify(sorted) === JSON.stringify(correctOrder)) {
-            console.log('✅ ORDEN CORRECTO');
-            showWin();
+            $win.addClass('active');
         }
-    }
-
-    function showWin() {
-        $win.addClass('active');
     }
 
     $('.close-postcard').on('click', function () {
@@ -228,153 +196,87 @@ $(function () {
 
 });
 
-// ================= GLOW - ABSOLUTE HERO =================
-document.addEventListener("DOMContentLoaded", function() {
+/* ================= GLOW ================= */
+document.addEventListener("DOMContentLoaded", function () {
     const glowContainer = document.querySelector('.magic-glow');
     if (!glowContainer) return;
 
-    const numGlows = 30; // número de brillos
-
-    for (let i = 0; i < numGlows; i++) {
+    for (let i = 0; i < 30; i++) {
         const span = document.createElement('span');
-
-        // posiciones aleatorias dentro del contenedor
-        const top = Math.random() * 100;
-        const left = Math.random() * 100;
-        span.style.top = top + '%';
-        span.style.left = left + '%';
-
-        // duración y retraso aleatorio
+        span.style.top = Math.random() * 100 + '%';
+        span.style.left = Math.random() * 100 + '%';
         span.style.animationDuration = (2 + Math.random() * 3) + 's';
         span.style.animationDelay = Math.random() * 3 + 's';
-
         glowContainer.appendChild(span);
     }
 });
 
-
-// ================= ABOUT SWORDS =================
+/* ================= ABOUT SWORDS ================= */
 $(window).on("scroll", function () {
-    const scrollPos = $(window).scrollTop();
-    const trigger = $(".about-swords").offset().top - $(window).height() / 2;
+    if (!$('.about-swords').length) return;
 
-    if (scrollPos > trigger) {
-        // Mover las espadas hacia los lados
+    const trigger = $(".about-swords").offset().top - $(window).height() / 2;
+    if ($(window).scrollTop() > trigger) {
         $(".sword-left").css("transform", "translate(-200%, -50%) rotate(-45deg)");
         $(".sword-right").css("transform", "translate(100%, -50%) rotate(45deg)");
-
-        // Mostrar el texto
         $(".about-text").css("opacity", "1");
     }
 });
 
-
-// ================= ABOUT PUZZLE =================
+/* ================= ABOUT PUZZLE ================= */
 const container = document.querySelector('.swords-puzzle');
-const correctPositions = {
-  'piece-left-top': {
-    top: 50,
-    left: 50
-  },
-  'piece-left-bottom': {
-    top: 50,
-    left: 200
-  },
-  'piece-right-top': {
-    top: 200,
-    left: 50
-  },
-  'piece-right-bottom': {
-    top: 200,
-    left: 200
-  }
-};
+if (container) {
 
+    const correctPositions = {
+        'piece-left-top': { top: 50, left: 50 },
+        'piece-left-bottom': { top: 50, left: 200 },
+        'piece-right-top': { top: 200, left: 50 },
+        'piece-right-bottom': { top: 200, left: 200 }
+    };
 
-// Hover: ordenar piezas
-container.addEventListener('mouseenter', () => {
-  for (const [id, pos] of Object.entries(correctPositions)) {
-    const piece = document.getElementById(id);
-    piece.style.top = pos.top + 'px';
-    piece.style.left = pos.left + 'px';
-  }
-});
-
-// Hover out: volver a posiciones aleatorias
-container.addEventListener('mouseleave', () => {
-  const pieces = document.querySelectorAll('.puzzle-piece');
-  const maxX = container.clientWidth - 150;
-  const maxY = container.clientHeight - 150;
-
-  pieces.forEach(piece => {
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-    piece.style.top = randomY + 'px';
-    piece.style.left = randomX + 'px';
-  });
-});
-
-
-
-$(document).ready(function() {
-    $('.editorial-line').each(function() {
-        const $line = $(this);
-
-        // posición inicial
-        let x = 0, y = 0;
-
-        // velocidades aleatorias pequeñas
-        let dx = (Math.random() * 0.3) - 0.15; 
-        let dy = (Math.random() * 0.3) - 0.15;
-
-        // límites del movimiento
-        const limit = 5; // px
-
-        function floatLine() {
-            x += dx;
-            y += dy;
-
-            // invertir dirección si alcanza límites
-            if (x > limit || x < -limit) dx *= -1;
-            if (y > limit || y < -limit) dy *= -1;
-
-            $line.css('transform', `translate(${x}px, ${y}px)`);
-
-            requestAnimationFrame(floatLine);
+    container.addEventListener('mouseenter', () => {
+        for (const [id, pos] of Object.entries(correctPositions)) {
+            const piece = document.getElementById(id);
+            if (piece) {
+                piece.style.top = pos.top + 'px';
+                piece.style.left = pos.left + 'px';
+            }
         }
-
-        floatLine();
     });
-});
 
-// ------------------ CARRITO COMPRA POP UP
+    container.addEventListener('mouseleave', () => {
+        const pieces = document.querySelectorAll('.puzzle-piece');
+        const maxX = container.clientWidth - 150;
+        const maxY = container.clientHeight - 150;
+
+        pieces.forEach(piece => {
+            piece.style.top = Math.random() * maxY + 'px';
+            piece.style.left = Math.random() * maxX + 'px';
+        });
+    });
+}
+
+/* ================= CARRITO ================= */
 $(document).ready(function () {
+
+    if (!$('#cart-popup').length || !$('.overlay').length || !$('#cart-icon').length) return;
+
     const $cart = $('#cart-popup');
     const $overlay = $('.overlay');
 
-    // Abrir carrito
     $('#cart-icon').on('click', function (e) {
         e.stopPropagation();
         $cart.fadeIn();
         $overlay.addClass('active');
     });
 
-    // Cerrar con X
     $('#cart-close').on('click', function () {
         $cart.fadeOut();
         $overlay.removeClass('active');
     });
 
-    // Cerrar al click fuera
     $overlay.on('click', function () {
         $cart.fadeOut();
         $overlay.removeClass('active');
     });
 });
-
-
-
-
-
-
-
