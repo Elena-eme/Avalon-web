@@ -795,46 +795,60 @@ $(document).on('click', '.close-menu', function (e) {
   }
 
   /* ====== 3) Confirmación ====== */
-  function renderConfirmation() {
-    if (!$("#order-summary").length) return; // no estamos en confirmacion.html
+function renderConfirmation() {
+    if (!$("#order-summary").length) return;
 
-    let order = null;
-    try { order = JSON.parse(localStorage.getItem(LAST_ORDER_KEY)); } catch {}
+let order = null;
+try { order = JSON.parse(localStorage.getItem(LAST_ORDER_KEY)); } catch {}
 
     if (!order) {
-      $("#order-id").text("No hay pedido guardado.");
-      return;
+        $("#order-id").text("No hay pedido guardado.");
+    return;
     }
 
-    $("#order-id").text(`Pedido: ${order.id} · Total: ${money(order.total, order.currency)}`);
+$("#order-id").text(`Pedido: ${order.id} · Total: ${money(order.total, order.currency)}`);
+
+    const PRODUCTS = getProductsSafe() || {};
 
     const linesHtml = (order.items || []).map(it => {
-      return `<div>${it.name} — ${it.size || "—"} × ${it.qty} — ${money(it.lineTotal, order.currency)}</div>`;
-    }).join("");
+    const p = PRODUCTS[it.sku];
+    const img = (p && p.images && p.images[0]) ? p.images[0] : "img/placeholder.png";
 
-    $("#order-summary").html(linesHtml);
-  }
+    return `
+        <div class="checkout-item">
+            <img class="checkout-thumb" src="${img}" alt="${it.name}">
+            <div class="checkout-info">
+            <div class="checkout-name">${it.name}</div>
+            <div class="checkout-meta">Talla: ${it.size || "—"} · Cantidad: ${it.qty}</div>
+            </div>
+            <div class="checkout-price">${money(it.lineTotal, order.currency)}</div>
+        </div>
+    `;
+}).join("");
+
+$("#order-summary").html(linesHtml);
+}
+
 
   /* ====== 4) Submit del checkout: simular pedido ====== */
-  $(document).on("submit", "#checkout-form", function (e) {
+$(document).on("submit", "#checkout-form", function (e) {
     e.preventDefault();
 
     const PRODUCTS = getProductsSafe();
     const cart = getCart();
 
     if (!PRODUCTS || !cart.length) {
-      alert("Tu carrito está vacío.");
-      return;
+        alert("Tu carrito está vacío.");
+        return;
     }
 
-    // Validación mínima
     const requiredIds = ["#ship-name", "#ship-email", "#ship-address", "#ship-city", "#ship-zip", "#ship-country", "#card-number", "#card-exp", "#card-cvv"];
     for (const id of requiredIds) {
-      const v = $(id).val();
-      if (!v || !String(v).trim()) {
-        alert("Completa todos los campos para continuar.");
+        const v = $(id).val();
+        if (!v || !String(v).trim()) {
+            alert("Completa todos los campos para continuar.");
         return;
-      }
+        }
     }
 
     // Construir pedido
@@ -842,54 +856,54 @@ $(document).on('click', '.close-menu', function (e) {
     let currency = "€";
 
     const items = cart.map(line => {
-      const p = PRODUCTS[line.sku];
-      if (!p) return null;
-      currency = p.currency || currency;
+    const p = PRODUCTS[line.sku];
+        if (!p) return null;
+        currency = p.currency || currency;
 
-      const qty = line.qty || 1;
-      const lineTotal = (p.price || 0) * qty;
-      subtotal += lineTotal;
+    const qty = line.qty || 1;
+    const lineTotal = (p.price || 0) * qty;
+    subtotal += lineTotal;
 
-      return {
+    return {
         sku: line.sku,
         name: p.name,
         size: line.size || null,
         qty,
         lineTotal
-      };
+    };
     }).filter(Boolean);
 
     const shipping = subtotal > 0 ? 4 : 0;
     const total = subtotal + shipping;
 
     const order = {
-      id: "AVL-" + Date.now(),
-      createdAt: new Date().toISOString(),
-      customer: {
-        name: $("#ship-name").val().trim(),
-        email: $("#ship-email").val().trim(),
-        address: $("#ship-address").val().trim(),
-        city: $("#ship-city").val().trim(),
-        zip: $("#ship-zip").val().trim(),
-        country: $("#ship-country").val().trim()
-      },
-      items,
-      subtotal,
-      shipping,
-      total,
-      currency
+        id: "AVL-" + Date.now(),
+        createdAt: new Date().toISOString(),
+        customer: {
+            name: $("#ship-name").val().trim(),
+            email: $("#ship-email").val().trim(),
+            address: $("#ship-address").val().trim(),
+            city: $("#ship-city").val().trim(),
+            zip: $("#ship-zip").val().trim(),
+            country: $("#ship-country").val().trim()
+    },
+        items,
+        subtotal,
+        shipping,
+        total,
+        currency
     };
 
     localStorage.setItem(LAST_ORDER_KEY, JSON.stringify(order));
     saveCart([]); // vaciar carrito
 
     window.location.href = "confirmacion.html";
-  });
+});
 
-  $(document).ready(function () {
+$(document).ready(function () {
     renderCheckout();
     renderConfirmation();
-  });
+});
 
 })(jQuery);
 
