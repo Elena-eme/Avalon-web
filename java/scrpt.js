@@ -300,20 +300,6 @@ $(document).ready(function () {
     });
 
 });
-$(document).ready(function () {
-
-    // Eliminar item del carrito
-    $(document).on('click', '.remove-item', function () {
-        $(this).closest('.cart-item').remove();
-    });
-
-});
-$(document).on('click', '.remove-item', function () {
-    $(this).closest('.cart-item').slideUp(200, function () {
-        $(this).remove();
-    });
-});
-
 
 
 /* ================= PRODUCTOS CON SKU ================= */
@@ -529,7 +515,7 @@ function initCatalogLinks() {
 
   /* ====== PRODUCTOS SEGÚN SKU ====== */
 function initProductPage() {
-    if (!$("#add-to-cart").length) return; // no estamos en product.html
+    if (!$("#add-to-cart").length) return;
 
     const sku = getSkuFromUrl();
     const p = PRODUCTS[sku];
@@ -691,7 +677,6 @@ $(document).ready(function () {
 
 })(jQuery);
 
-// Cerrar menú con X
 $(document).ready(function () {
 $(document).on('click', '.close-menu', function (e) {
     e.preventDefault();
@@ -699,7 +684,6 @@ $(document).on('click', '.close-menu', function (e) {
 
     $('.side-menu').removeClass('open').css('left', '-250px');
 
-    // Solo ocultar overlay si el carrito NO está abierto
     if (!$('#cart-popup').hasClass('active')) {
     $('.overlay').css({
         opacity: 0,
@@ -709,41 +693,38 @@ $(document).on('click', '.close-menu', function (e) {
 });
 });
 
-/* ===========================
-   CHECKOUT + CONFIRMACIÓN
-   (añadir al final de scrpt.js)
-=========================== */
+/* ==== CHECKOUT + CONFIRMACIÓN ==== */
 
 (function ($) {
-  "use strict";
+    "use strict";
 
-  const CART_KEY = "avalon_cart_v1";
-  const LAST_ORDER_KEY = "avalon_last_order_v1";
+const CART_KEY = "avalon_cart_v1";
+const LAST_ORDER_KEY = "avalon_last_order_v1";
 
-  function getCart() {
+function getCart() {
     try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
-  }
-  function saveCart(cart) {
+}
+function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
-  }
+}
 
-  function money(n, cur) {
+function money(n, cur) {
     return `${Number(n || 0)}${cur || "€"}`;
-  }
+}
 
-  function getProductsSafe() {
+function getProductsSafe() {
     if (window.PRODUCTS) return window.PRODUCTS;
 
     return null;
-  }
+}
 
-  $(document).on("click", ".checkout-btn", function (e) {
+$(document).on("click", ".checkout-btn", function (e) {
     e.preventDefault();
     window.location.href = "checkout.html";
-  });
+});
 
-  function renderCheckout() {
-    if (!$("#checkout-items").length) return; // no estamos en checkout.html
+function renderCheckout() {
+    if (!$("#checkout-items").length) return;
 
     const PRODUCTS = getProductsSafe();
     const cart = getCart();
@@ -766,14 +747,14 @@ $(document).on('click', '.close-menu', function (e) {
     let currency = "€";
 
     cart.forEach(line => {
-      const p = PRODUCTS[line.sku];
-      if (!p) return;
+    const p = PRODUCTS[line.sku];
+        if (!p) return;
 
-      currency = p.currency || currency;
-      const lineTotal = (p.price || 0) * (line.qty || 1);
-      subtotal += lineTotal;
+    currency = p.currency || currency;
+    const lineTotal = (p.price || 0) * (line.qty || 1);
+    subtotal += lineTotal;
 
-      $items.append(`
+    $items.append(`
         <div class="checkout-item">
             <img class="checkout-thumb" src="${(p.images && p.images[0]) ? p.images[0] : 'img/placeholder.png'}" alt="${p.name}">
             <div class="checkout-info">
@@ -786,15 +767,15 @@ $(document).on('click', '.close-menu', function (e) {
 
     });
 
-    const shipping = subtotal > 0 ? 4 : 0; // puedes cambiarlo
+    const shipping = subtotal > 0 ? 4 : 0; 
     const total = subtotal + shipping;
 
     $("#checkout-subtotal").text(money(subtotal, currency));
     $("#checkout-shipping").text(money(shipping, currency));
     $("#checkout-total").text(money(total, currency));
-  }
+}
 
-  /* ====== 3) Confirmación ====== */
+  /* ==== CONFIRMACIÓN ==== */
 function renderConfirmation() {
     if (!$("#order-summary").length) return;
 
@@ -830,7 +811,7 @@ $("#order-summary").html(linesHtml);
 }
 
 
-  /* ====== 4) Submit del checkout: simular pedido ====== */
+  /* ==== CHECKOUT ==== */
 $(document).on("submit", "#checkout-form", function (e) {
     e.preventDefault();
 
