@@ -689,3 +689,22 @@ $(document).ready(function () {
 });
 
 })(jQuery);
+
+// Cerrar menú con X
+$(document).ready(function () {
+$(document).on('click', '.close-menu', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    $('.side-menu').removeClass('open').css('left', '-250px');
+
+    // Solo ocultar overlay si el carrito NO está abierto
+    if (!$('#cart-popup').hasClass('active')) {
+    $('.overlay').css({
+        opacity: 0,
+        pointerEvents: 'none'
+    }).removeClass('active');
+    }
+});
+});
+
