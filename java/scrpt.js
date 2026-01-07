@@ -469,9 +469,10 @@ $(document).on('click', '.remove-item', function () {
     }
 };
 
+window.PRODUCTS = PRODUCTS;
+
 const CART_KEY = "avalon_cart_v1";
 
-  /* ====== Helpers ====== */
 function money(n, cur) {
     const val = Number(n || 0);
     return `${val}${cur || "€"}`;
@@ -668,7 +669,7 @@ function renderCart() {
 function bindCartRemove() {
     $(document).on("click", "#cart-popup .remove-item", function (e) {
         e.preventDefault();
-        e.stopImmediatePropagation(); // por si tienes handlers antiguos duplicados
+        e.stopImmediatePropagation();
 
         const $row = $(this).closest(".cart-item");
         const key = $row.data("key");
@@ -707,4 +708,189 @@ $(document).on('click', '.close-menu', function (e) {
     }
 });
 });
+
+/* ===========================
+   CHECKOUT + CONFIRMACIÓN
+   (añadir al final de scrpt.js)
+=========================== */
+
+(function ($) {
+  "use strict";
+
+  const CART_KEY = "avalon_cart_v1";
+  const LAST_ORDER_KEY = "avalon_last_order_v1";
+
+  function getCart() {
+    try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
+  }
+  function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
+
+  function money(n, cur) {
+    return `${Number(n || 0)}${cur || "€"}`;
+  }
+
+  function getProductsSafe() {
+    if (window.PRODUCTS) return window.PRODUCTS;
+
+    return null;
+  }
+
+  $(document).on("click", ".checkout-btn", function (e) {
+    e.preventDefault();
+    window.location.href = "checkout.html";
+  });
+
+  function renderCheckout() {
+    if (!$("#checkout-items").length) return; // no estamos en checkout.html
+
+    const PRODUCTS = getProductsSafe();
+    const cart = getCart();
+
+    const $items = $("#checkout-items");
+    const $empty = $("#checkout-empty");
+
+    $items.empty();
+
+    if (!cart.length || !PRODUCTS) {
+        $empty.show();
+        $("#place-order").prop("disabled", true);
+    return;
+    }
+
+    $empty.hide();
+    $("#place-order").prop("disabled", false);
+
+    let subtotal = 0;
+    let currency = "€";
+
+    cart.forEach(line => {
+      const p = PRODUCTS[line.sku];
+      if (!p) return;
+
+      currency = p.currency || currency;
+      const lineTotal = (p.price || 0) * (line.qty || 1);
+      subtotal += lineTotal;
+
+      $items.append(`
+        <div class="checkout-item">
+            <img class="checkout-thumb" src="${(p.images && p.images[0]) ? p.images[0] : 'img/placeholder.png'}" alt="${p.name}">
+            <div class="checkout-info">
+            <div class="checkout-name">${p.name}</div>
+            <div class="checkout-meta">Talla: ${line.size || "—"} · Cantidad: ${line.qty || 1}</div>
+            </div>
+            <div class="checkout-price">${money(lineTotal, currency)}</div>
+        </div>
+        `);
+
+    });
+
+    const shipping = subtotal > 0 ? 4 : 0; // puedes cambiarlo
+    const total = subtotal + shipping;
+
+    $("#checkout-subtotal").text(money(subtotal, currency));
+    $("#checkout-shipping").text(money(shipping, currency));
+    $("#checkout-total").text(money(total, currency));
+  }
+
+  /* ====== 3) Confirmación ====== */
+  function renderConfirmation() {
+    if (!$("#order-summary").length) return; // no estamos en confirmacion.html
+
+    let order = null;
+    try { order = JSON.parse(localStorage.getItem(LAST_ORDER_KEY)); } catch {}
+
+    if (!order) {
+      $("#order-id").text("No hay pedido guardado.");
+      return;
+    }
+
+    $("#order-id").text(`Pedido: ${order.id} · Total: ${money(order.total, order.currency)}`);
+
+    const linesHtml = (order.items || []).map(it => {
+      return `<div>${it.name} — ${it.size || "—"} × ${it.qty} — ${money(it.lineTotal, order.currency)}</div>`;
+    }).join("");
+
+    $("#order-summary").html(linesHtml);
+  }
+
+  /* ====== 4) Submit del checkout: simular pedido ====== */
+  $(document).on("submit", "#checkout-form", function (e) {
+    e.preventDefault();
+
+    const PRODUCTS = getProductsSafe();
+    const cart = getCart();
+
+    if (!PRODUCTS || !cart.length) {
+      alert("Tu carrito está vacío.");
+      return;
+    }
+
+    // Validación mínima
+    const requiredIds = ["#ship-name", "#ship-email", "#ship-address", "#ship-city", "#ship-zip", "#ship-country", "#card-number", "#card-exp", "#card-cvv"];
+    for (const id of requiredIds) {
+      const v = $(id).val();
+      if (!v || !String(v).trim()) {
+        alert("Completa todos los campos para continuar.");
+        return;
+      }
+    }
+
+    // Construir pedido
+    let subtotal = 0;
+    let currency = "€";
+
+    const items = cart.map(line => {
+      const p = PRODUCTS[line.sku];
+      if (!p) return null;
+      currency = p.currency || currency;
+
+      const qty = line.qty || 1;
+      const lineTotal = (p.price || 0) * qty;
+      subtotal += lineTotal;
+
+      return {
+        sku: line.sku,
+        name: p.name,
+        size: line.size || null,
+        qty,
+        lineTotal
+      };
+    }).filter(Boolean);
+
+    const shipping = subtotal > 0 ? 4 : 0;
+    const total = subtotal + shipping;
+
+    const order = {
+      id: "AVL-" + Date.now(),
+      createdAt: new Date().toISOString(),
+      customer: {
+        name: $("#ship-name").val().trim(),
+        email: $("#ship-email").val().trim(),
+        address: $("#ship-address").val().trim(),
+        city: $("#ship-city").val().trim(),
+        zip: $("#ship-zip").val().trim(),
+        country: $("#ship-country").val().trim()
+      },
+      items,
+      subtotal,
+      shipping,
+      total,
+      currency
+    };
+
+    localStorage.setItem(LAST_ORDER_KEY, JSON.stringify(order));
+    saveCart([]); // vaciar carrito
+
+    window.location.href = "confirmacion.html";
+  });
+
+  $(document).ready(function () {
+    renderCheckout();
+    renderConfirmation();
+  });
+
+})(jQuery);
+
 
