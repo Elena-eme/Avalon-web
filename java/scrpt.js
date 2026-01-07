@@ -314,3 +314,378 @@ $(document).on('click', '.remove-item', function () {
     });
 });
 
+
+
+/* ================= PRODUCTOS CON SKU ================= */
+(function ($) {
+"use strict";
+
+  /* ====== DATOS DE LOS PRODUCTOS ====== */
+    const PRODUCTS = {
+    "excalibur-veil": {
+        sku: "excalibur-veil",
+        name: "The Excalibur Veil",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg",
+        "img/excalibur-veil2.png",
+        "img/excalibur-veil3.png"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Una reliquia contemporánea: transparencia y estructura para vestir el mito."
+    },
+
+    "lady-of-the-lake-skin": {
+        sku: "lady-of-the-lake-skin",
+        name: "Lady of the Lake Skin",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/736x/f2/6c/63/f26c630378288001fb8bb386d0ba4b11.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Ligera, etérea, diseñada como una segunda piel."
+    },
+
+    "avalon-dusk-dress": {
+        sku: "avalon-dusk-dress",
+        name: "Avalon Dusk Dress",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/736x/28/7a/9c/287a9c9d2aae357b872b94f9793f1445.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Un vestido para el crepúsculo: silencio, presencia y aura."
+    },
+
+    "morgana-sheer-armor": {
+        sku: "morgana-sheer-armor",
+        name: "Morgana Sheer Armor",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/1200x/14/ef/cd/14efcdb55143374cb2d902d62e5d0cca.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Armadura sutil: protección simbólica con estética oscura."
+    },
+
+    "guinevere-second-skin": {
+        sku: "guinevere-second-skin",
+        name: "Guinevere Second Skin",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/736x/aa/17/5f/aa175f48b185277cb799fbaadb1a1720.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Minimalismo místico con ajuste preciso."
+    },
+
+    "round-table-silhouette": {
+        sku: "round-table-silhouette",
+        name: "Round Table Silhouette",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/736x/34/eb/59/34eb59c24afb32bc98d0e7f0721442eb.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Geometría limpia. Silueta con autoridad."
+    },
+
+    "merlins-whisper-mesh": {
+        sku: "merlins-whisper-mesh",
+        name: "Merlin’s Whisper Mesh",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/1200x/a4/93/ed/a493edf8fc1ed23d347f00701fd31f56.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Transparencia y misterio: un susurro que se ve."
+    },
+
+    "lakeborn-transparency": {
+        sku: "lakeborn-transparency",
+        name: "Lakeborn Transparency",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/736x/cc/3a/d6/cc3ad6cb26cdeb2fd8503f59412f0237.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Nacida del lago: luz, velo y piel."
+    },
+
+    "exile-of-camelot": {
+        sku: "exile-of-camelot",
+        name: "Exile of Camelot",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/736x/2b/1b/71/2b1b71173a9be2cabeb7708cf4de97a1.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Una pieza para la huida elegante."
+    },
+
+    "sword-in-the-stone": {
+        sku: "sword-in-the-stone",
+        name: "Sword in the Stone",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/1200x/c2/cf/8c/c2cf8c1d1927083c0608e1d909a6e5b5.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Presencia firme. La prueba de merecerla."
+    },
+
+    "veil-of-the-fallen-king": {
+        sku: "veil-of-the-fallen-king",
+        name: "Veil of the Fallen King",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/1200x/ba/f4/01/baf4014a89f8e30eed0baa8418273c09.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "Un velo como corona caída: belleza y duelo."
+    },
+
+    "avalon-afterlight": {
+        sku: "avalon-afterlight",
+        name: "Avalon Afterlight",
+        price: 32,
+        currency: "€",
+        images: [
+        "https://i.pinimg.com/1200x/6b/b5/a6/6bb5a6233d91b55a6055c4e6d2f604cb.jpg"
+        ],
+        sizes: ["XS", "S", "M", "L"],
+        description: "La luz que queda cuando todo se apaga."
+    }
+};
+
+const CART_KEY = "avalon_cart_v1";
+
+  /* ====== Helpers ====== */
+function money(n, cur) {
+    const val = Number(n || 0);
+    return `${val}${cur || "€"}`;
+}
+
+function getSkuFromUrl() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("sku");
+    } catch {
+    return null;
+    }
+}
+
+function getCart() {
+    try {
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    } catch {
+    return [];
+    }
+}
+
+function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function cartTotal(cart) {
+    return cart.reduce((sum, line) => {
+    const p = PRODUCTS[line.sku];
+    if (!p) return sum;
+      return sum + p.price * (line.qty || 1);
+    }, 0);
+}
+
+function openCartUI() {
+    $("#cart-popup").addClass("active");
+    $(".overlay").addClass("active");
+}
+
+
+function initCatalogLinks() {
+    const $cards = $(".product-card[data-sku]");
+    if (!$cards.length) return;
+
+    $cards
+    .css("cursor", "pointer")
+    .off("click.avalon")
+    .on("click.avalon", function (e) {
+        e.preventDefault();
+        const sku = $(this).data("sku");
+        window.location.href = `product.html?sku=${encodeURIComponent(sku)}`;
+    });
+}
+
+  /* ====== PRODUCTOS SEGÚN SKU ====== */
+function initProductPage() {
+    if (!$("#add-to-cart").length) return; // no estamos en product.html
+
+    const sku = getSkuFromUrl();
+    const p = PRODUCTS[sku];
+
+    if (!sku || !p) {
+    /* ====== SIN SKU ====== */
+    $("#product-title").text("Producto no encontrado");
+    return;
+    }
+
+    $("#product-title").text(p.name);
+    $("#product-price").text(money(p.price, p.currency));
+    $("#product-desc").text(p.description || "");
+
+    if (p.images && p.images.length) {
+    $("#product-main-image").attr("src", p.images[0]);
+
+    const $thumbs = $("#product-thumbs");
+    if ($thumbs.length) {
+        $thumbs.empty();
+
+        p.images.forEach((src, idx) => {
+        const active = idx === 0 ? "is-active" : "";
+        const $btn = $(`
+            <button type="button" class="thumb ${active}">
+            <img src="${src}" alt="">
+            </button>
+        `);
+        $thumbs.append($btn);
+        });
+    }
+    }
+
+    $("#product-thumbs")
+    .off("click.avalon")
+    .on("click.avalon", ".thumb", function () {
+        const $thumb = $(this);
+        const src = $thumb.find("img").attr("src");
+
+        $("#product-thumbs .thumb").removeClass("is-active");
+        $thumb.addClass("is-active");
+
+        if (src) $("#product-main-image").attr("src", src);
+    });
+
+    let selectedSize = null;
+    const $sizePicker = $("#size-picker");
+
+    if ($sizePicker.length) {
+    $sizePicker.empty();
+    (p.sizes || []).forEach((size) => {
+        $sizePicker.append(`<button type="button" class="size-btn" data-size="${size}">${size}</button>`);
+    });
+    }
+
+    /* ====== TALLA ====== */
+    $("#size-picker")
+    .off("click.avalon")
+    .on("click.avalon", ".size-btn", function () {
+        $("#size-picker .size-btn").removeClass("is-selected");
+        $(this).addClass("is-selected");
+        selectedSize = $(this).data("size") || null;
+    });
+
+    /* ====== CANTIDAD ====== */
+    $("#qty-minus").off("click.avalon").on("click.avalon", function () {
+    const $input = $("#qty-input");
+    const current = parseInt($input.val(), 10) || 1;
+    $input.val(Math.max(1, current - 1));
+    });
+
+    $("#qty-plus").off("click.avalon").on("click.avalon", function () {
+    const $input = $("#qty-input");
+    const current = parseInt($input.val(), 10) || 1;
+    $input.val(current + 1);
+    });
+
+    /* ====== AÑADIR AL CARRITO ====== */
+    $("#add-to-cart").off("click.avalon").on("click.avalon", function () {
+    const qty = Math.max(1, parseInt($("#qty-input").val(), 10) || 1);
+
+    /* ====== REQUERIR TALLA ====== */
+    if ((p.sizes || []).length && !selectedSize) {
+        alert("Selecciona una talla");
+        return;
+    }
+
+    const cart = getCart();
+    const key = `${sku}__${selectedSize || ""}`;
+    const existing = cart.find(x => x.key === key);
+
+    if (existing) existing.qty += qty;
+    else cart.push({ key, sku, size: selectedSize || null, qty });
+
+    saveCart(cart);
+    renderCart();
+    openCartUI();
+    });
+}
+
+/* ====== CARRITO ====== */
+function renderCart() {
+    const $items = $("#cart-popup .cart-items");
+    const $total = $("#cart-total");
+    if (!$items.length) return;
+
+    const cart = getCart();
+    $items.empty();
+
+    cart.forEach(line => {
+        const p = PRODUCTS[line.sku];
+        if (!p) return;
+
+        const img = (p.images && p.images[0]) ? p.images[0] : "";
+        const sizeText = line.size ? `Size: ${line.size}` : "Size: —";
+
+        const $row = $(`
+        <div class="cart-item" data-key="${line.key}">
+            <img src="${img}" alt="">
+            <div class="item-info">
+                <span class="item-name">${p.name}</span>
+                <span class="item-size">${sizeText}</span>
+                <span class="item-price">${money(p.price, p.currency)} × ${line.qty}</span>
+            </div>
+            <button class="remove-item" type="button">×</button>
+        </div>
+    `);
+
+    $items.append($row);
+    });
+
+    if ($total.length) {
+        $total.text(money(cartTotal(cart), "€"));
+    }
+}
+
+function bindCartRemove() {
+    $(document).on("click", "#cart-popup .remove-item", function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation(); // por si tienes handlers antiguos duplicados
+
+        const $row = $(this).closest(".cart-item");
+        const key = $row.data("key");
+
+        const cart = getCart().filter(x => x.key !== key);
+        saveCart(cart);
+
+        $row.remove();
+        $("#cart-total").text(money(cartTotal(cart), "€"));
+    });
+}
+
+$(document).ready(function () {
+    initCatalogLinks();
+    initProductPage();
+    bindCartRemove();
+    renderCart();
+});
+
+})(jQuery);

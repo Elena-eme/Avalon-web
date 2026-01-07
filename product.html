@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Excalibur Veil | AVALON</title>
+
+  <!-- CSS (tu hoja principal) -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Fonts (las mismas que usas) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Hubballi&family=Krona+One&family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- OVERLAY -->
+  <div class="overlay"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <nav class="header-nav">
+      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html"><img src="img/logo.png" class="logo" alt="Avalon" /></a>
+      <a href="#">Contacto</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" class="search-input" placeholder="Buscar en Avalon..." />
+      </div>
+      <i id="cart-icon" class="fa-solid fa-basket-shopping basket-icon"></i>
+    </div>
+  </header>
+
+  <!-- SIDE MENU -->
+  <aside class="side-menu">
+    <a href="index.html">Inicio</a>
+    <a href="catalogo.html">Colecciones</a>
+    <a href="about.html">Sobre Avalon</a>
+    <a href="#">Contacto</a>
+  </aside>
+
+  <!-- CARRITO -->
+  <div id="cart-popup">
+    <div class="cart-header">
+      <span>ORDER SUMMARY</span>
+      <button id="cart-close">&times;</button>
+    </div>
+
+    <div class="cart-items"></div>
+
+    <div class="cart-footer">
+      <span>Grand Total: <span id="cart-total">0€</span></span>
+      <button class="checkout-btn">Procedimiento de Pago</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="product-page">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <a href="catalogo.html">Catálogo</a>
+      <span>/</span>
+      <span class="breadcrumb-current">The Excalibur Veil</span>
+    </nav>
+
+    <!-- PRODUCT -->
+    <section class="product-grid">
+
+      <!-- GALERÍA -->
+      <div class="product-gallery">
+        <div class="product-main">
+          <img
+            id="product-main-image"
+            src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg"
+            alt="The Excalibur Veil"
+          />
+        </div>
+
+        <div class="product-thumbs" id="product-thumbs">
+          <button type="button" class="thumb is-active">
+            <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg" alt="" />
+          </button>
+          <button type="button" class="thumb">
+            <img src="https://i.pinimg.com/1200x/3b/5a/97/3b5a976cf90676adca345cf26a042090.jpg" alt="" />
+          </button>
+          <button type="button" class="thumb">
+            <img src="https://i.pinimg.com/1200x/14/ef/cd/14efcdb55143374cb2d902d62e5d0cca.jpg" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="product-info">
+        <h1 class="product-title" id="product-title">The Excalibur Veil</h1>
+
+        <div class="product-meta">
+          <span class="product-price" id="product-price">32€</span>
+          <span class="product-tag">WINTERING</span>
+        </div>
+
+        <p class="product-desc" id="product-desc">
+          Una reliquia contemporánea: transparencia y estructura para vestir el mito.
+        </p>
+
+        <!-- TALLAS -->
+        <div class="option-block">
+          <span class="option-label">Talla</span>
+          <div class="size-picker" id="size-picker">
+            <button type="button" class="size-btn" data-size="XS">XS</button>
+            <button type="button" class="size-btn" data-size="S">S</button>
+            <button type="button" class="size-btn" data-size="M">M</button>
+            <button type="button" class="size-btn" data-size="L">L</button>
+          </div>
+        </div>
+
+        <!-- CANTIDAD -->
+        <div class="option-block">
+          <span class="option-label">Cantidad</span>
+          <div class="qty">
+            <button type="button" class="qty-btn" id="qty-minus">-</button>
+            <input id="qty-input" class="qty-input" type="number" min="1" value="1" />
+            <button type="button" class="qty-btn" id="qty-plus">+</button>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="product-cta">
+          <button type="button" class="btn-primary" id="add-to-cart">Añadir al carrito</button>
+          <button type="button" class="btn-secondary">Guardar reliquia</button>
+        </div>
+
+        <!-- DETALLES -->
+        <div class="product-details">
+          <details open>
+            <summary>Historia</summary>
+            <p>
+              Inspirada en Excalibur como símbolo de destino. Un velo que protege y revela.
+            </p>
+          </details>
+
+          <details>
+            <summary>Cuidados</summary>
+            <p>
+              Lavar a mano en frío. No planchar directamente. Guardar en sombra.
+            </p>
+          </details>
+
+          <details>
+            <summary>Envíos y devoluciones</summary>
+            <p>
+              Envío nacional e internacional. Devoluciones en 14 días en condiciones originales.
+            </p>
+          </details>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+<footer class="footer">
+
+    <!-- SECCIÓN FOTOS TIPO CARTAS -->
+    <div class="footer-cards">
+        <div class="card card-1">
+            <img src="https://i.pinimg.com/1200x/28/06/94/280694b7e58ebd41077a46ae7a1f85b7.jpg" alt="">
+        </div>
+        <div class="card card-2">
+            <img src="https://i.pinimg.com/1200x/63/c7/4f/63c74f390017623845a28ae99814340b.jpg" alt="">
+        </div>
+        <div class="card card-3">
+            <img src="https://i.pinimg.com/1200x/1d/d4/10/1dd4103fe6aa10c6e3bdd768b6ce8445.jpg" alt="">
+        </div>
+        <div class="card card-4">
+            <img src="https://i.pinimg.com/736x/c9/79/79/c97979e5c9928e8d2f9e87dc44736b97.jpg" alt="">
+        </div>
+        <div class="card card-5">
+            <img src="https://i.pinimg.com/1200x/0a/37/4b/0a374b403137dc9141249f3481ccfc26.jpg"></div>
+        <div class="card card-6">
+            <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg"></div>
+    </div>
+
+    <!-- CONTENIDO FOOTER -->
+    <div class="footer-content">
+        <div>
+            <h4>Menú</h4>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#">Contacto</a>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>info@avalon.com</p>
+            <p>Madrid, España</p>
+        </div>
+
+        <div>
+            <h4>Buscar</h4>
+            <input type="text">
+        </div>
+
+        <div>
+            <h4>Newsletter</h4>
+            <input type="email">
+            <button>Suscribirse</button>
+        </div>
+    </div>
+
+</footer>
+
+  <!-- SCRIPTS (los de siempre) -->
+  <script src="java/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="java/scrpt.js"></script>
+
+</body>
+</html>

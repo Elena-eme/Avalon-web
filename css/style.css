@@ -1611,3 +1611,286 @@ body {
     }
 }
 
+
+
+
+
+
+
+
+
+.product-card{
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-page{
+    padding-top: 110px;   
+    padding-left: 60px;
+    padding-right: 60px;
+    background: #f4f2ed;
+}
+
+/* ===== MIGAS DE PAN ===== */
+.breadcrumb{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: "Hubballi", sans-serif;
+    font-size: 14px;
+    color: #444;
+    margin: 20px 0 30px;
+}
+
+.breadcrumb a{
+    color: #444;
+    text-decoration: none;
+}
+
+.breadcrumb .breadcrumb-current{
+    opacity: .8;
+}
+
+
+/* ===== LAYOUT PRINCIPAL ===== */
+.product-grid{
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    align-items: start;
+}
+
+
+/* ===== FOTOS ===== */
+.product-main img{
+    width: 100%;
+    height: 78vh;
+    object-fit: cover;
+    display: block;
+}
+
+.product-thumbs{
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.thumb{
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    opacity: .65;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.thumb.is-active{
+    opacity: 1;
+}
+
+.thumb:hover{
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.thumb img{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===== INFORMACIÓN ===== */
+.product-title{
+    font-family: "Averia Serif Libre", serif;
+    font-size: 44px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.product-meta{
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    margin-bottom: 18px;
+}
+
+.product-price{
+    font-family: "Hubballi", sans-serif;
+    font-size: 22px;
+}
+
+.product-tag{
+    font-family: "Hubballi", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    opacity: .7;
+    text-transform: uppercase;
+}
+
+.product-desc{
+    font-size: 14px;
+    line-height: 1.75;
+    color: #333;
+    margin-bottom: 22px;
+    max-width: 520px;
+}
+
+
+/* ===== OPCIONES ===== */
+.option-block{
+    margin: 18px 0;
+}
+
+.option-label{
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+
+/* ===== TALLAS ===== */
+.size-picker{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.size-btn{
+    border: 1px solid #111;
+    background: transparent;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-family: "Hubballi", sans-serif;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.size-btn:hover{
+    transform: translateY(-1px);
+}
+
+.size-btn.is-selected{
+    background: #111;
+    color: #fff;
+}
+
+
+/* ===== CANTIDAD ===== */
+.qty{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn{
+    width: 34px;
+    height: 34px;
+    border: 1px solid #111;
+    background: transparent;
+    cursor: pointer;
+    transition: transform .15s ease;
+}
+
+.qty-btn:hover{
+    transform: scale(1.05);
+}
+
+.qty-input{
+    width: 60px;
+    height: 34px;
+    border: 1px solid #111;
+    background: transparent;
+    text-align: center;
+    outline: none;
+}
+
+
+/* ===== CTA ===== */
+.product-cta{
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.btn-primary,
+.btn-secondary{
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    cursor: pointer;
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 1px;
+    transition: transform .2s ease, .2s ease;
+}
+
+.btn-primary{
+    background: #111;
+    color: #fff;
+}
+
+.btn-primary:hover{
+    transform: translateY(-2px);
+}
+
+.btn-secondary{
+    background: #e2e2e2;
+    color: #111;
+}
+
+.btn-secondary:hover{
+    background:#d2d1d1;
+    transform: translateY(-2px);
+}
+
+/* ===== INFORMACIÓN EXTRA ===== */
+.product-details{
+    margin-top: 28px;
+}
+
+.product-details details{
+    border-top: 1px solid rgba(0,0,0,.15);
+    padding: 12px 0;
+}  
+
+.product-details summary{
+    cursor: pointer;
+    font-family: "Hubballi", sans-serif;
+    letter-spacing: 1px;
+}
+
+.product-details p{
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+.product-page{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.product-grid{
+    grid-template-columns: 1fr;
+}
+
+.product-main img{
+    height: 60vh;
+}
+}
+
+@media (max-width: 520px){
+.product-title{
+    font-size: 34px;
+}
+
+.product-thumbs img{
+    width: 74px;
+    height: 74px;
+}
+}
+
