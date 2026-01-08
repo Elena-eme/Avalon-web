@@ -1363,70 +1363,90 @@ body {
 
 /* ================== ABOUT COLLAGE ================== */
 .about-collage {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-    gap: 2rem; 
+  position: relative;
+  padding: 6rem 3rem;
+  overflow: hidden;   /* ← evita que invadan el vídeo */
 }
+
 
 .editorial-line {
-   font-family: "Hubballi", sans-serif;
-   text-align: justify;
-    font-weight: 400;
-    font-size: 5rem; 
-    line-height: 0.55;
-    letter-spacing: 0.2em;
-    max-width: 100%;
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-
-    display: inline-block;
-    position: relative;    
-    
-      
-    
+  font-family: "Didot", "Bodoni Moda", "Playfair Display", serif;
+  font-size: clamp(3.2rem, 6vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.08em;
+  margin: 3rem 0;
+  max-width: 1400px;
 }
 
-.collage-text {
-    font-family: 'Arial', sans-serif;
-    font-size: clamp(3rem, 6vw, 7rem);
-    font-weight: bold;
-    color: #000;
-    line-height: 1.15;
+.word-image {
+  position: relative;
+  display: inline-block;
+  margin: 0 0.5rem;
 }
 
-.collage-text span {
-    position: absolute;
-    display: inline-block;
+.word {
+  position: relative;
+  z-index: 2;
 }
 
-.collage-text span:nth-child(1) { top: 20px; left: 10%; }
-.collage-text span:nth-child(2) { top: 120px; left: 5%; }
-.collage-text span:nth-child(3) { top: 200px; left: 20%; }
-.collage-text span:nth-child(4) { top: 50px; left: 50%; font-size: 6vw; }
-.collage-text span:nth-child(5) { top: 180px; left: 60%; font-size: 5vw; }
+.word-image img {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform-origin: center bottom;
 
-.collage-images {
-    position: relative;
-    width: 100%;
-    height: 600px;
+  margin-bottom: 1rem;
+
+  max-width: 200px;    /* ← límite duro */
+  max-height: 260px;
+
+  opacity: 0.9;        /* más editorial */
 }
 
-.collage-images img {
-    position: absolute;
-    width: 180px;         
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+
+.editorial-line:nth-child(1) .word-image img {
+  width: 180px;
+  height: 280px;
+  top: -220px;
+  left: -40px;
+  transform: rotate(-8deg);
 }
 
-/* posiciones aleatorias */
-.collage-images img:nth-child(1) { top: 50px; left: 20%; transform: rotate(-10deg);}
-.collage-images img:nth-child(2) { top: 150px; left: 10%; transform: rotate(5deg);}
-.collage-images img:nth-child(3) { top: 100px; left: 60%; transform: rotate(15deg);}
-.collage-images img:nth-child(4) { top: 250px; left: 50%; transform: rotate(-5deg);}
-.collage-images img:nth-child(5) { top: 200px; left: 80%; transform: rotate(10deg);}
+.editorial-line:nth-child(2) .word-image:first-of-type img {
+  width: 300px;
+  height: 220px;
+  top: -180px;
+  left: -80px;
+  transform: rotate(6deg);
+}
+
+.editorial-line:nth-child(2) .word-image:last-of-type img {
+  width: 180px;
+  height: 280px;
+  top: -240px;
+  left: 40px;
+  transform: rotate(-12deg);
+}
+
+.editorial-line:nth-child(3) .word-image img {
+  width: 160px;
+  height: 160px;
+  top: -140px;
+  left: -30px;
+  transform: rotate(4deg);
+}
+
+.editorial-line:nth-child(4) .word-image img {
+  width: 260px;
+  height: 180px;
+  top: -160px;
+  left: -60px;
+  transform: rotate(-3deg);
+}
+
+
+
 
 
 
