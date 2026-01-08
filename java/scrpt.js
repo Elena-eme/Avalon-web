@@ -888,4 +888,14 @@ $(document).ready(function () {
 
 })(jQuery);
 
+/* ------- ANIMACIONES AOS ------- */
+AOS.init({
+    duration: 400,
+    easing: 'ease-out',
+    once: true, 
+    mirror: false,
+    offset: 120,
+    anchorPlacement: 'top-bottom',
+});
+
 
