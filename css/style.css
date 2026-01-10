@@ -44,11 +44,9 @@ body {
     color: #333;
     font-size: 15px;
     font-family: "Hubballi", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-   transition: 
-        font-size 0.25s ease,
-        font-weight 0.25s ease;
+    font-weight: 400;
+    font-style: normal;
+    transition: font-size 0.25s ease, font-weight 0.25s ease;
 }
 
 .header-nav a:hover {
@@ -480,25 +478,29 @@ body {
     gap: 30px;
 }
 
-.card {
+.card,
+.oracle-card {
     width: 220px;
     height: 320px;
     perspective: 1000px;
     transition: transform 0.4s ease;
 }
 
-.card.raised {
+.card.raised,
+.oracle-card.raised {
     transform: translateY(-30px);
 }
 
-.card-inner {
+.card-inner,
+.oracle-card .card-inner  {
     width: 100%;
     height: 100%;
     transition: transform 0.8s ease;
     transform-style: preserve-3d;
 }
 
-.card.flip .card-inner {
+.card.flip .card-inner,
+.oracle-card.flip .card-inner  {
     transform: rotateY(180deg);
 }
 

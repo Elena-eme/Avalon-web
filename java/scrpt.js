@@ -19,14 +19,40 @@ $(document).ready(function () {
         });
     }
 
-    // FLIP CARDS
-    if ($('.card').length) {
-        $('.card').click(function () {
-            $(this).toggleClass('flip');
-        });
-    }
-
 });
+
+/* ================= ORÁCULO ================= */
+$(function () {
+    const $oracleCards = $('.oracle-card');
+    const $oracleBtn = $('.circle-img img');
+    let lastIndex = -1; 
+
+    if (!$oracleCards.length || !$oracleBtn.length) return;
+
+    $oracleCards.off('click.oracle').on('click.oracle', function () {
+        $(this).toggleClass('flip');
+    });
+
+    $oracleBtn.off('click.oracle').on('click.oracle', function () {
+        $oracleCards.removeClass('raised flip');
+
+        const availableIndexes = $oracleCards
+            .map((i) => (i !== lastIndex ? i : null))
+            .get();
+
+        const randomIndex = availableIndexes[
+            Math.floor(Math.random() * availableIndexes.length)
+        ];
+
+        const $selected = $oracleCards.eq(randomIndex);
+        $selected.addClass('raised');
+
+        setTimeout(() => $selected.addClass('flip'), 300);
+
+        lastIndex = randomIndex;
+    });
+});
+
 
 $(document).ready(function () {
 
@@ -45,23 +71,6 @@ $(document).ready(function () {
 
 });
 
-// CÍRCULO → CARTA ALEATORIA
-if ($('.circle-img img').length && $('.card').length) {
-    $('.circle-img img').on('click', function () {
-
-        const cards = $('.card');
-        cards.removeClass('raised flip');
-
-        const randomIndex = Math.floor(Math.random() * cards.length);
-        const selectedCard = $(cards[randomIndex]);
-
-        selectedCard.addClass('raised');
-
-        setTimeout(() => {
-            selectedCard.addClass('flip');
-        }, 300);
-    });
-}
 
 /* ================= SLIDESHOW ================= */
 const galleryImages = document.querySelectorAll('.g-img');
