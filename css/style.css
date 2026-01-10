@@ -51,6 +51,7 @@ body {
 
 .header-nav a:hover {
     font-size: 18px;
+    color: #ffffff;
     font-weight: 600;
 }
 
@@ -2361,3 +2362,219 @@ body {
         gap: 8px;
     }
 }
+
+/* ================= ORÁCULO CONTACTO ================= */
+
+.oracle-contact{
+    position:relative;
+    height:100vh;
+    overflow:hidden;
+    background:#000;
+}
+
+/* VIDEO */
+.oracle-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.65) contrast(1.05);
+}
+
+/* OSCURECIDO */
+.oracle-overlay{
+    position:absolute;
+    inset:0;
+    background:radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.058),
+        rgba(0,0,0,.92)
+    );
+    z-index:1;
+}
+
+/* ================= TEXTO ORÁCULO (SIN CAJA) ================= */
+
+.oracle-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:90%;
+    text-align:center;
+    z-index:2;
+}
+
+/* ================= TÍTULO ÉPICO ================= */
+
+.oracle-text h1{
+    font-family: "Codystar", sans-serif;
+    font-size:clamp(2.8rem, 7vw, 5.5rem);
+
+    text-transform:uppercase;
+    color:#e5e5e5;
+
+    text-shadow:
+        2px 2px 0 #111,
+        -2px -2px 0 #444,
+        0 0 28px rgba(255,255,255,.45);
+
+    position:relative;
+    animation:titleFloat 6s ease-in-out infinite;
+}
+
+.oracle-text h1::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        120deg,
+        transparent 35%,
+        rgba(255,255,255,.5) 50%,
+        transparent 65%
+    );
+    opacity:.18;
+    animation: shine 7s infinite;
+}
+
+/* SUBTEXTO */
+.oracle-text p{
+    margin-top:25px;
+    font-family:"Cormorant Garamond", serif;
+    font-size:1rem;
+    letter-spacing:3px;
+    color:rgba(255,255,255,.85);
+}
+
+/* ================= BOTONES ================= */
+
+.oracle-actions{
+    margin-top:60px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+.oracle-yes,
+.oracle-no,
+.oracle-send{
+    padding:15px 38px;
+    border-radius:40px;
+    font-family:"Hubballi";
+    letter-spacing:3px;
+    font-size:1rem;
+    cursor:pointer;
+    transition:.4s;
+    border:none;
+}
+
+.oracle-yes{
+    background:#fff;
+    color:#000;
+}
+
+.oracle-yes:hover{
+    box-shadow:0 0 25px rgba(255,255,255,.8);
+}
+
+.oracle-no{
+    background:transparent;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.6);
+}
+
+.oracle-no:hover{
+    background:rgba(255,255,255,.08);
+}
+
+/* ================= FORMULARIO ================= */
+
+.oracle-text h2{
+    font-family:"Cinzel Decorative", serif;
+    font-size:3.5rem;
+    letter-spacing:6px;
+    color:#e5e5e5;
+    margin-bottom:20px;
+}
+
+.oracle-text input,
+.oracle-text textarea{
+    display:block;
+    margin:18px auto;
+    width:320px;
+    max-width:90%;
+    padding:14px 18px;
+    background:rgba(0,0,0,.45);
+    border:none;
+    border-radius:14px;
+    color:#fff;
+    font-family:"Hubballi";
+    font-size:1rem;
+}
+
+.oracle-text textarea{
+    height:130px;
+    resize:none;
+}
+
+.oracle-send{
+    background:#fff;
+    color:#000;
+    margin-top:25px;
+}
+
+.oracle-send:hover{
+    box-shadow:0 0 25px rgba(255,255,255,.8);
+}
+
+/* ================= PARTÍCULAS MÁGICAS ================= */
+
+.magic-particles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.magic-particles span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:rgba(255,255,255,.85);
+    border-radius:50%;
+    filter:blur(1px);
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    from{
+        transform:translateY(110vh) scale(.5);
+        opacity:0;
+    }
+    20%{ opacity:.9; }
+    to{
+        transform:translateY(-10vh) scale(1.2);
+        opacity:0;
+    }
+}
+
+/* ================= ANIMACIONES ================= */
+
+@keyframes shine{
+    from{ transform:translateX(-120%); }
+    to{ transform:translateX(120%); }
+}
+
+@keyframes titleFloat{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-18px); }
+}
+
+/* ================= UTILIDADES ================= */
+
+.hidden{
+    display:none;
+}
+

@@ -908,3 +908,106 @@ AOS.init({
 });
 
 
+/* ================= CONTACTO ORÁCULO ================= */
+
+const oracleYes = document.querySelector(".oracle-yes");
+const oracleNo = document.querySelector(".oracle-no");
+const oracleQuestion = document.getElementById("oracleQuestion");
+const oracleForm = document.getElementById("oracleForm");
+
+/* ================= EFECTO DESCIFRADO LENTO ================= */
+
+/* ================= DESCIFRADO SUAVE ================= */
+
+function decipherText(element, speed = 55){
+    const original = element.innerText;
+    const chars = "⟁⌖⌁⧫✦";
+
+    let revealed = original.split("").map(c => ({
+        char: c,
+        done: c === " "
+    }));
+
+    let progress = 0;
+
+    const interval = setInterval(() => {
+        revealed = revealed.map((item, index) => {
+            if(item.done) return item;
+
+            // Probabilidad de fijarse rápido
+            if(Math.random() < 0.08 + progress * 0.015){
+                return { char: original[index], done: true };
+            }
+
+            return {
+                char: chars[Math.floor(Math.random() * chars.length)],
+                done: false
+            };
+        });
+
+        element.innerText = revealed.map(r => r.char).join("");
+
+        progress++;
+
+        if(revealed.every(r => r.done)){
+            clearInterval(interval);
+            element.innerText = original;
+        }
+    }, speed);
+}
+
+
+/* Descifrado inicial */
+window.addEventListener("load", () => {
+    const title = document.querySelector(".oracle-text h1");
+    if(title){
+        decipherText(title, 80); // ⏳ lento y ceremonial
+    }
+});
+
+/* ================= ACEPTAR MISIÓN ================= */
+
+if(oracleYes){
+    oracleYes.addEventListener("click", () => {
+        oracleQuestion.classList.add("hidden");
+        oracleForm.classList.remove("hidden");
+
+        const formTitle = oracleForm.querySelector("h2");
+        if(formTitle){
+            decipherText(formTitle, 75);
+        }
+    });
+}
+
+/* ================= RECHAZAR MISIÓN ================= */
+
+if(oracleNo){
+    oracleNo.addEventListener("click", () => {
+        document.body.style.transition = "opacity 1.2s";
+        document.body.style.opacity = 0;
+
+        setTimeout(() => {
+            window.location.href = "https://www.google.com";
+        }, 1200);
+    });
+}
+
+/* ================= PARTÍCULAS MÁGICAS ================= */
+
+const particlesContainer = document.querySelector(".magic-particles");
+
+if(particlesContainer){
+    for(let i = 0; i < 55; i++){
+        const p = document.createElement("span");
+
+        const size = Math.random() * 3 + 2;
+        p.style.width = size + "px";
+        p.style.height = size + "px";
+
+        p.style.left = Math.random() * 100 + "%";
+        p.style.animationDuration = (Math.random() * 14 + 10) + "s";
+        p.style.animationDelay = Math.random() * 12 + "s";
+
+        particlesContainer.appendChild(p);
+    }
+}
