@@ -318,17 +318,26 @@
             </div>
         </div>
 
-        <!-- ORÁCULO -->
-        <div id="oracle-modal" class="oracle-modal" aria-hidden="true">
+        <!-- MODAL ORÁCULO (anclado a la carta) -->
+    <div id="oracle-modal" class="oracle-modal" aria-hidden="true">
         <div class="oracle-modal__backdrop"></div>
 
         <div class="oracle-modal__panel" role="dialog" aria-modal="true" aria-labelledby="oracle-title">
             <button type="button" class="oracle-modal__close" aria-label="Cerrar">&times;</button>
 
-            <h3 id="oracle-title" class="oracle-modal__title"></h3>
-            <p id="oracle-text" class="oracle-modal__text"></p>
+            <div class="oracle-modal__layout">
+            <div class="oracle-modal__preview">
+                <img id="oracle-preview" src="" alt="">
+            </div>
+
+            <div class="oracle-modal__content">
+                <h3 id="oracle-title" class="oracle-modal__title"></h3>
+                <p id="oracle-text" class="oracle-modal__text"></p>
+            </div>
+            </div>
         </div>
-        </div>
+    </div>
+
 
 
         <script src="java/jquery-3.7.1.min.js"></script>

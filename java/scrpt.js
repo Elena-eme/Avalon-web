@@ -21,37 +21,136 @@ $(document).ready(function () {
 
 });
 
-/* ================= ORÁCULO ================= */
+/* ================= ORÁCULO + TEXTO ================= */
 $(function () {
-    const $oracleCards = $('.oracle-card');
-    const $oracleBtn = $('.circle-img img');
-    let lastIndex = -1; 
+    const $cards = $('.oracle-card');
+    const $btn = $('.circle-img img');
 
-    if (!$oracleCards.length || !$oracleBtn.length) return;
+    const $modal = $('#oracle-modal');
+    const $panel = $modal.find('.oracle-modal__panel');
+    const $backdrop = $modal.find('.oracle-modal__backdrop');
+    const $close = $modal.find('.oracle-modal__close');
 
-    $oracleCards.off('click.oracle').on('click.oracle', function () {
-        $(this).toggleClass('flip');
+    const $title = $('#oracle-title');
+    const $text = $('#oracle-text');
+    const $preview = $('#oracle-preview');
+
+if (!$cards.length || !$btn.length || !$modal.length) return;
+
+let lastIndex = -1;
+
+const ORACLE_CONTENT = {
+    moon: {
+        title: "THE MOON · LA LUNA",
+        text: "Bajo la Luna, la silueta se vuelve secreto: un velo que deja pasar lo justo. La intuición manda y lo visible se vuelve secundario. Hay belleza en lo que no se explica, en lo que se insinúa. La sombra no oculta: protege, delimita, crea aura. Cada pliegue es un susurro, cada transparencia una decisión. Avalon nace en la penumbra, donde el misterio se convierte en presencia."
+    },
+    sun: {
+        title: "THE SUN · EL SOL",
+        text: "El Sol revela sin pedir permiso: estructura, claridad y piel luminosa. No hay duda, solo forma: líneas limpias y intención. La presencia se sostiene sin exceso, como una corona silenciosa. La luz no perdona, pero también ennoblece lo esencial. Vestir el día es elegir potencia con calma. Avalon es el resplandor que convierte lo cotidiano en rito."
+    },
+    star: {
+        title: "THE STAR · LA ESTRELLA",
+        text: "La Estrella guía cuando todo calla: un brillo mínimo, pero exacto. Promesa, renacimiento, delicadeza que protege como una armadura suave. Hay futuro en los detalles: puntadas, transparencias, destellos. La noche se vuelve mapa cuando encuentras tu constelación. No es suerte: es dirección, paciencia y fe en la propia forma. Avalon viste la esperanza, como si la oscuridad también tuviera camino."
+    }
+};
+
+function getCardImageSrc($card){
+    const fromBack = $card.find('.card-back img').attr('src');
+    if (fromBack) return fromBack;
+
+    const anyImg = $card.find('img').first().attr('src');
+    return anyImg || "";
+}
+
+function positionPanelNearCard($card){
+    if (window.innerWidth <= 720) {
+        $panel.css({ left: '', top: '', transform: '' });
+        return;
+    }
+
+    const margin = 24;
+    const rect = $card[0].getBoundingClientRect();
+
+    const panelRect = $panel[0].getBoundingClientRect();
+
+    let left = rect.right + margin;
+
+    if (left + panelRect.width > window.innerWidth - margin) {
+        left = rect.left - margin - panelRect.width;
+    }
+
+    left = Math.max(margin, Math.min(left, window.innerWidth - margin - panelRect.width));
+
+    let top = rect.top + (rect.height - panelRect.height) / 2;
+    top = Math.max(margin, Math.min(top, window.innerHeight - margin - panelRect.height));
+
+    $panel.css({
+        left: left + 'px',
+        top: top + 'px',
+        transform: 'none'
     });
+}
 
-    $oracleBtn.off('click.oracle').on('click.oracle', function () {
-        $oracleCards.removeClass('raised flip');
+function openOracleModal(key, $card){
+    const content = ORACLE_CONTENT[key] || { title: "ORÁCULO", text: "…" };
 
-        const availableIndexes = $oracleCards
-            .map((i) => (i !== lastIndex ? i : null))
-            .get();
+    $title.text(content.title);
+    $text.text(content.text);
+    $preview.attr('src', getCardImageSrc($card));
 
-        const randomIndex = availableIndexes[
-            Math.floor(Math.random() * availableIndexes.length)
-        ];
+    $modal.addClass('is-open').attr('aria-hidden', 'false');
+    $('body').css('overflow', 'hidden');
 
-        const $selected = $oracleCards.eq(randomIndex);
-        $selected.addClass('raised');
+    requestAnimationFrame(() => positionPanelNearCard($card));
+}
 
-        setTimeout(() => $selected.addClass('flip'), 300);
+function closeOracleModal(){
+    $modal.removeClass('is-open').attr('aria-hidden', 'true');
+    $('body').css('overflow', '');
+    // opcional: reset al centro
+    $panel.css({ left: '', top: '', transform: '' });
+}
 
-        lastIndex = randomIndex;
+    $close.off('click.oracle').on('click.oracle', closeOracleModal);
+    $backdrop.off('click.oracle').on('click.oracle', closeOracleModal);
+
+$(document).off('keydown.oracle').on('keydown.oracle', function (e) {
+    if (e.key === 'Escape' && $modal.hasClass('is-open')) closeOracleModal();
+});
+
+$cards.off('click.oracle').on('click.oracle', function () {
+    const $card = $(this);
+    $card.toggleClass('flip');
+
+    if ($card.hasClass('flip')) {
+        openOracleModal($card.data('oracle'), $card);
+    }
+});
+
+$btn.off('click.oracle').on('click.oracle', function () {
+    $cards.removeClass('raised flip');
+
+    const available = $cards.map((i) => (i !== lastIndex ? i : null)).get();
+    const randomIndex = available[Math.floor(Math.random() * available.length)];
+    const $selected = $cards.eq(randomIndex);
+
+    $selected.addClass('raised');
+    setTimeout(() => {
+        $selected.addClass('flip');
+        openOracleModal($selected.data('oracle'), $selected);
+    }, 300);
+
+    lastIndex = randomIndex;
+});
+
+    $(window).off('resize.oracle').on('resize.oracle', function(){
+        if (!$modal.hasClass('is-open')) return;
+        const key = $title.text(); // no necesitamos key; reposicionamos usando la carta levantada si existe
+        const $raised = $cards.filter('.raised');
+        if ($raised.length) positionPanelNearCard($raised);
     });
 });
+
 
 
 $(document).ready(function () {
@@ -71,95 +170,6 @@ $(document).ready(function () {
 
 });
 
-
-/* ================= ORÁCULO + MODAL ================= */
-$(function () {
-    const $oracleCards = $('.oracle-card');
-    const $oracleBtn = $('.circle-img img');
-    let lastIndex = -1;
-
-  // Modal nodes
-    const $modal = $('#oracle-modal');
-    const $backdrop = $modal.find('.oracle-modal__backdrop');
-    const $close = $modal.find('.oracle-modal__close');
-    const $title = $('#oracle-title');
-    const $text = $('#oracle-text');
-
-if (!$oracleCards.length || !$oracleBtn.length || !$modal.length) return;
-
-  // Contenido marca/oráculo (ajusta textos a tu tono AVALON)
-const ORACLE_CONTENT = {
-    moon: {
-        title: "THE MOON · La Luna",
-        text: "Intuición y velo. En Avalon, lo invisible también se viste: capas, transparencias y símbolos para caminar sin revelar del todo."
-    },
-    sun: {
-        title: "THE SUN · El Sol",
-        text: "Revelación y presencia. Tu armadura es la luz: siluetas limpias, gesto firme y brillo sereno en cada pieza."
-    },
-    star: {
-        title: "THE STAR · La Estrella",
-        text: "Guía y destino. Sigue la señal: lo que eliges hoy construye tu mito. Avalon acompaña el camino, no lo impone."
-    }
-};
-
-function openOracleModal(key) {
-    const content = ORACLE_CONTENT[key] || {
-        title: "AVALON ORACLE",
-        text: "El símbolo se revela: escucha lo que tu intuición te pide hoy."
-    };
-
-    $title.text(content.title);
-    $text.text(content.text);
-
-    $modal.addClass('is-open').attr('aria-hidden', 'false');
-    $('body').css('overflow', 'hidden'); // opcional: bloquea scroll
-    }
-
-    function closeOracleModal() {
-    $modal.removeClass('is-open').attr('aria-hidden', 'true');
-    $('body').css('overflow', '');
-    }
-
-  // Cerrar: X, click fuera, ESC
-$close.off('click.oracle').on('click.oracle', closeOracleModal);
-$backdrop.off('click.oracle').on('click.oracle', closeOracleModal);
-
-$(document).off('keydown.oracle').on('keydown.oracle', function (e) {
-    if (e.key === 'Escape' && $modal.hasClass('is-open')) closeOracleModal();
-});
-
-  // Click manual en carta: si queda flipped, abre modal con su data-oracle
-$oracleCards.off('click.oracle').on('click.oracle', function () {
-    const $card = $(this);
-    $card.toggleClass('flip');
-
-    if ($card.hasClass('flip')) {
-        const key = $card.data('oracle');
-        openOracleModal(key);
-    }
-});
-
-  // Círculo: carta aleatoria distinta a la última + abre modal
-$oracleBtn.off('click.oracle').on('click.oracle', function () {
-    $oracleCards.removeClass('raised flip');
-
-    const availableIndexes = $oracleCards
-        .map((i) => (i !== lastIndex ? i : null))
-        .get();
-
-    const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
-    const $selected = $oracleCards.eq(randomIndex);
-
-    $selected.addClass('raised');
-    setTimeout(() => {
-        $selected.addClass('flip');
-        openOracleModal($selected.data('oracle'));
-    }, 300);
-
-    lastIndex = randomIndex;
-    });
-});
 
 
 
