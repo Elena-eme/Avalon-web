@@ -184,7 +184,7 @@
             <h2 class="cards-title">ORÁCULO</h2>
             <div class="cards oracle-cards">
 
-                <div class="oracle-card">
+                <div class="oracle-card" data-oracle="moon">
                     <div class="card-inner">
                         <div class="card-front"></div>
                         <div class="card-back">
@@ -195,7 +195,7 @@
                     </div>
                 </div>
 
-                <div class="oracle-card">
+                <div class="oracle-card" data-oracle="sun">
                     <div class="card-inner">
                         <div class="card-front"></div>
                         <div class="card-back">
@@ -206,7 +206,7 @@
                     </div>
                 </div>
 
-                <div class="oracle-card">
+                <div class="oracle-card" data-oracle="star">
                     <div class="card-inner">
                         <div class="card-front"></div>
                         <div class="card-back">
@@ -317,6 +317,19 @@
                 <button>Reclamar Excalibur</button>
             </div>
         </div>
+
+        <!-- ORÁCULO -->
+        <div id="oracle-modal" class="oracle-modal" aria-hidden="true">
+        <div class="oracle-modal__backdrop"></div>
+
+        <div class="oracle-modal__panel" role="dialog" aria-modal="true" aria-labelledby="oracle-title">
+            <button type="button" class="oracle-modal__close" aria-label="Cerrar">&times;</button>
+
+            <h3 id="oracle-title" class="oracle-modal__title"></h3>
+            <p id="oracle-text" class="oracle-modal__text"></p>
+        </div>
+        </div>
+
 
         <script src="java/jquery-3.7.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>

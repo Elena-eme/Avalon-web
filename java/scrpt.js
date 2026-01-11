@@ -72,6 +72,97 @@ $(document).ready(function () {
 });
 
 
+/* ================= ORÁCULO + MODAL ================= */
+$(function () {
+    const $oracleCards = $('.oracle-card');
+    const $oracleBtn = $('.circle-img img');
+    let lastIndex = -1;
+
+  // Modal nodes
+    const $modal = $('#oracle-modal');
+    const $backdrop = $modal.find('.oracle-modal__backdrop');
+    const $close = $modal.find('.oracle-modal__close');
+    const $title = $('#oracle-title');
+    const $text = $('#oracle-text');
+
+if (!$oracleCards.length || !$oracleBtn.length || !$modal.length) return;
+
+  // Contenido marca/oráculo (ajusta textos a tu tono AVALON)
+const ORACLE_CONTENT = {
+    moon: {
+        title: "THE MOON · La Luna",
+        text: "Intuición y velo. En Avalon, lo invisible también se viste: capas, transparencias y símbolos para caminar sin revelar del todo."
+    },
+    sun: {
+        title: "THE SUN · El Sol",
+        text: "Revelación y presencia. Tu armadura es la luz: siluetas limpias, gesto firme y brillo sereno en cada pieza."
+    },
+    star: {
+        title: "THE STAR · La Estrella",
+        text: "Guía y destino. Sigue la señal: lo que eliges hoy construye tu mito. Avalon acompaña el camino, no lo impone."
+    }
+};
+
+function openOracleModal(key) {
+    const content = ORACLE_CONTENT[key] || {
+        title: "AVALON ORACLE",
+        text: "El símbolo se revela: escucha lo que tu intuición te pide hoy."
+    };
+
+    $title.text(content.title);
+    $text.text(content.text);
+
+    $modal.addClass('is-open').attr('aria-hidden', 'false');
+    $('body').css('overflow', 'hidden'); // opcional: bloquea scroll
+    }
+
+    function closeOracleModal() {
+    $modal.removeClass('is-open').attr('aria-hidden', 'true');
+    $('body').css('overflow', '');
+    }
+
+  // Cerrar: X, click fuera, ESC
+$close.off('click.oracle').on('click.oracle', closeOracleModal);
+$backdrop.off('click.oracle').on('click.oracle', closeOracleModal);
+
+$(document).off('keydown.oracle').on('keydown.oracle', function (e) {
+    if (e.key === 'Escape' && $modal.hasClass('is-open')) closeOracleModal();
+});
+
+  // Click manual en carta: si queda flipped, abre modal con su data-oracle
+$oracleCards.off('click.oracle').on('click.oracle', function () {
+    const $card = $(this);
+    $card.toggleClass('flip');
+
+    if ($card.hasClass('flip')) {
+        const key = $card.data('oracle');
+        openOracleModal(key);
+    }
+});
+
+  // Círculo: carta aleatoria distinta a la última + abre modal
+$oracleBtn.off('click.oracle').on('click.oracle', function () {
+    $oracleCards.removeClass('raised flip');
+
+    const availableIndexes = $oracleCards
+        .map((i) => (i !== lastIndex ? i : null))
+        .get();
+
+    const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+    const $selected = $oracleCards.eq(randomIndex);
+
+    $selected.addClass('raised');
+    setTimeout(() => {
+        $selected.addClass('flip');
+        openOracleModal($selected.data('oracle'));
+    }, 300);
+
+    lastIndex = randomIndex;
+    });
+});
+
+
+
 /* ================= SLIDESHOW ================= */
 const galleryImages = document.querySelectorAll('.g-img');
 const overlay = document.querySelector('.slideshow-overlay');

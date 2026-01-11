@@ -530,6 +530,66 @@ body {
     object-fit: cover;
 }
 
+/* ============ ORACLE MODAL ============ */
+.oracle-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 9999;
+}
+
+.oracle-modal.is-open {
+    display: block;
+}
+
+.oracle-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.60);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.oracle-modal__panel {
+    position: relative;
+    max-width: 560px;
+    width: calc(100% - 40px);
+    margin: 12vh auto 0;
+    background: rgba(20, 20, 24, 0.92);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px;
+    padding: 22px 22px 18px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+.oracle-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.10);
+    color: #fff;
+    font-size: 26px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.oracle-modal__title {
+    margin: 0 48px 10px 0;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.oracle-modal__text {
+    margin: 0;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+}
+
+
 /* ================= CARD TITLES ================= */
 
 .card-title {
@@ -850,7 +910,6 @@ body {
     color: #ffffff;
     text-transform: uppercase;
     pointer-events: none;
-   
 }
 
 
@@ -1366,86 +1425,86 @@ body {
 
 /* ================== ABOUT COLLAGE ================== */
 .about-collage {
-  position: relative;
-  padding: 6rem 3rem;
-  overflow: hidden;   /* ← evita que invadan el vídeo */
+    position: relative;
+    padding: 6rem 3rem;
+    overflow: hidden;   /* ← evita que invadan el vídeo */
 }
 
 
 .editorial-line {
-  font-family: "Didot", "Bodoni Moda", "Playfair Display", serif;
-  font-size: clamp(3.2rem, 6vw, 6.5rem);
-  line-height: 0.95;
-  letter-spacing: 0.08em;
-  margin: 3rem 0;
-  max-width: 1400px;
+    font-family: "Didot", "Bodoni Moda", "Playfair Display", serif;
+    font-size: clamp(3.2rem, 6vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.08em;
+    margin: 3rem 0;
+    max-width: 1400px;
 }
 
 .word-image {
-  position: relative;
-  display: inline-block;
-  margin: 0 0.5rem;
+    position: relative;
+    display: inline-block;
+    margin: 0 0.5rem;
 }
 
 .word {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 }
 
 .word-image img {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform-origin: center bottom;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform-origin: center bottom;
 
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 
-  max-width: 200px;    /* ← límite duro */
-  max-height: 260px;
+    max-width: 200px;    /* ← límite duro */
+    max-height: 260px;
 
-  opacity: 0.9;        /* más editorial */
+    opacity: 0.9;        /* más editorial */
 }
 
 
 
 .editorial-line:nth-child(1) .word-image img {
-  width: 180px;
-  height: 280px;
-  top: -220px;
-  left: -40px;
-  transform: rotate(-8deg);
+    width: 180px;
+    height: 280px;
+    top: -220px;
+    left: -40px;
+    transform: rotate(-8deg);
 }
 
 .editorial-line:nth-child(2) .word-image:first-of-type img {
-  width: 300px;
-  height: 220px;
-  top: -180px;
-  left: -80px;
-  transform: rotate(6deg);
+    width: 300px;
+    height: 220px;
+    top: -180px;
+    left: -80px;
+    transform: rotate(6deg);
 }
 
 .editorial-line:nth-child(2) .word-image:last-of-type img {
-  width: 180px;
-  height: 280px;
-  top: -240px;
-  left: 40px;
-  transform: rotate(-12deg);
+    width: 180px;
+    height: 280px;
+    top: -240px;
+    left: 40px;
+    transform: rotate(-12deg);
 }
 
 .editorial-line:nth-child(3) .word-image img {
-  width: 160px;
-  height: 160px;
-  top: -140px;
-  left: -30px;
-  transform: rotate(4deg);
+    width: 160px;
+    height: 160px;
+    top: -140px;
+    left: -30px;
+    transform: rotate(4deg);
 }
 
 .editorial-line:nth-child(4) .word-image img {
-  width: 260px;
-  height: 180px;
-  top: -160px;
-  left: -60px;
-  transform: rotate(-3deg);
+    width: 260px;
+    height: 180px;
+    top: -160px;
+    left: -60px;
+    transform: rotate(-3deg);
 }
 
 
@@ -1520,29 +1579,29 @@ body {
 
 /* ================== ABOUT PUZZLE ================== */
 .about-puzzle {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #f4f2ed;
-  color: #000000;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f4f2ed;
+    color: #000000;
 }
 
 .swords-puzzle {
-  position: relative; /* importante para que las piezas absolutas se ubiquen dentro */
-  width: 400px;
-  height: 400px;
-  margin-bottom: 50px; /* espacio para el texto debajo */
+    position: relative; /* importante para que las piezas absolutas se ubiquen dentro */
+    width: 400px;
+    height: 400px;
+    margin-bottom: 50px; /* espacio para el texto debajo */
 }
 
 /* Piezas arrastrables */
 .puzzle-piece {
-  width: 150px;
-  position: absolute;
-  cursor: grab;
-  transition: all 0.5s ease; /* transición suave */
+    width: 150px;
+    position: absolute;
+    cursor: grab;
+    transition: all 0.5s ease; /* transición suave */
 }
 
 /* Posiciones correctas al hacer hover */
@@ -1552,11 +1611,11 @@ body {
 .swords-puzzle:hover #piece-right-bottom { top: 200px; left: 200px; }
 
 .about-text {
-  max-width: 600px;
-  text-align: center;
-  opacity: 1; /* ya no ocultamos el texto */
-  transition: opacity 1s ease;
-  z-index: 1; /* aseguramos que esté debajo del puzzle */
+    max-width: 600px;
+    text-align: center;
+    opacity: 1; /* ya no ocultamos el texto */
+    transition: opacity 1s ease;
+    z-index: 1; /* aseguramos que esté debajo del puzzle */
 }
 
 
@@ -1599,9 +1658,7 @@ body {
     justify-content: center;
     text-align: center;
     font-family: "Fasthand", cursive;
-
     font-size: 0.9em;
-   
     text-transform: capitalize;
     color: #644171;
     letter-spacing: 0;
@@ -1633,10 +1690,6 @@ body {
         width: 80px;
     }
 }
-
-
-
-
 
 
 .side-menu .close-menu{
