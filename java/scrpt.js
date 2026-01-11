@@ -1,3 +1,4 @@
+gsap.registerPlugin(ScrollTrigger);
 $(document).ready(function () {
 
     // HAMBURGER
