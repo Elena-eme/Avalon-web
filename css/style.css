@@ -387,7 +387,6 @@ body {
     position: absolute;
     opacity: 0;
     transform: translateY(60px);
-    transition: all 1.2s ease;
 }
 
 .ed-img img {
@@ -430,7 +429,6 @@ body {
     color: #444;
     opacity: 0;
     transform: translateY(60px);
-    transition: all 1.2s ease;
 }
 
 /* Texto centro derecha */
@@ -444,10 +442,10 @@ body {
     top: 820px;
     left: 360px;
 }
-.ed-img.visible,
-.ed-text.visible {
-    opacity: 1;
-    transform: translateY(0);
+
+.ed-img,
+.ed-text {
+    will-change: transform, opacity;
 }
 
 
@@ -960,27 +958,39 @@ body {
 
 
 /* ================= CONTROLES DE VISTA ================= */
-
 .catalog-grid {
     display: grid;
     gap: 30px;
-    transition: 0.3s ease;
 }
 
-/* 2 productos por fila */
-.catalog-grid.view-2 {
-    grid-template-columns: repeat(2, 1fr);
+.catalog-grid.view-2 { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
 }
 
-/* 4 productos por fila */
-.catalog-grid.view-4 {
-    grid-template-columns: repeat(3, 1fr);
+.catalog-grid.view-3 { 
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
 }
 
-/* 6 productos por fila */
-.catalog-grid.view-6 {
-    grid-template-columns: repeat(5, 1fr);
+.catalog-grid.view-4 { 
+    grid-template-columns: repeat(4, minmax(0, 1fr)); 
 }
+
+/* Responsive recomendado */
+@media (max-width: 768px) {
+    .catalog-grid.view-3,
+    .catalog-grid.view-4 { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-grid.view-2,
+    .catalog-grid.view-3,
+    .catalog-grid.view-4 { 
+        grid-template-columns: 1fr; 
+    }
+}
+
 
 /* Cards */
 .product-card img {
@@ -2420,6 +2430,10 @@ body {
 
     .oracle-modal__content{
         width: 100%;
+    }
+
+    .catalog-grid.view-4 {
+        grid-template-columns: repeat(3, minmax(0, 1fr)); 
     }
 }
 

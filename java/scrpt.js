@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     // HAMBURGER
     if ($('.hamburger').length && $('.side-menu').length && $('.overlay').length) {
         $('.hamburger').click(function () {
@@ -145,7 +144,7 @@ $btn.off('click.oracle').on('click.oracle', function () {
 
     $(window).off('resize.oracle').on('resize.oracle', function(){
         if (!$modal.hasClass('is-open')) return;
-        const key = $title.text(); // no necesitamos key; reposicionamos usando la carta levantada si existe
+        const key = $title.text();
         const $raised = $cards.filter('.raised');
         if ($raised.length) positionPanelNearCard($raised);
     });
@@ -193,57 +192,25 @@ if (galleryImages.length && overlay && overlayImg && closeBtn) {
     });
 }
 
-/* ================= EDITORIAL SCROLL ================= */
-$(window).on("scroll", function () {
-    const editorial = $(".editorial");
-    if (editorial.length) {
-        const trigger = editorial.offset().top - $(window).height() + 200;
-        if ($(window).scrollTop() > trigger) {
-            $(".ed-img, .ed-text").addClass("visible");
-        }
-    }
-});
-
-/* ================= CATALOGO ================= */
+ /* ================= CATALOGO ================= */
 $(document).ready(function () {
+    const $grid = $(".catalog-grid");
+    const $btns = $(".view-btn");
+    if (!$grid.length || !$btns.length) return;
 
-    const $grid = $('.catalog-grid');
-    if (!$grid.length || !$('.view-btn').length) return;
+    $btns.on("click", function () {
+        const view = $(this).data("view");
 
-    $('.view-btn').on('click', function () {
+        $btns.removeClass("active");
+        $(this).addClass("active");
 
-        const cols = $(this).data('cols');
+        $grid.removeClass("view-2 view-3 view-4").addClass(view);
 
-        $('.view-btn').removeClass('active');
-        $(this).addClass('active');
-
-        $grid.removeClass('view-1 view-2 view-3 view-4 view-5');
-
-        if (cols === 2) $grid.addClass('view-1');
-        if (cols === 3) $grid.addClass('view-2');
-        if (cols === 4) $grid.addClass('view-3');
-        if (cols === 5) $grid.addClass('view-4');
-        if (cols === 6) $grid.addClass('view-5');
+        if (window.ScrollTrigger) setTimeout(() => ScrollTrigger.refresh(), 80);
     });
-
 });
 
-$(document).ready(function () {
 
-    $('.view-btn').on('click', function () {
-        const view = $(this).data('view');
-
-        // botón activo
-        $('.view-btn').removeClass('active');
-        $(this).addClass('active');
-
-        // cambiar clase del grid
-        $('.catalog-grid')
-            .removeClass('view-2 view-4 view-6')
-            .addClass(view);
-    });
-
-});
 
 
 /* ================= ESPADA OCULTA ================= */
@@ -998,17 +965,6 @@ $(document).ready(function () {
 
 })(jQuery);
 
-/* ------- ANIMACIONES AOS ------- */
-AOS.init({
-    duration: 400,
-    easing: 'ease-out',
-    once: true, 
-    mirror: false,
-    offset: 120,
-    anchorPlacement: 'top-bottom',
-});
-
-
 /* ================= CONTACTO ORÁCULO ================= */
 
 const oracleYes = document.querySelector(".oracle-yes");
@@ -1113,5 +1069,92 @@ if(particlesContainer){
     }
 }
 
+/* ================= GSAP ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
 
+    // ===== INDEX: Editorial =====
+    const editorialEls = gsap.utils.toArray(".editorial .ed-img, .editorial .ed-text");
+    if (editorialEls.length) {
+        gsap.set(editorialEls, { autoAlpha: 0, y: 50 });
 
+        ScrollTrigger.batch(editorialEls, {
+        start: "top 85%",
+        onEnter: (batch) =>
+            gsap.to(batch, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.9,       // más rápido que 1.2
+            ease: "power2.out",
+            stagger: 0.08,
+            overwrite: true,
+            }),
+        onEnterBack: (batch) =>
+            gsap.to(batch, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power2.out",
+            stagger: 0.06,
+            overwrite: true,
+            }),
+        });
+    }
+
+    // ===== CATALOGO: solo si existe =====
+    const grid = document.querySelector(".catalog-grid");
+    if (grid) {
+        const title = document.querySelector(".catalog-title");
+        if (title) gsap.from(title, { y: 20, opacity: 0, duration: 0.9, ease: "power2.out" });
+
+        const cards = gsap.utils.toArray(".catalog-grid .reveal");
+        if (cards.length) {
+        gsap.set(cards, { autoAlpha: 0, y: 26 });
+
+        ScrollTrigger.batch(cards, {
+            start: "top 88%",
+            onEnter: (batch) =>
+            gsap.to(batch, {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.9,
+                ease: "power2.out",
+                stagger: 0.08,
+                overwrite: true,
+            }),
+            onEnterBack: (batch) =>
+            gsap.to(batch, {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power2.out",
+                stagger: 0.06,
+                overwrite: true,
+            }),
+        });
+        }
+
+        document.querySelectorAll(".view-btn").forEach((btn) => {
+        btn.addEventListener("click", () => setTimeout(() => ScrollTrigger.refresh(), 80));
+        });
+    }
+
+    // ===== Refresh cuando terminen de cargar imágenes (reduce “entra tarde”) =====
+    let pending = 0;
+    const imgs = Array.from(document.images);
+    const done = () => {
+        pending--;
+        if (pending <= 0) ScrollTrigger.refresh();
+    };
+
+    imgs.forEach((img) => {
+        if (!img.complete) {
+        pending++;
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
+        }
+    });
+
+    if (pending === 0) ScrollTrigger.refresh();
+});
