@@ -1,4 +1,3 @@
-gsap.registerPlugin(ScrollTrigger);
 $(document).ready(function () {
 
     // HAMBURGER
@@ -1113,3 +1112,6 @@ if(particlesContainer){
         particlesContainer.appendChild(p);
     }
 }
+
+
+
