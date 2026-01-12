@@ -169,6 +169,48 @@ $(document).ready(function () {
 
 });
 
+/* ================= EDITORIAL CAROUSEL ================= */
+
+$('.editorial-carousel').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: true,
+    dots: false,
+    centerMode: true,
+    variableWidth: true,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1,
+                centerMode: true
+            }
+        }
+    ]
+});
+
+/* MOBILE TAP BEHAVIOR */
+if (window.matchMedia("(hover: none)").matches) {
+    document.querySelectorAll('.editorial-item').forEach(item => {
+        let opened = false;
+
+        item.addEventListener('click', () => {
+            if (!opened) {
+                item.querySelector('.editorial-text').style.opacity = 1;
+                opened = true;
+            } else {
+                window.location.href = "producto.html";
+            }
+        });
+    });
+}
 
 
 

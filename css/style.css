@@ -369,6 +369,130 @@ body {
 
 
 /* ================= SECCIÓN 1 ================= */
+
+/* ================= EDITORIAL HORIZONTAL ================= */
+
+.editorial-carousel-section{
+    
+    padding:100px 0;
+    overflow:hidden;
+}
+
+.editorial-carousel-title{
+    width:90%;
+    margin:0 auto 50px;
+    font-family:"Poppins", sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#111;
+}
+
+.editorial-carousel{
+    width:100%;
+}
+
+.editorial-carousel .slick-track{
+    display:flex;
+    align-items:flex-end;
+}
+
+.editorial-carousel .slick-slide{
+    height:auto;
+}
+
+
+.editorial-item{
+    position:relative;
+    margin:0 25px;
+    transition:transform .6s ease;
+    cursor:pointer;
+}
+
+.editorial-item img{
+    width:260px;
+    height:320px;
+    object-fit:cover;
+    transition:transform .6s ease;
+}
+
+.editorial-text{
+    position:absolute;
+    top:-60px;
+    left:0;
+    opacity:0;
+    transition:opacity .4s ease, transform .4s ease;
+    font-family:"Poppins", sans-serif;
+}
+
+.editorial-text h4{
+    font-size:14px;
+    margin:0;
+    letter-spacing:1px;
+}
+
+.editorial-text span{
+    font-size:12px;
+    opacity:.7;
+}
+
+/* HOVER DESKTOP */
+@media (hover: hover){
+    .editorial-item:hover{
+        transform:translateY(-20px);
+        z-index:2;
+    }
+
+    .editorial-item:hover img{
+        transform:scale(1.15);
+    }
+
+    .editorial-item:hover .editorial-text{
+        opacity:1;
+        transform:translateY(-5px);
+    }
+}
+
+/* ================= FLECHAS EDITORIAL ================= */
+
+.editorial-carousel{
+    position:relative;
+}
+
+.editorial-carousel .slick-prev,
+.editorial-carousel .slick-next{
+    width:50px;
+    height:50px;
+    z-index:20;
+}
+
+.editorial-carousel .slick-prev{
+    left:20px;
+}
+
+.editorial-carousel .slick-next{
+    right:20px;
+}
+
+.editorial-carousel .slick-prev:before,
+.editorial-carousel .slick-next:before{
+    font-size:40px;
+    color:#000;
+    opacity:1;
+}
+
+/* Asegura que no se oculten */
+.editorial-carousel-section{
+    overflow:visible;
+}
+
+/* Corrige overflow de slick */
+.editorial-carousel .slick-list{
+    overflow:visible;
+}
+
+
+
 /* ================= SECCIÓN EDITORIAL ================= */
 .editorial {
     background: #f4f2ed;
