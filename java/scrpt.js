@@ -170,31 +170,27 @@ $(document).ready(function () {
 });
 
 /* ================= EDITORIAL CAROUSEL ================= */
+$(function () {
+    const $carousel = $(".editorial-carousel");
+    if (!$carousel.length || !$.fn.slick) return;
 
-$('.editorial-carousel').slick({
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    infinite: true,
-    arrows: true,
-    dots: false,
-    centerMode: true,
-    variableWidth: true,
-    responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3
-            }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 1,
-                centerMode: true
-            }
-        }
-    ]
+    $carousel.slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: true,
+        dots: false,
+        centerMode: true,
+        variableWidth: true,
+        prevArrow: $(".editorial-prev"),
+        nextArrow: $(".editorial-next"),
+        responsive: [
+        { breakpoint: 1024, settings: { slidesToShow: 3 } },
+        { breakpoint: 768, settings: { slidesToShow: 1, centerMode: true } }
+        ]
+    });
 });
+
 
 /* MOBILE TAP BEHAVIOR */
 if (window.matchMedia("(hover: none)").matches) {
