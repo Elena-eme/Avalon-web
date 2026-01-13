@@ -427,6 +427,49 @@ $(document).ready(function () {
 
 });
 
+//                    CARRITO + TALLAS -----------------//
+/* ================= QUICK ADD FROM CATALOG ================= */
+
+$(document).on("click", ".size-hover button", function (e) {
+    e.stopPropagation(); // evita ir a product.html
+
+    const $btn = $(this);
+    const size = $btn.data("size");
+    const $card = $btn.closest(".product-card");
+    const sku = $card.data("sku");
+
+    if (!sku || !size || !window.PRODUCTS) return;
+
+    const cart = JSON.parse(localStorage.getItem("avalon_cart_v1")) || [];
+    const key = `${sku}__${size}`;
+
+    const existing = cart.find(item => item.key === key);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({
+            key,
+            sku,
+            size,
+            qty: 1
+        });
+    }
+
+    localStorage.setItem("avalon_cart_v1", JSON.stringify(cart));
+
+    // feedback visual mínimo
+    $btn.addClass("added");
+    setTimeout(() => $btn.removeClass("added"), 600);
+
+    // abrir carrito
+    $("#cart-popup").addClass("active");
+    $(".overlay").addClass("active");
+
+    if (typeof renderCart === "function") {
+        renderCart();
+    }
+});
 
 /* ================= PRODUCTOS CON SKU ================= */
 (function ($) {

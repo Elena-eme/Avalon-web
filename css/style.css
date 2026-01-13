@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: serif;
+    
 }
 
 body {
@@ -410,9 +411,9 @@ body {
     width: 44px;
     height: 44px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.55);
-    background: rgba(0,0,0,.35);
-    color: #fff;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.35);
+    color: #000000;
     display: grid;
     place-items: center;
 }
@@ -1411,6 +1412,56 @@ body {
     left: auto;
     right: 40px;
 }
+/* ================= SIZE HOVER ================= */
+
+.product-card{
+    position: relative;
+}
+
+.size-hover{
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 14px;
+
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+
+    transition: all 0.35s ease;
+}
+
+.product-card:hover .size-hover{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.size-hover button{
+    background: none;
+    border: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #111;
+    cursor: pointer;
+    padding: 4px 6px;
+    transition: all 0.25s ease;
+}
+
+.size-hover button:hover{
+    transform: translateY(-2px);
+    font-weight: 600;
+}
+
+/* Mobile: mostrar siempre */
+@media (hover: none){
+    .size-hover{
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+}
 
 
 /* ================= RESPONSIVE ================= */
@@ -1450,7 +1501,7 @@ body {
 
 #avalon-sword {
     position: absolute;   /* 🔥 clave */
-    width: 70px;
+    width: 40px;
     cursor: pointer;
     z-index: 50;
     display: none;
