@@ -170,26 +170,37 @@ $(document).ready(function () {
 });
 
 /* ================= EDITORIAL CAROUSEL ================= */
-$(function () {
+$(document).ready(function () {
     const $carousel = $(".editorial-carousel");
     if (!$carousel.length || !$.fn.slick) return;
 
+    if ($carousel.hasClass("slick-initialized")) {
+        $carousel.slick("unslick");
+    }
+
     $carousel.slick({
-        slidesToShow: 5,
+        slidesToShow: 3,
         slidesToScroll: 1,
         infinite: true,
-        arrows: true,
+        arrows: false, // IMPORTANTÍSIMO: Slick no crea flechas
         dots: false,
-        centerMode: true,
-        variableWidth: true,
-        prevArrow: $(".editorial-prev"),
-        nextArrow: $(".editorial-next"),
+        centerMode: false,
+        variableWidth: false,
         responsive: [
-        { breakpoint: 1024, settings: { slidesToShow: 3 } },
-        { breakpoint: 768, settings: { slidesToShow: 1, centerMode: true } }
+        { breakpoint: 1024, settings: { slidesToShow: 2 } },
+        { breakpoint: 768,  settings: { slidesToShow: 1 } }
         ]
     });
+
+    $(".editorial-prev").off("click.editorial").on("click.editorial", function () {
+        $carousel.slick("slickPrev");
+    });
+
+    $(".editorial-next").off("click.editorial").on("click.editorial", function () {
+        $carousel.slick("slickNext");
+    });
 });
+
 
 
 /* MOBILE TAP BEHAVIOR */
