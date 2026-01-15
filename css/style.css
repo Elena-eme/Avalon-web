@@ -376,9 +376,15 @@ body {
     position: relative;
     width: 100%;
     padding: 120px 120px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     background: #f6f5f1;
 }
+
+.editorial-carousel .slick-list{
+    overflow: visible;
+}
+
 
 /* TEXTO IZQUIERDA */
 .editorial-carousel-title{
@@ -415,6 +421,7 @@ body {
     height: auto;
     display: flex;
     justify-content: center;
+    overflow: visible;
 }
 
 /* ITEM */
