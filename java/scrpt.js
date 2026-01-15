@@ -366,6 +366,35 @@ $(window).on("scroll", function () {
         $(".about-text").css("opacity", "1");
     }
 });
+/* ================= CRYSTAL BALL PARALLAX ================= */
+
+document.addEventListener("mousemove", (e) => {
+    const ball = document.querySelector(".crystal-ball");
+    if(!ball) return;
+
+    const rect = ball.getBoundingClientRect();
+    const ballX = rect.left + rect.width / 2;
+    const ballY = rect.top + rect.height / 2;
+
+    const deltaX = (e.clientX - ballX) / rect.width;
+    const deltaY = (e.clientY - ballY) / rect.height;
+
+    const rotateX = deltaY * -12;
+    const rotateY = deltaX * 12;
+
+    ball.style.transform = `
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+    `;
+});
+
+/* reset suave al salir */
+document.addEventListener("mouseleave", () => {
+    const ball = document.querySelector(".crystal-ball");
+    if(ball){
+        ball.style.transform = "rotateX(0deg) rotateY(0deg)";
+    }
+});
 
 /* ================= ABOUT PUZZLE ================= */
 const container = document.querySelector('.swords-puzzle');
