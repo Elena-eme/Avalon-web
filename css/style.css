@@ -422,6 +422,13 @@ body {
     display: flex;
     justify-content: center;
     overflow: visible;
+    transition: opacity .6s ease;
+    opacity: .25;
+}
+
+.editorial-carousel .slick-center,
+.editorial-carousel .slick-active{
+    opacity: 1;
 }
 
 /* ITEM */
