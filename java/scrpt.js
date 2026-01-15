@@ -169,37 +169,33 @@ $(document).ready(function () {
 
 });
 
-/* ================= EDITORIAL CAROUSEL ================= */
-$(document).ready(function () {
-    const $carousel = $(".editorial-carousel");
-    if (!$carousel.length || !$.fn.slick) return;
-
-    if ($carousel.hasClass("slick-initialized")) {
-        $carousel.slick("unslick");
-    }
-
-    $carousel.slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-        arrows: false, // IMPORTANTÍSIMO: Slick no crea flechas
-        dots: false,
-        centerMode: false,
-        variableWidth: false,
-        responsive: [
-        { breakpoint: 1024, settings: { slidesToShow: 2 } },
-        { breakpoint: 768,  settings: { slidesToShow: 1 } }
-        ]
-    });
-
-    $(".editorial-prev").off("click.editorial").on("click.editorial", function () {
-        $carousel.slick("slickPrev");
-    });
-
-    $(".editorial-next").off("click.editorial").on("click.editorial", function () {
-        $carousel.slick("slickNext");
-    });
+$('.editorial-carousel').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: '0px',
+    infinite: true,
+    arrows: true,
+    prevArrow: $('.editorial-prev'),
+    nextArrow: $('.editorial-next'),
+    speed: 800,
+    cssEase: 'ease-in-out',
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
 });
+
 
 
 
@@ -1222,6 +1218,32 @@ document.addEventListener("DOMContentLoaded", () => {
             }),
         });
     }
+/* ===== EDITORIAL CAROUSEL ===== */
+
+$('.editorial-carousel').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: true,
+    prevArrow: $('.editorial-prev'),
+    nextArrow: $('.editorial-next'),
+    speed: 700,
+    cssEase: 'ease-in-out',
+    responsive: [
+        {
+            breakpoint: 1200,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
 
     // ===== CATALOGO: solo si existe =====
     const grid = document.querySelector(".catalog-grid");

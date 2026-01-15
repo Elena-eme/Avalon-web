@@ -370,255 +370,167 @@ body {
 
 
 /* ================= SECCIÓN 1 ================= */
-
-/* ================= EDITORIAL HORIZONTAL ================= */
+/* ================= EDITORIAL CAROUSEL — AVALON ================= */
 
 .editorial-carousel-section{
     position: relative;
-    padding:100px 0;
-    overflow:hidden;
+    width: 100%;
+    padding: 120px 120px;
+    overflow: hidden;
+    background: #f6f5f1;
 }
 
+/* TEXTO IZQUIERDA */
 .editorial-carousel-title{
-    width:90%;
-    margin:0 auto 50px;
-    font-family:"Poppins", sans-serif;
-    font-size:12px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color:#111;
+    position: absolute;
+    top: 40px;
+    left: 6vw;
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #111;
+    z-index: 10;
 }
 
-.editorial-carousel{
-    width:100%;
+.editorial-carousel-title span{
+    display: block;
+    margin-bottom: 8px;
+    opacity: .6;
 }
+
+/* CARRUSEL */
+.editorial-carousel{
+    display: flex;
+    align-items: flex-end;
+}
+
+/* SLICK FIX */
+.editorial-carousel .slick-track{
+    display: flex;
+    align-items: flex-end;
+}
+
+.editorial-carousel .slick-slide{
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* ITEM */
+.editorial-item{
+    position: relative;
+    width: 220px;
+    margin: 0 22px;
+    transition: transform .6s ease;
+    cursor: pointer;
+}
+
+/* IMÁGENES */
+.editorial-item img{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+/* TEXTO HOVER */
+.editorial-text{
+    position: absolute;
+    top: -70px;
+    left: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .4s ease, transform .4s ease;
+
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #111;
+}
+
+.editorial-text h4{
+    font-size: 12px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.editorial-text span{
+    font-size: 11px;
+    opacity: .6;
+}
+
+/* HOVER */
+@media (hover:hover){
+    .editorial-item:hover{
+        transform: translateY(-16px);
+        z-index: 2;
+    }
+
+    .editorial-item:hover img{
+        transform: scale(1.12);
+    }
+
+    .editorial-item:hover .editorial-text{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= FLECHAS ================= */
 
 .editorial-carousel-nav{
     position: absolute;
     top: 50%;
-    left: 16px;
-    right: 16px;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none; 
-    z-index: 50;
-}
-
-
-.editorial-carousel-nav button{
-    pointer-events: auto;
-    width: 44px;
-    height: 44px;
-    border-radius: 999px;
-    border: 1px solid rgb(0, 0, 0);
-    background: rgba(255, 255, 255, 0.35);
-    color: #000000;
-    display: grid;
-    place-items: center;
-}
-
-.editorial-carousel-nav button:hover{
-    background: rgba(0,0,0,.55);
-}
-
-.editorial-carousel .slick-track{
-    display:flex;
-    align-items:flex-end;
-}
-
-.editorial-carousel .slick-slide{
-    height:auto;
-}
-
-
-.editorial-item{
-    position:relative;
-    margin:0 25px;
-    transition:transform .6s ease;
-    cursor:pointer;
-}
-
-.editorial-item img{
-    width:260px;
-    height:320px;
-    object-fit:cover;
-    transition:transform .6s ease;
-}
-
-.editorial-text{
-    position:absolute;
-    top:-60px;
-    left:0;
-    opacity:0;
-    transition:opacity .4s ease, transform .4s ease;
-    font-family:"Poppins", sans-serif;
-}
-
-.editorial-text h4{
-    font-size:14px;
-    margin:0;
-    letter-spacing:1px;
-}
-
-.editorial-text span{
-    font-size:12px;
-    opacity:.7;
-}
-
-
-/* HOVER DESKTOP */
-@media (hover: hover){
-    .editorial-item:hover{
-        transform:translateY(-20px);
-        z-index:2;
-    }
-
-    .editorial-item:hover img{
-        transform:scale(1.15);
-    }
-
-    .editorial-item:hover .editorial-text{
-        opacity:1;
-        transform:translateY(-5px);
-    }
-}
-
-/* ================= FLECHAS EDITORIAL ================= */
-
-/* Layout: 1/3 texto + 2/3 carrusel */
-.editorial-carousel-section{
-    display: flex;
-    align-items: flex-start;
-    gap: 48px;
-    padding: 80px 6vw;
-    overflow: hidden; 
-}
-
-.editorial-carousel-title{
-    flex: 0 0 33.333%;
-    max-width: 33.333%;
-}
-
-.editorial-carousel{
-    flex: 0 0 66.666%;
-    max-width: 66.666%;
-    position: relative;
-
-    padding: 0 64px;
-
-    min-width: 0;
-}
-
-.editorial-carousel .slick-list{
-    overflow: hidden;
-}
-
-.editorial-carousel .slick-slide{
-    padding: 0 14px;
-    box-sizing: border-box;
-}
-
-.editorial-carousel .slick-slide > div{
-    height: auto !important;
-}
-
-.editorial-carousel .editorial-item{
-    width: 100%;
-}
-
-.editorial-carousel .editorial-item img{
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    height: auto !important;
-    display: block;
-    object-fit: cover;
-}
-
-
-
-@media (max-width: 1024px){
-    .editorial-carousel-section{
-        gap: 24px;
-    }
-    .editorial-carousel{
-        padding: 0 56px;
-    }
-}
-
-@media (max-width: 900px){
-    .editorial-carousel-section{
-        flex-direction: column;
-        gap: 18px;
-    }
-
-    .editorial-carousel-title{
-        flex: none;
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .editorial-carousel{
-        flex: none;
-        max-width: 100%;
-        width: 100%;
-        padding: 0 54px;
-    }
-}
-
-/* Responsive: en móvil se apila */
-@media (max-width: 900px){
-    .editorial-carousel-section{
-        flex-direction: column;
-        gap: 22px;
-    }
-    .editorial-carousel-title,
-    .editorial-carousel{
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
-
-.editorial-carousel-wrap{
-    flex: 0 0 66.666%;
-    max-width: 66.666%;
-    position: relative;
-    min-width: 0;
-}
-
-.editorial-carousel{
-    width: 100%;
-    position: relative;
-    padding: 0 64px;
-    max-width: 100%;
-    flex: none;
-}
-
-.editorial-carousel-wrap .editorial-carousel-nav{
-    position: absolute;
-    top: 50%;
     left: 0;
     right: 0;
-    transform: translateY(-50%);
+    padding: 0 5vw;
     display: flex;
     justify-content: space-between;
     pointer-events: none;
-    z-index: 60;
+    z-index: 20;
 }
 
-.editorial-carousel-wrap .editorial-carousel-nav button{
+.editorial-carousel-nav button{
     pointer-events: auto;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #111;
+    opacity: .35;
+    transition: opacity .3s ease, transform .3s ease;
 }
 
-.editorial-carousel .slick-prev,
-.editorial-carousel .slick-next{
-    display: none !important;
+.editorial-carousel-nav button:hover{
+    opacity: 1;
 }
 
+.editorial-carousel-nav .editorial-prev:hover{
+    transform: translateX(-4px);
+}
 
+.editorial-carousel-nav .editorial-next:hover{
+    transform: translateX(4px);
+}
 
+/* ================= RESPONSIVE ================= */
 
+@media (max-width: 900px){
+    .editorial-item{
+        width: 200px;
+        margin: 0 14px;
+    }
 
+    .editorial-item.slick-center{
+        width: 260px;
+    }
+
+    .editorial-carousel-title{
+        position: static;
+        margin: 0 0 40px 6vw;
+    }
+}
 
 
 /* ================= SECCIÓN EDITORIAL ================= */
@@ -1707,14 +1619,14 @@ body {
 .about-hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* asegura que ocupe toda la pantalla */
+    height: 100vh; 
     overflow: hidden;
 }
 
 .about-hero .hero-img {
     width: 100%;
     height: 100%;
-    position: relative; /* necesario para que magic-glow se posicione encima */
+    position: relative; 
     overflow: hidden;
 }
 
