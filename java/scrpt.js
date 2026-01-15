@@ -169,32 +169,7 @@ $(document).ready(function () {
 
 });
 
-$('.editorial-carousel').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: '0px',
-    infinite: true,
-    arrows: true,
-    prevArrow: $('.editorial-prev'),
-    nextArrow: $('.editorial-next'),
-    speed: 800,
-    cssEase: 'ease-in-out',
-    responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3
-            }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 1
-            }
-        }
-    ]
-});
+
 
 
 
@@ -1219,31 +1194,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 /* ===== EDITORIAL CAROUSEL ===== */
+const $editorial = $('.editorial-carousel');
 
-$('.editorial-carousel').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    infinite: true,
-    arrows: true,
-    prevArrow: $('.editorial-prev'),
-    nextArrow: $('.editorial-next'),
-    speed: 700,
-    cssEase: 'ease-in-out',
-    responsive: [
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 2
+if ($editorial.length && !$editorial.hasClass('slick-initialized')) {
+    $editorial.slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        variableWidth: true,
+        infinite: true,
+        arrows: true,
+        prevArrow: $('.editorial-prev'),
+        nextArrow: $('.editorial-next'),
+        speed: 700,
+        cssEase: 'ease-in-out',
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: { slidesToShow: 3 }
+            },
+            {
+                breakpoint: 768,
+                settings: { slidesToShow: 1 }
             }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 1
-            }
-        }
-    ]
-});
+        ]
+    });
+}
+
 
     // ===== CATALOGO: solo si existe =====
     const grid = document.querySelector(".catalog-grid");
