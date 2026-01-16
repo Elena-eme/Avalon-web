@@ -1636,7 +1636,7 @@ body {
 
 .crystal-section{
     width: 100%;
-    padding: 140px 0;
+    padding: 280px 0;
     display: flex;
     justify-content: center;
     background: #fff;
@@ -1804,7 +1804,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: radial-gradient(circle at center, #472945, #cbbbcd);
+    background: radial-gradient(circle at center, #83afde, #41415f);
     color: #fff;
     
 }
