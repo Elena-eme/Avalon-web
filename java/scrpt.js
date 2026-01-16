@@ -129,7 +129,6 @@ $btn.off('click.oracle').on('click.oracle', function () {
 });
 
 
-
 $(document).ready(function () {
 
     // LUPA
@@ -147,11 +146,6 @@ $(document).ready(function () {
 
 });
 
-
-
-
-
-
 /* MOBILE TAP BEHAVIOR */
 if (window.matchMedia("(hover: none)").matches) {
     document.querySelectorAll('.editorial-item').forEach(item => {
@@ -167,8 +161,6 @@ if (window.matchMedia("(hover: none)").matches) {
         });
     });
 }
-
-
 
 /* ================= SLIDESHOW ================= */
 const galleryImages = document.querySelectorAll('.g-img');
@@ -207,8 +199,6 @@ $(document).ready(function () {
         if (window.ScrollTrigger) setTimeout(() => ScrollTrigger.refresh(), 80);
     });
 });
-
-
 
 
 /* ================= ESPADA OCULTA ================= */
@@ -254,7 +244,6 @@ $(document).ready(function () {
 });
 
 /* ================= JUEGO ARTURO ================= */
-/* ================= JUEGO ARTURO (desktop + tablet/mobile) ================= */
 $(function () {
     const $items = $('.artifact');
     const $win = $('#arturo-win');
@@ -280,12 +269,11 @@ $(function () {
         $win.removeClass('active');
     });
 
-    // Si es pointer "fino" (desktop), dejamos jQuery UI (como lo tenías)
     const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
 
     if (!isCoarsePointer && $.fn.draggable) {
         $items.draggable({
-        containment: '.arturo-game', // si prefieres como antes: 'body'
+        containment: '.arturo-game', 
         scroll: false,
         stop: function () { checkWin(); }
         });
@@ -308,13 +296,11 @@ $(function () {
             if (dx > 6 || dy > 6) $(this).data("moved", true);
         },
         stop: function () {
-            // tu lógica existente
             checkWin();
         }
     });
 
 
-    // ===== Tablet/Mobile: Pointer Events drag =====
     const container = document.querySelector('.arturo-game') || document.body;
     const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
 
@@ -337,7 +323,6 @@ $(function () {
         const left = parseFloat(cs.left);
         const top = parseFloat(cs.top);
 
-        // si no hay left/top definidos, los calculamos desde el rect
         if (Number.isFinite(left)) startLeft = left;
         else startLeft = activeEl.getBoundingClientRect().left - bounds.left;
 
@@ -382,7 +367,7 @@ $(function () {
     }
 
     $items.each(function () {
-        this.style.touchAction = 'none'; // refuerzo por si acaso
+        this.style.touchAction = 'none';
         this.style.cursor = 'grab';
         this.addEventListener('pointerdown', onDown);
     });
@@ -419,8 +404,8 @@ $(window).on("scroll", function () {
         $(".about-text").css("opacity", "1");
     }
 });
-/* ================= CRYSTAL BALL PARALLAX ================= */
 
+/* ================= CRYSTAL BALL PARALLAX ================= */
 document.addEventListener("mousemove", (e) => {
     const ball = document.querySelector(".crystal-ball");
     if(!ball) return;
@@ -440,7 +425,6 @@ document.addEventListener("mousemove", (e) => {
         rotateY(${rotateY}deg)
     `;
 });
-
 
 document.addEventListener("mouseleave", () => {
     const ball = document.querySelector(".crystal-ball");
@@ -509,9 +493,7 @@ $(document).ready(function () {
 
 });
 
-//                    CARRITO + TALLAS -----------------//
-
-
+//----------------- CARRITO + TALLAS -----------------//
 $(document).on("click", ".size-hover button", function (e) {
     e.stopPropagation(); 
 
@@ -540,7 +522,6 @@ $(document).on("click", ".size-hover button", function (e) {
 
     localStorage.setItem("avalon_cart_v1", JSON.stringify(cart));
 
-   
     $btn.addClass("added");
     setTimeout(() => $btn.removeClass("added"), 600);
 
@@ -556,7 +537,6 @@ $(document).on("click", ".size-hover button", function (e) {
 /* ================= PRODUCTOS CON SKU ================= */
 (function ($) {
 "use strict";
-
   /* ====== DATOS DE LOS PRODUCTOS ====== */
     const PRODUCTS = {
     "excalibur-veil": {
@@ -874,7 +854,6 @@ function initHomeProductLinks() {
     $items.css("cursor", "pointer")
         .off("click.homeSku")
         .on("click.homeSku", function (e) {
-        // Si estás arrastrando, evitar navegación accidental (lo cubrimos abajo)
         if ($(this).data("moved")) {
             $(this).data("moved", false);
             return;
@@ -954,7 +933,6 @@ $(document).ready(function () {
 
 
 /* ==== CHECKOUT + CONFIRMACIÓN ==== */
-
 (function ($) {
     "use strict";
 
@@ -1092,7 +1070,6 @@ $(document).on("submit", "#checkout-form", function (e) {
         }
     }
 
-    // Construir pedido
     let subtotal = 0;
     let currency = "€";
 
@@ -1149,16 +1126,13 @@ $(document).ready(function () {
 })(jQuery);
 
 /* ================= CONTACTO ORÁCULO ================= */
-
 const oracleYes = document.querySelector(".oracle-yes");
 const oracleNo = document.querySelector(".oracle-no");
 const oracleQuestion = document.getElementById("oracleQuestion");
 const oracleForm = document.getElementById("oracleForm");
 
-/* ================= EFECTO DESCIFRADO LENTO ================= */
 
-/* ================= DESCIFRADO SUAVE ================= */
-
+/* ================= DESCIFRADO LENTO ================= */
 function decipherText(element, speed = 55){
     const original = element.innerText;
     const chars = "⟁⌖⌁⧫✦";
@@ -1196,8 +1170,6 @@ function decipherText(element, speed = 55){
     }, speed);
 }
 
-
-
 window.addEventListener("load", () => {
     const title = document.querySelector(".oracle-text h1");
     if(title){
@@ -1206,7 +1178,6 @@ window.addEventListener("load", () => {
 });
 
 /* ================= ACEPTAR MISIÓN ================= */
-
 if(oracleYes){
     oracleYes.addEventListener("click", () => {
         oracleQuestion.classList.add("hidden");
@@ -1220,7 +1191,6 @@ if(oracleYes){
 }
 
 /* ================= RECHAZAR MISIÓN ================= */
-
 if(oracleNo){
     oracleNo.addEventListener("click", () => {
         document.body.style.transition = "opacity 1.2s";
@@ -1233,7 +1203,6 @@ if(oracleNo){
 }
 
 /* ================= PARTÍCULAS MÁGICAS ================= */
-
 const particlesContainer = document.querySelector(".magic-particles");
 
 if(particlesContainer){
@@ -1257,7 +1226,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
 
-    // ===== INDEX: Editorial =====
     const editorialEls = gsap.utils.toArray(".editorial .ed-img, .editorial .ed-text");
     if (editorialEls.length) {
         gsap.set(editorialEls, { autoAlpha: 0, y: 50 });
@@ -1284,6 +1252,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }),
         });
     }
+
 /* ===== EDITORIAL CAROUSEL ===== */
 const $editorial = $('.editorial-carousel');
 
@@ -1310,7 +1279,6 @@ if ($editorial.length && !$editorial.hasClass('slick-initialized')) {
         ]
     });
 }
-
 
     // ===== CATALOGO: solo si existe =====
     const grid = document.querySelector(".catalog-grid");
@@ -1395,7 +1363,6 @@ $(document).ready(function () {
         $overlay.removeClass('active');
         }
     }
-
     
     $menu.css('left', closedLeft());
 
@@ -1405,14 +1372,12 @@ $(document).ready(function () {
         openMenu();
     });
 
-    // Cerrar con X
     $close.off('click.menu').on('click.menu', function (e) {
         e.preventDefault();
         e.stopPropagation();
         closeMenu();
     });
 
-    // Cerrar clic fuera
     $overlay.off('click.menu').on('click.menu', function () {
         closeMenu();
     });
