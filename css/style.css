@@ -11,9 +11,7 @@ body {
     overflow-x: hidden;
 }
 
-
 /* ================= HEADER ================= */
-
 .header {
     position: fixed;
     top: 0;
@@ -92,8 +90,8 @@ body {
     align-items: center;
     gap: 18px;
 }
-/* ================= SEARCH ================= */
 
+/* ================= SEARCH ================= */
 .search-container {
     display: flex;
     align-items: center;
@@ -127,8 +125,7 @@ body {
     margin-left: 12px;
 }
 
-/* -----------------CART POPUP------------------------ */
-
+/* ================= CART POPUP ================= */
 #cart-popup {
     position: fixed;
     top: 0;
@@ -173,8 +170,7 @@ body {
     pointer-events: auto;
 }
 
-/* ---------- HEADER ---------- */
-
+/* ================= HEADER ================= */
 .cart-header {
     display: flex;
     justify-content: space-between;
@@ -197,8 +193,7 @@ body {
     color: #000;
 }
 
-/* ---------- ITEMS ---------- */
-
+/* ================= ITEMS ================= */
 .cart-items {
     flex: 1;
     padding: 24px 0;
@@ -220,11 +215,10 @@ body {
 }
 
 /* Info */
-
 .item-info {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* separación vertical */
+    gap: 4px; 
 }
 
 .item-name {
@@ -244,7 +238,6 @@ body {
 }
 
 /* Remove */
-
 .remove-item {
     background: none;
     border: none;
@@ -257,8 +250,7 @@ body {
     color: #000;
 }
 
-/* ---------- FOOTER ---------- */
-
+/* ================= FOOTER ================= */
 .cart-footer {
     border-top: 1px solid #e5e5e5;
     padding-top: 16px;
@@ -286,8 +278,7 @@ body {
     background: #e2e2e2;
 }
 
-/* ---------- OVERLAY ---------- */
-
+/* ================= OVERLAY ================= */
 .overlay {
     position: fixed;
     inset: 0;
@@ -305,7 +296,6 @@ body {
 
 
 /* ================= SIDE MENU ================= */
-
 .side-menu {
     position: fixed;
     left: -250px;
@@ -317,12 +307,10 @@ body {
     transition: 0.4s;
     z-index: 1001;
 
-     /* Fondo transparente con efecto blur */
-    background: rgba(255, 255, 255, 0.15); /* ligera transparencia */
-    backdrop-filter: blur(10px); /* desenfoque del fondo */
-    -webkit-backdrop-filter: blur(10px); /* soporte Safari */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
 
-    /* Aura/brillo alrededor del menú */
     box-shadow: 0 0 30px 10px rgba(255, 255, 200, 0.5);
     border-radius: 12px;
 }
@@ -331,7 +319,7 @@ body {
     display: block;
     margin-bottom: 20px;
     text-decoration: none;
-    color: #fff; /* cambia a blanco para resaltar sobre fondo transparente */
+    color: #fff;
     font-family: "Hubballi", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -344,7 +332,6 @@ body {
 }
 
 /* ================= OVERLAY ================= */
-
 .overlay {
     position: fixed;
     inset: 0;
@@ -356,7 +343,6 @@ body {
 }
 
 /* ================= HERO ================= */
-
 .hero img {
     width: 100%;
     height: 115vh;
@@ -364,7 +350,6 @@ body {
 }
 
 /* ================= EDITORIAL CAROUSEL — AVALON ================= */
-
 .editorial-carousel-section{
     position: relative;
     width: 100%;
@@ -467,7 +452,6 @@ body {
 }
 
 /* ================= FLECHAS ================= */
-
 .editorial-carousel-nav{
     position: absolute;
     top: 50%;
@@ -583,7 +567,6 @@ body {
 
 
 /* ================= CARDS ================= */
-
 .cards-section {
     padding: 100px 20px;
     text-align: center;
@@ -602,7 +585,6 @@ body {
     font-weight: 400;
     font-style: normal;
 }
-
 
 .cards {
     display: flex;
@@ -792,7 +774,6 @@ body {
 }
 
 /* ================= CIRCLE ================= */
-
 .circle-img {
     margin-top: 60px;
     display: flex;
@@ -892,7 +873,6 @@ body {
 }
 
 /* ================= FOOTER ================= */
-
 .footer {
     background: url("https://i.pinimg.com/1200x/b7/4f/60/b74f600f431430dc79ada534ad348187.jpg") center / cover no-repeat;
     padding: 140px 40px 80px;
@@ -902,7 +882,6 @@ body {
 }
 
 /* ===== CARTAS CENTRALES ===== */
-
 .footer-cards {
     position: relative;
     height: 320px;
@@ -933,7 +912,6 @@ body {
 }
 
 /* ===== POSICIONES TIPO BARAJA (6) ===== */
-
 .footer-cards .card-1 {
     left: 10%;
     transform: rotate(-12deg);
@@ -965,7 +943,6 @@ body {
 }
 
 /* ===== HOVER: SE LEVANTAN ===== */
-
 .footer-cards .card:hover {
     bottom: 0;
     transform: rotate(0deg) scale(1.06);
@@ -973,7 +950,6 @@ body {
 }
 
 /* ===== CONTENIDO DEL FOOTER ===== */
-
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1008,7 +984,6 @@ body {
 }
 
 /* ===== INPUTS ===== */
-
 .footer input,
 .footer button {
     width: 100%;
@@ -1028,7 +1003,7 @@ body {
     background: #fff;
     color: #000;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .footer button:hover {
@@ -1036,7 +1011,6 @@ body {
 }
 
 /* ================= CATALOG HERO ================= */
-
 .catalog-hero {
     position: relative;
     height: 100vh;
@@ -1073,7 +1047,6 @@ body {
     pointer-events: none;
 }
 
-
 /* ================= CONTROLES DE VISTA ================= */
 .catalog-grid {
     display: grid;
@@ -1081,23 +1054,25 @@ body {
 }
 
 .catalog-grid.view-2 { 
-    grid-template-columns: repeat(2, minmax(0, 1fr)); 
-}
+    grid-template-columns: 
+        repeat(2, minmax(0, 1fr)); 
+    }
 
 .catalog-grid.view-3 { 
-    grid-template-columns: repeat(3, minmax(0, 1fr)); 
-}
+    grid-template-columns: 
+        repeat(3, minmax(0, 1fr)); 
+    }
 
 .catalog-grid.view-4 { 
-    grid-template-columns: repeat(4, minmax(0, 1fr)); 
-}
+    grid-template-columns: 
+        repeat(4, minmax(0, 1fr)); 
+    }
 
 /* Cards */
 .product-card img {
     width: 100%;
     display: block;
 }
-
 
 .catalog-controls {
     display: flex;
@@ -1129,7 +1104,6 @@ body {
 }
 
 /* ================= PRODUCT GRID ================= */
-
 .catalog-grid {
     display: grid;
     gap: 80px 40px;
@@ -1182,7 +1156,6 @@ body {
 
 
 /* ================= OFFSETS EDITORIALES ================= */
-
 .offset-left {
     transform: translateX(-40px);
 }
@@ -1193,11 +1166,25 @@ body {
 
 
 /* ================= VISTAS ================= */
-.catalog-grid.view-1 { grid-template-columns: repeat(4, 1fr); }
-.catalog-grid.view-2 { grid-template-columns: repeat(2, 1fr); }
-.catalog-grid.view-3 { grid-template-columns: repeat(3, 1fr); }
-.catalog-grid.view-4 { grid-template-columns: repeat(4, 1fr); }
-.catalog-grid.view-5 { grid-template-columns: repeat(6, 1fr); }
+.catalog-grid.view-1 { 
+    grid-template-columns: repeat(4, 1fr); 
+}
+
+.catalog-grid.view-2 { 
+    grid-template-columns: repeat(2, 1fr); 
+}
+
+.catalog-grid.view-3 { 
+    grid-template-columns: repeat(3, 1fr); 
+}
+
+.catalog-grid.view-4 { 
+    grid-template-columns: repeat(4, 1fr); 
+}
+
+.catalog-grid.view-5 { 
+    grid-template-columns: repeat(6, 1fr); 
+}
 
 /* VISTA 1 – MUY GRANDE */
 .catalog-grid.view-1 .product-card img {
@@ -1226,7 +1213,6 @@ body {
 
 
 /* ================= EDITORIAL ================= */
-
 .catalog-editorial {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1259,8 +1245,8 @@ body {
     left: auto;
     right: 40px;
 }
-/* ================= SIZE HOVER ================= */
 
+/* ================= SIZE HOVER ================= */
 .product-card{
     position: relative;
 }
@@ -1302,9 +1288,8 @@ body {
 }
 
 /* ================= ESPADA SECRETA ================= */
-
 #avalon-sword {
-    position: absolute;   /* 🔥 clave */
+    position: absolute;
     width: 40px;
     cursor: pointer;
     z-index: 50;
@@ -1319,7 +1304,6 @@ body {
 }
 
 /* ================= MODAL ESPADA ================= */
-
 .sword-modal {
     position: fixed;
     inset: 0;
@@ -1378,7 +1362,6 @@ body {
 
 
 /* === JUEGO ARTURO === */
-
 .hero {
     position: relative;  
     width: 100%;
@@ -1387,12 +1370,12 @@ body {
 
 .arturo-game {
     position: absolute;
-    top: 25%;                /* más centrado verticalmente */
+    top: 25%; 
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    height: 60%;             /* área de movimiento */
-    pointer-events: none;     /* permite que el mousedown se registre en las imágenes */
+    height: 60%;
+    pointer-events: none;
 }
 
 #arturo-win {
@@ -1409,17 +1392,16 @@ body {
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease;
-    pointer-events: all;      /* reactiva eventos para mover */
+    pointer-events: all; 
 
-     /* Aura brillante */
     box-shadow: 0 0 20px 5px rgba(255, 255, 200, 0.6);
-    border-radius: 12px;  /* bordes suavizados para que el aura se vea mejor */
+    border-radius: 12px;
 }
 
 .artifact:active {
     cursor: grabbing;
     transform: scale(1.1);
-    box-shadow: 0 0 30px 10px rgba(255, 255, 220, 0.8); /* aura más intensa al mover */
+    box-shadow: 0 0 30px 10px rgba(255, 255, 220, 0.8);
 }
 
 .artifact img {
@@ -1427,7 +1409,6 @@ body {
     max-height: 100%;
     object-fit: contain;
     pointer-events: none;
-      /* Brillo extra suave sobre la imagen */
     filter: drop-shadow(0 0 8px rgba(255, 255, 220, 0.7));
 }
 
@@ -1534,10 +1515,9 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1; /* encima de la imagen */
+    z-index: 1;
 }
 
-/* brillos visibles */
 .about-hero .magic-glow span {
     position: absolute;
     display: block;
@@ -1546,7 +1526,7 @@ body {
     border-radius: 50%;
     background: radial-gradient(circle, rgba(255,255,150,0.9) 0%, rgba(255,220,100,0.5) 40%, rgba(255,180,0,0) 70%);
     opacity: 1;
-    transform: scale(0); /* empezamos desde pequeño */
+    transform: scale(0);
     filter: blur(1.5px);
     animation: glowScale 3s ease-in-out infinite;
 }
@@ -1570,7 +1550,6 @@ body {
     }
 }
 
-/* título encima de todo */
 .about-hero .catalog-title {
     position: absolute;
     top: 50%;
@@ -1582,9 +1561,7 @@ body {
     z-index: 2;
 }
 
-/*                    ABOUT CRYSTAL                    */
 /* ================= CRYSTAL BALL ================= */
-
 .crystal-section{
     width: 100%;
     padding: 280px 0;
@@ -1631,7 +1608,6 @@ body {
     filter: contrast(1.05) brightness(0.95);
 }
 
-/* capa de cristal */
 .crystal-glass{
     position: absolute;
     inset: 0;
@@ -1650,20 +1626,11 @@ body {
 
 
 /* ================= BACKGROUND AVALON FIX ================= */
-
 #avalon-bg{
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-
-
-
-
-
-
-
-
 
 /* ================== ABOUT SWORDS ================== */
 .about-swords {
@@ -1729,7 +1696,6 @@ body {
     line-height: 1.6;
 }
 
-
 /* ================== ABOUT PUZZLE ================== */
 .about-puzzle {
     position: relative;
@@ -1743,44 +1709,55 @@ body {
 }
 
 .swords-puzzle {
-    position: relative; /* importante para que las piezas absolutas se ubiquen dentro */
+    position: relative;
     width: 400px;
     height: 400px;
-    margin-bottom: 50px; /* espacio para el texto debajo */
+    margin-bottom: 50px;
 }
 
-/* Piezas arrastrables */
 .puzzle-piece {
     width: 150px;
     position: absolute;
     cursor: grab;
-    transition: all 0.5s ease; /* transición suave */
+    transition: all 0.5s ease;
 }
 
 /* Posiciones correctas al hacer hover */
-.swords-puzzle:hover #piece-left-top { top: 0; left: 0; }
-.swords-puzzle:hover #piece-left-bottom { top: 0; left: 200px; }
-.swords-puzzle:hover #piece-right-top { top: 200px; left: 0; }
-.swords-puzzle:hover #piece-right-bottom { top: 200px; left: 200px; }
+.swords-puzzle:hover #piece-left-top { 
+    top: 0; 
+    left: 0; 
+}
+
+.swords-puzzle:hover #piece-left-bottom { 
+    top: 0; 
+    left: 200px; 
+}
+
+.swords-puzzle:hover #piece-right-top { 
+    top: 200px; 
+    left: 0; 
+}
+
+.swords-puzzle:hover #piece-right-bottom { 
+    top: 200px; 
+    left: 200px; 
+}
 
 .about-text {
     max-width: 600px;
     text-align: center;
-    opacity: 1; /* ya no ocultamos el texto */
+    opacity: 1; 
     transition: opacity 1s ease;
-    z-index: 1; /* aseguramos que esté debajo del puzzle */
+    z-index: 1; 
 }
 
 /* ================= EDITORIAL COLLAGE ================= */
-
 .editorial-collage {
     padding: 80px 40px;   
     max-width: none;     
     margin: 0;
     background: #fff;   
 }
-
-
 
 /* Contenedor palabra-imagen */
 .word-image img {
@@ -1799,7 +1776,6 @@ body {
     vertical-align: middle;
     margin: 0.45 0.45em;
 }
-
 
 /* Palabra oculta */
 .word-image .word {
@@ -1831,7 +1807,6 @@ body {
     opacity: 1;
 }
 
-
 .side-menu .close-menu{
     position: absolute;
     top: 18px;
@@ -1852,7 +1827,6 @@ body {
     text-shadow: 0 0 8px rgba(255, 255, 220, 0.8);
     opacity: 0.95;
 }
-
 
 .product-card{
     text-decoration: none;
@@ -1886,7 +1860,6 @@ body {
     opacity: .8;
 }
 
-
 /* ===== LAYOUT PRINCIPAL ===== */
 .product-grid{
     display: grid;
@@ -1895,7 +1868,6 @@ body {
     align-items: start;
     margin-bottom: 2rem;
 }
-
 
 /* ===== FOTOS ===== */
 .product-main img{
@@ -1972,7 +1944,6 @@ body {
     max-width: 520px;
 }
 
-
 /* ===== OPCIONES ===== */
 .option-block{
     margin: 18px 0;
@@ -1985,7 +1956,6 @@ body {
     margin-bottom: 10px;
     color: #333;
 }
-
 
 /* ===== TALLAS ===== */
 .size-picker{
@@ -2011,7 +1981,6 @@ body {
     background: #111;
     color: #fff;
 }
-
 
 /* ===== CANTIDAD ===== */
 .qty{
@@ -2041,7 +2010,6 @@ body {
     text-align: center;
     outline: none;
 }
-
 
 /* ===== CTA ===== */
 .product-cta{
@@ -2102,7 +2070,6 @@ body {
     line-height: 1.7;
     color: #333;
 }
-
 
 /* ===== CHECKOUT ===== */
 .checkout-page{
@@ -2333,7 +2300,6 @@ body {
     letter-spacing: 1px;
 }
 
-
 .cart-item{
     position: relative; 
     padding-right: 44px; 
@@ -2361,7 +2327,6 @@ body {
 .cart-item .remove-item:hover{
     color: #000;
 }
-
 
 /* ===== CONFIRMACIÓN DE COMPRA ===== */
 .confirm-page{
@@ -2417,7 +2382,6 @@ body {
     gap: 12px;
 }
 
-
 #order-summary p{
     margin: 0;
     display: grid;
@@ -2469,10 +2433,6 @@ body {
     border-color: rgba(0,0,0,0.28);
 }
 
-
-
-
-
 /* ===== MEDIA QUERIES ===== */
 @media (hover:hover){
     .editorial-item:hover{
@@ -2505,7 +2465,6 @@ body {
     }
 }
 
-/* ================== <= 1024px ================== */
 @media (max-width: 1024px) {
     .editorial {
         padding: 140px 0;
@@ -2549,7 +2508,6 @@ body {
         width: min(680px, calc(100% - 40px));
     }
 
-    /* ===== (ANTES: min-width 769 y max-width 1024) GALLERY + FOOTER + CATALOG ===== */
     .gallery {
         padding: 90px 30px;
     }
@@ -2596,7 +2554,6 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    /* ===== (ANTES: max-width 1024) RESPONSIVE CATALOG GRID ===== */
     .catalog-grid {
         padding: 40px;
         gap: 60px 20px;
@@ -2607,7 +2564,6 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    /* ===== (ANTES: min-width 769 y max-width 1024) PRODUCT GRID + EDITORIAL + GAME ===== */
     .catalog-grid {
         padding: 40px 30px;
         gap: 60px 24px;
@@ -2655,7 +2611,6 @@ body {
         max-width: 380px;
     }
 
-    /* ===== (ANTES: min-width 769 y max-width 1024) ABOUT ===== */
     .about-hero {
         height: 90vh;
     }
@@ -2708,7 +2663,6 @@ body {
         width: 120px;
     }
 
-    /* ===== (ANTES: max-width 980) BLOQUE GRANDE ===== */
     .header{
         grid-template-columns: auto 1fr auto;
         padding: 0 14px;
@@ -2991,7 +2945,6 @@ body {
     }
 }
 
-/* ================== <= 768px ================== */
 @media (max-width: 768px) {
     .header {
         grid-template-columns: auto 1fr auto;
@@ -3198,7 +3151,6 @@ body {
         box-shadow: 0 12px 26px rgba(0,0,0,0.35);
     }
     
-
     .g-img:hover {
         transform: none;
     }
@@ -3407,18 +3359,16 @@ body {
     @media (max-width: 768px) {
     .crystal-section{
         display: flex;
-        flex-direction: column;   /* texto arriba, círculo debajo */
-        align-items: flex-start;  /* alinea el círculo con el eje del texto (izquierda) */
+        flex-direction: column;
+        align-items: center; 
         gap: 24px;
     }
 
     .crystal-ball{
-        width: 260px;             /* más pequeño SOLO en móvil */
+        width: 260px; 
         height: 260px;
     }
-
 }
-
 
     /* ===== ABOUT COLLAGE ===== */
     .about-collage {
@@ -3478,7 +3428,6 @@ body {
     .swords-puzzle:hover #piece-right-top { top: 130px; left: 0; }
     .swords-puzzle:hover #piece-right-bottom { top: 130px; left: 130px; }
 
-    /* ===== (ANTES: max-width 768) BLOQUE EXTRA ===== */
     .search-container.active .search-input {
         width: 130px;
     }
@@ -3638,7 +3587,7 @@ body {
 
     /* ===== ORÁCULO CONTENEDOR ===== */
     .oracle-contact{
-        min-height: 100svh; /* evita saltos con teclado */
+        min-height: 100svh;
         height: auto;
     }
 
@@ -3653,7 +3602,7 @@ body {
 
     .oracle-text h1{
         font-size: 2.4rem;
-        animation: none; /* evita mareo */
+        animation: none;
     }
 
     .oracle-text p{
@@ -3739,8 +3688,6 @@ body {
 }
 
 
-
-/* ================== <= 480px ================== */
 @media (max-width: 480px){
     html, body{
         width: 100% !important;
@@ -3898,7 +3845,6 @@ body {
 }
 
 /* ================= TEXTO ORÁCULO (SIN CAJA) ================= */
-
 .oracle-text{
     position:absolute;
     top:50%;
@@ -3910,7 +3856,6 @@ body {
 }
 
 /* ================= TÍTULO ÉPICO ================= */
-
 .oracle-text h1{
     font-family: "Averia Serif Libre", serif;
     font-size:clamp(2.8rem, 7vw, 5.5rem);
@@ -3951,7 +3896,6 @@ body {
 }
 
 /* ================= BOTONES ================= */
-
 .oracle-actions{
     margin-top:60px;
     display:flex;
@@ -3992,7 +3936,6 @@ body {
 }
 
 /* ================= FORMULARIO ================= */
-
 .oracle-text h2{
     font-family:"Cinzel Decorative", serif;
     font-size:3.5rem;
@@ -4032,7 +3975,6 @@ body {
 }
 
 /* ================= PARTÍCULAS MÁGICAS ================= */
-
 .magic-particles{
     position:absolute;
     inset:0;
@@ -4064,7 +4006,6 @@ body {
 }
 
 /* ================= ANIMACIONES ================= */
-
 @keyframes shine{
     from{ transform:translateX(-120%); }
     to{ transform:translateX(120%); }
@@ -4076,7 +4017,6 @@ body {
 }
 
 /* ================= UTILIDADES ================= */
-
 .hidden{
     display:none;
 }
