@@ -3047,7 +3047,7 @@ body {
     }
 
     .editorial-carousel-section{ 
-        padding: 90px 20px 120px; 
+        padding: 1rem; 
     }
 
     .editorial-carousel-title{ 
@@ -3075,7 +3075,7 @@ body {
     }
 
     .editorial {
-        padding: 100px 0;
+        padding: 1rem 0;
     }
 
     .editorial-container {
@@ -3254,6 +3254,17 @@ body {
         grid-template-columns: 1fr;
         gap: 32px;
         text-align: center;
+    }
+
+    .footer-content div, 
+    .footer-content a,
+    .footer-content p{
+        color: #333;
+    }
+
+    .footer input, .footer button {
+        width: 80%;
+        margin: 0.5rem 0;
     }
 
     /* ===== CATALOG HERO ===== */
