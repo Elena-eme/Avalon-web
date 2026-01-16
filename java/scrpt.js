@@ -480,7 +480,7 @@ $(document).on("click", ".size-hover button", function (e) {
     "excalibur-veil": {
         sku: "excalibur-veil",
         name: "The Excalibur Veil",
-        price: 32,
+        price: 38,
         currency: "€",
         images: [
         "https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg",
@@ -494,7 +494,7 @@ $(document).on("click", ".size-hover button", function (e) {
     "lady-of-the-lake-skin": {
         sku: "lady-of-the-lake-skin",
         name: "Lady of the Lake Skin",
-        price: 32,
+        price: 22,
         currency: "€",
         images: [
         "https://i.pinimg.com/736x/f2/6c/63/f26c630378288001fb8bb386d0ba4b11.jpg"
@@ -518,7 +518,7 @@ $(document).on("click", ".size-hover button", function (e) {
     "morgana-sheer-armor": {
         sku: "morgana-sheer-armor",
         name: "Morgana Sheer Armor",
-        price: 32,
+        price: 42,
         currency: "€",
         images: [
         "https://i.pinimg.com/1200x/14/ef/cd/14efcdb55143374cb2d902d62e5d0cca.jpg"
@@ -530,7 +530,7 @@ $(document).on("click", ".size-hover button", function (e) {
     "guinevere-second-skin": {
         sku: "guinevere-second-skin",
         name: "Guinevere Second Skin",
-        price: 32,
+        price: 22,
         currency: "€",
         images: [
         "https://i.pinimg.com/736x/aa/17/5f/aa175f48b185277cb799fbaadb1a1720.jpg"
