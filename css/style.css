@@ -3164,7 +3164,7 @@ body {
         height: auto;
         display: flex;
         flex-direction: column;
-        gap: 60px;
+        gap: 1rem 0;
         padding: 0 20px;
     }
 
@@ -3191,15 +3191,15 @@ body {
         line-height: 1.7;
         color: #555;
     }
-
-    .cards-section {
-        padding: 80px 14px;
+    
+    .cards-section{
+        padding: 0.5rem 0 4rem;
     }
 
     .cards-title {
         font-size: 26px;
         letter-spacing: 4px;
-        margin-bottom: 50px;
+        margin-bottom: 1rem;
     }
 
     .cards {
@@ -3256,6 +3256,11 @@ body {
 
     .gallery{
         padding: 70px 14px;
+    }
+
+    .gallery .g2,
+    .gallery .g4{
+        display: none !important;
     }
 
     .gallery-text {
@@ -3763,6 +3768,22 @@ body {
     .ed-img-4{
         width: min(680px, 100%) !important;
     }
+
+    .cards-section .oracle-cards{
+        display: none !important;
+    }
+
+    .circle-img{
+        margin-top: 24px;
+    }
+
+    .circle-img img{
+        cursor: pointer;
+    }
+
+    .footer-cards{
+        display: none !important;
+    }
 }
 
 /* ================== <= 480px ================== */
@@ -3834,10 +3855,6 @@ body {
     .catalog-grid.view-4 { 
         grid-template-columns: 1fr; 
     }
-/* 
-    .catalog-grid {
-        
-    } */
 
     .hero{ 
         height: 86vh; 
@@ -3860,8 +3877,8 @@ body {
         gap: 1rem;
     }
 
-    .cards-section{ 
-        padding: 1rem 0 2rem 0; 
+    .cards-section{
+        padding: 0.5rem 0 4rem;
     }
 
     .cards-title {
@@ -3875,7 +3892,7 @@ body {
     }
 
     .gallery{ 
-        padding: 70px 14px; 
+        padding: 2rem 1rem; 
     }
 
     .checkout-summary,
