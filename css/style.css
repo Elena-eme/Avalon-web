@@ -3408,7 +3408,7 @@ body {
     .crystal-section{
         display: flex;
         flex-direction: column;   /* texto arriba, círculo debajo */
-        align-items: flex-start;  /* alinea el círculo con el eje del texto (izquierda) */
+        align-items: center;  /* alinea el círculo con el eje del texto (izquierda) */
         gap: 24px;
     }
 
@@ -3416,9 +3416,7 @@ body {
         width: 260px;             /* más pequeño SOLO en móvil */
         height: 260px;
     }
-
 }
-
 
     /* ===== ABOUT COLLAGE ===== */
     .about-collage {
