@@ -346,37 +346,154 @@ document.addEventListener("mouseleave", () => {
 });
 
 /* ================= ABOUT PUZZLE ================= */
-const container = document.querySelector('.swords-puzzle');
-if (container) {
+/* ================= ABOUT PUZZLE (desktop hover + mobile drag) ================= */
+(() => {
+    const container = document.querySelector('.swords-puzzle');
+    if (!container) return;
 
-    const correctPositions = {
-        'piece-left-top': { top: 50, left: 50 },
-        'piece-left-bottom': { top: 50, left: 200 },
-        'piece-right-top': { top: 200, left: 50 },
-        'piece-right-bottom': { top: 200, left: 200 }
-    };
+    const pieces = Array.from(container.querySelectorAll('.puzzle-piece'));
+    if (!pieces.length) return;
 
-    container.addEventListener('mouseenter', () => {
-        for (const [id, pos] of Object.entries(correctPositions)) {
-            const piece = document.getElementById(id);
-            if (piece) {
-                piece.style.top = pos.top + 'px';
-                piece.style.left = pos.left + 'px';
-            }
-        }
-    });
+    const hoverCapable = window.matchMedia('(hover: hover)').matches;
 
-    container.addEventListener('mouseleave', () => {
-        const pieces = document.querySelectorAll('.puzzle-piece');
-        const maxX = container.clientWidth - 150;
-        const maxY = container.clientHeight - 150;
+    const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
 
-        pieces.forEach(piece => {
-            piece.style.top = Math.random() * maxY + 'px';
-            piece.style.left = Math.random() * maxX + 'px';
+    // Posiciones objetivo según tamaño del contenedor (funciona en 400px y en 260px, etc.)
+    function getTargets() {
+        const stepX = container.clientWidth / 2;
+        const stepY = container.clientHeight / 2;
+
+        return {
+        'piece-left-top':     { left: 0,     top: 0 },
+        'piece-left-bottom':  { left: stepX, top: 0 },
+        'piece-right-top':    { left: 0,     top: stepY },
+        'piece-right-bottom': { left: stepX, top: stepY }
+        };
+    }
+
+    function setPos(el, pos) {
+        el.style.left = `${pos.left}px`;
+        el.style.top  = `${pos.top}px`;
+    }
+
+    function randomizePieces() {
+        pieces.forEach(p => {
+        const maxX = container.clientWidth  - p.offsetWidth;
+        const maxY = container.clientHeight - p.offsetHeight;
+        setPos(p, {
+            left: Math.random() * clamp(maxX, 0, maxX),
+            top:  Math.random() * clamp(maxY, 0, maxY)
         });
+        });
+    }
+
+    function isClose(p, target, threshold) {
+        const left = parseFloat(p.style.left || 0);
+        const top  = parseFloat(p.style.top || 0);
+        return (Math.abs(left - target.left) <= threshold && Math.abs(top - target.top) <= threshold);
+    }
+
+    function snapIfClose(p) {
+        const targets = getTargets();
+        const target = targets[p.id];
+        if (!target) return;
+
+        const step = container.clientWidth / 2;
+        const threshold = Math.max(14, Math.min(26, step * 0.15)); // margen de “encaje”
+
+        if (isClose(p, target, threshold)) {
+        setPos(p, target);
+        p.dataset.locked = "1";
+        }
+    }
+
+    // Asegura posición absoluta dentro del contenedor
+    pieces.forEach(p => {
+        p.style.position = "absolute";
+        p.style.left = p.style.left || `${p.offsetLeft}px`;
+        p.style.top  = p.style.top  || `${p.offsetTop}px`;
+        p.dataset.locked = "0";
     });
-}
+
+    // DESKTOP: mantiene tu comportamiento tipo “hover = se ordena”
+    if (hoverCapable) {
+        randomizePieces();
+
+        container.addEventListener('mouseenter', () => {
+        const targets = getTargets();
+        pieces.forEach(p => setPos(p, targets[p.id]));
+        });
+
+        container.addEventListener('mouseleave', () => {
+        randomizePieces();
+        });
+
+        return;
+    }
+
+    // MOBILE/TABLET: drag con dedo + snap
+    randomizePieces();
+
+    let dragEl = null;
+    let startX = 0, startY = 0;
+    let elStartLeft = 0, elStartTop = 0;
+
+    function onDown(e) {
+        const el = e.currentTarget;
+        if (el.dataset.locked === "1") return;
+
+        dragEl = el;
+        dragEl.style.zIndex = "10";
+        dragEl.setPointerCapture?.(e.pointerId);
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+        elStartLeft = parseFloat(dragEl.style.left || 0);
+        elStartTop  = parseFloat(dragEl.style.top || 0);
+
+        e.preventDefault();
+    }
+
+    function onMove(e) {
+        if (!dragEl) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        const maxX = container.clientWidth  - dragEl.offsetWidth;
+        const maxY = container.clientHeight - dragEl.offsetHeight;
+
+        const nextLeft = clamp(elStartLeft + dx, 0, maxX);
+        const nextTop  = clamp(elStartTop  + dy, 0, maxY);
+
+        dragEl.style.left = `${nextLeft}px`;
+        dragEl.style.top  = `${nextTop}px`;
+
+        e.preventDefault();
+    }
+
+    function onUp() {
+        if (!dragEl) return;
+
+        snapIfClose(dragEl);
+        dragEl.style.zIndex = "";
+        dragEl = null;
+    }
+
+    pieces.forEach(p => {
+        p.style.cursor = "grab";
+        p.addEventListener('pointerdown', onDown);
+    });
+
+    window.addEventListener('pointermove', onMove, { passive: false });
+    window.addEventListener('pointerup', onUp);
+
+    // Si rotas el móvil o cambia el tamaño, recalcula objetivos y re-encaja
+    window.addEventListener('resize', () => {
+        pieces.forEach(p => snapIfClose(p));
+    });
+})();
 
 /* ================= CARRITO ================= */
 $(document).ready(function () {
