@@ -84,7 +84,7 @@ function openOracleModal(key, $card){
 function closeOracleModal(){
     $modal.removeClass('is-open').attr('aria-hidden', 'true');
     $('body').css('overflow', '');
-    // opcional: reset al centro
+
     $panel.css({ left: '', top: '', transform: '' });
 }
 
@@ -419,7 +419,7 @@ document.addEventListener("mousemove", (e) => {
     `;
 });
 
-/* reset suave al salir */
+
 document.addEventListener("mouseleave", () => {
     const ball = document.querySelector(".crystal-ball");
     if(ball){
@@ -488,10 +488,10 @@ $(document).ready(function () {
 });
 
 //                    CARRITO + TALLAS -----------------//
-/* ================= QUICK ADD FROM CATALOG ================= */
+
 
 $(document).on("click", ".size-hover button", function (e) {
-    e.stopPropagation(); // evita ir a product.html
+    e.stopPropagation(); 
 
     const $btn = $(this);
     const size = $btn.data("size");
@@ -518,7 +518,7 @@ $(document).on("click", ".size-hover button", function (e) {
 
     localStorage.setItem("avalon_cart_v1", JSON.stringify(cart));
 
-    // feedback visual mínimo
+   
     $btn.addClass("added");
     setTimeout(() => $btn.removeClass("added"), 600);
 
@@ -1090,7 +1090,7 @@ $(document).on("submit", "#checkout-form", function (e) {
     };
 
     localStorage.setItem(LAST_ORDER_KEY, JSON.stringify(order));
-    saveCart([]); // vaciar carrito
+    saveCart([]); 
 
     window.location.href = "confirmacion.html";
 });
@@ -1128,7 +1128,7 @@ function decipherText(element, speed = 55){
         revealed = revealed.map((item, index) => {
             if(item.done) return item;
 
-            // Probabilidad de fijarse rápido
+
             if(Math.random() < 0.08 + progress * 0.015){
                 return { char: original[index], done: true };
             }
@@ -1151,11 +1151,11 @@ function decipherText(element, speed = 55){
 }
 
 
-/* Descifrado inicial */
+
 window.addEventListener("load", () => {
     const title = document.querySelector(".oracle-text h1");
     if(title){
-        decipherText(title, 80); // ⏳ lento y ceremonial
+        decipherText(title, 80); 
     }
 });
 
@@ -1222,7 +1222,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gsap.to(batch, {
             autoAlpha: 1,
             y: 0,
-            duration: 0.9,       // más rápido que 1.2
+            duration: 0.9,       
             ease: "power2.out",
             stagger: 0.08,
             overwrite: true,
@@ -1304,7 +1304,7 @@ if ($editorial.length && !$editorial.hasClass('slick-initialized')) {
         });
     }
 
-    // ===== Refresh cuando terminen de cargar imágenes (reduce “entra tarde”) =====
+
     let pending = 0;
     const imgs = Array.from(document.images);
     const done = () => {
@@ -1338,22 +1338,22 @@ $(document).ready(function () {
 
     function openMenu() {
         $menu.addClass('open').css('left', '0');
-        $overlay.addClass('active'); // usa tu CSS .overlay.active
+        $overlay.addClass('active'); 
     }
 
     function closeMenu() {
         $menu.removeClass('open').css('left', closedLeft());
 
-        // si el carrito NO está abierto, quitamos overlay
+        
         if (!$('#cart-popup').hasClass('active')) {
         $overlay.removeClass('active');
         }
     }
 
-    // Estado correcto al cargar
+    
     $menu.css('left', closedLeft());
 
-    // Abrir
+    
     $hamburger.off('click.menu').on('click.menu', function (e) {
         e.preventDefault();
         openMenu();
@@ -1371,7 +1371,7 @@ $(document).ready(function () {
         closeMenu();
     });
 
-    // Si cambias tamaño de pantalla, recoloca el menú cerrado correctamente
+    
     $(window).off('resize.menu').on('resize.menu', function () {
         if (!$menu.hasClass('open')) $menu.css('left', closedLeft());
     });

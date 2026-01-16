@@ -1524,7 +1524,7 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,150,0.9) 0%, rgba(255,220,100,0.5) 40%, rgba(255,180,0,0) 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(232, 232, 232, 0.5) 40%, rgba(255,180,0,0) 70%);
     opacity: 1;
     transform: scale(0);
     filter: blur(1.5px);
@@ -1722,7 +1722,7 @@ body {
     transition: all 0.5s ease;
 }
 
-/* Posiciones correctas al hacer hover */
+
 .swords-puzzle:hover #piece-left-top { 
     top: 0; 
     left: 0; 
@@ -3937,7 +3937,7 @@ body {
 
 /* ================= FORMULARIO ================= */
 .oracle-text h2{
-    font-family:"Cinzel Decorative", serif;
+    font-family: "Averia Serif Libre", serif;
     font-size:3.5rem;
     letter-spacing:6px;
     color:#e5e5e5;
