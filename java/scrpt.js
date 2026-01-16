@@ -292,6 +292,28 @@ $(function () {
         return;
     }
 
+    $('.artifact').draggable({
+        containment: 'body',
+        scroll: false,
+        start: function () {
+            $(this).data("moved", false);
+            $(this).data("startPos", $(this).position());
+        },
+        drag: function () {
+            const start = $(this).data("startPos");
+            const now = $(this).position();
+            const dx = Math.abs(now.left - start.left);
+            const dy = Math.abs(now.top - start.top);
+
+            if (dx > 6 || dy > 6) $(this).data("moved", true);
+        },
+        stop: function () {
+            // tu lógica existente
+            checkWin();
+        }
+    });
+
+
     // ===== Tablet/Mobile: Pointer Events drag =====
     const container = document.querySelector('.arturo-game') || document.body;
     const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
@@ -844,6 +866,30 @@ function initProductPage() {
     openCartUI();
     });
 }
+
+function initHomeProductLinks() {
+    const $items = $(".artifact[data-sku], .hero-product[data-sku]");
+    if (!$items.length) return;
+
+    $items.css("cursor", "pointer")
+        .off("click.homeSku")
+        .on("click.homeSku", function (e) {
+        // Si estás arrastrando, evitar navegación accidental (lo cubrimos abajo)
+        if ($(this).data("moved")) {
+            $(this).data("moved", false);
+            return;
+        }
+
+        const sku = $(this).data("sku");
+        if (!sku) return;
+        window.location.href = `product.html?sku=${encodeURIComponent(sku)}`;
+        });
+    }
+
+    $(document).ready(function () {
+    initHomeProductLinks();
+});
+
 
 /* ====== CARRITO ====== */
 function renderCart() {
