@@ -1,148 +1,148 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-      <meta charset="UTF-8">
-      <title>AVALON</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <title>AVALON</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <!-- CSS -->
-      <link rel="stylesheet" href="css/style.css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css">
 
-      <!-- Icons -->
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+        <!-- Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-      <!-- Fonts -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Fasthand&family=Hubballi&family=Krona+One&family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  </head>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Fasthand&family=Hubballi&family=Krona+One&family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
 
 
-  <body>
-    <header class="header">
-        <div class="header-left">
-            <div class="hamburger">
-                <span></span><span></span><span></span>
+    <body>
+        <header class="header">
+            <div class="header-left">
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
-        </div>
 
-        <nav class="header-nav">
-            <a href="catalogo.html">Catálogo</a>
-            <a href="index.html"><img src="img/logo.png" class="logo"></a>
-            <a href="#">Contacto</a>
-        </nav>
+            <nav class="header-nav">
+                <a href="catalogo.html">Catálogo</a>
+                <a href="index.html"><img src="img/logo.png" class="logo"></a>
+                <a href="#">Contacto</a>
+            </nav>
 
-        <div class="header-right">
-            <div class="search-container">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" class="search-input" placeholder="Buscar en Avalon...">
+            <div class="header-right">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Buscar en Avalon...">
+                </div>
+                <i  id="cart-icon" class="fa-solid fa-basket-shopping basket-icon"></i>
             </div>
-            <i  id="cart-icon" class="fa-solid fa-basket-shopping basket-icon"></i>
+            
+            
+        </header>
+
+        <aside class="side-menu">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Colecciones</a>
+            <a href="about.html">Sobre Avalon</a>
+            <a href="contacto.html">Contacto</a>
+        </aside>
+
+        <div class="overlay"></div>
+
+        <!-- Ventana flotante del carrito -->
+        <div id="cart-popup">
+        <div class="cart-header">
+            <span>ORDER SUMMARY</span>
+            <button id="cart-close">&times;</button>
         </div>
-        
-        
-    </header>
+        <div class="cart-items">
+            <div class="cart-item">
+            <img src="https://i.pinimg.com/1200x/3b/5a/97/3b5a976cf90676adca345cf26a042090.jpg" alt="Anillo">
+            <div class="item-info">
+                <span class="item-name">Ginebra Ring</span>
+                <span class="item-size">Size: S</span>
+                <span class="item-price">32€</span>
+                <span class="item-material">Plata</span>
 
-    <aside class="side-menu">
-        <a href="index.html">Inicio</a>
-        <a href="catalogo.html">Colecciones</a>
-        <a href="about.html">Sobre Avalon</a>
-        <a href="contacto.html">Contacto</a>
-    </aside>
-
-    <div class="overlay"></div>
-
-    <!-- Ventana flotante del carrito -->
-    <div id="cart-popup">
-      <div class="cart-header">
-        <span>ORDER SUMMARY</span>
-        <button id="cart-close">&times;</button>
-      </div>
-      <div class="cart-items">
-        <div class="cart-item">
-          <img src="https://i.pinimg.com/1200x/3b/5a/97/3b5a976cf90676adca345cf26a042090.jpg" alt="Anillo">
-          <div class="item-info">
-            <span class="item-name">Ginebra Ring</span>
-            <span class="item-size">Size: S</span>
-            <span class="item-price">32€</span>
-            <span class="item-material">Plata</span>
-
-          </div>
-          <button class="remove-item">×</button>
+            </div>
+            <button class="remove-item">×</button>
+            </div>
+            <!-- Más items aquí -->
         </div>
-        <!-- Más items aquí -->
-      </div>
-      <div class="cart-footer">
-        <span>Grand Total: 32€ </span>
-        <button class="checkout-btn">Procedimiento de Pago</button>
-      </div>
+        <div class="cart-footer">
+            <span>Grand Total: 32€ </span>
+            <button class="checkout-btn">Procedimiento de Pago</button>
+        </div>
+        </div>
+
+            <!-- HERO CATALOGO -->
+        <section class="about-hero">
+            <div class="hero-img">
+                <img src="video/about us video.gif" alt="">
+                <div class="magic-glow"></div>
+            </div>
+
+            <h1 class="catalog-title">SOBRE AVALON</h1>
+        </section>
+
+        <!-- CRYSTAL BALL SECTION -->
+
+    <section class="crystal-section">
+        <div id="avalon-bg"><span>(01)</span>
+            <p>EXPLORE FW24<br>COLLECTION · WINTERING</p>AVALON ON FILM</div>
+    <div class="crystal-wrapper">
+        <div class="crystal-ball">
+        <video
+            class="crystal-video"
+            src="https://www.pexels.com/es-es/download/video/3588881/"
+            autoplay
+            muted
+            loop
+            playsinline
+        ></video>
+
+        <div class="crystal-glass"></div>
+        </div>
     </div>
-
-        <!-- HERO CATALOGO -->
-    <section class="about-hero">
-        <div class="hero-img">
-            <img src="video/about us video.gif" alt="">
-            <div class="magic-glow"></div>
-        </div>
-
-        <h1 class="catalog-title">SOBRE AVALON</h1>
     </section>
 
-    <!-- CRYSTAL BALL SECTION -->
-
-<section class="crystal-section">
-       <div id="avalon-bg"><span>(01)</span>
-        <p>EXPLORE FW24<br>COLLECTION · WINTERING</p>AVALON ON FILM</div>
-  <div class="crystal-wrapper">
-    <div class="crystal-ball">
-      <video
-        class="crystal-video"
-        src="https://www.pexels.com/es-es/download/video/3588881/"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-
-      <div class="crystal-glass"></div>
-    </div>
-  </div>
-</section>
 
 
 
+        <section class="about-swords">
+            <div class="swords-container">
+                <img src="img/sword.png" alt="Espada izquierda" class="sword sword-left">
+                <img src="img/sword.png" alt="Espada derecha" class="sword sword-right">
+            </div>
 
-    <section class="about-swords">
-        <div class="swords-container">
-            <img src="img/sword.png" alt="Espada izquierda" class="sword sword-left">
-            <img src="img/sword.png" alt="Espada derecha" class="sword sword-right">
+            <div class="about-text">
+                <h2>Sobre Avalon</h2>
+                <p>
+                Avalon nace de la fascinación por la leyenda artúrica y la estética medieval, donde cada pieza de ropa y accesorio cuenta una historia. Nuestra marca no solo viste, sino que transporta a quien la descubre a un mundo de magia, caballeros y espadas legendarias.
+                </p>
+            </div>
+        </section>
+
+        <section class="about-puzzle">
+        <div class="swords-puzzle">
+            <!-- Piezas del puzzle (desordenadas) -->
+            <img src="img/puzzle1.png" alt="Espada izquierda superior" id="piece-left-top" class="puzzle-piece">
+            <img src="img/puzzle2.png" alt="Espada izquierda inferior" id="piece-left-bottom" class="puzzle-piece">
+            <img src="img/puzzle3.png" alt="Espada derecha superior" id="piece-right-top" class="puzzle-piece">
+            <img src="img/puzzle4.png" alt="Espada derecha inferior" id="piece-right-bottom" class="puzzle-piece">
         </div>
 
-        <div class="about-text">
-            <h2>Sobre Avalon</h2>
+        <!-- Texto debajo del puzzle -->
+        <div class="about-text" id="about-text">
+
             <p>
-              Avalon nace de la fascinación por la leyenda artúrica y la estética medieval, donde cada pieza de ropa y accesorio cuenta una historia. Nuestra marca no solo viste, sino que transporta a quien la descubre a un mundo de magia, caballeros y espadas legendarias.
+            Cada diseño está pensado para combinar elegancia, misterio y autenticidad, ofreciendo experiencias únicas que despiertan la imaginación. Avalon es más que moda: es un viaje narrativo que acompaña al usuario en cada detalle, invitándolo a formar parte de una leyenda atemporal.
             </p>
         </div>
-    </section>
-
-    <section class="about-puzzle">
-      <div class="swords-puzzle">
-        <!-- Piezas del puzzle (desordenadas) -->
-        <img src="img/puzzle1.png" alt="Espada izquierda superior" id="piece-left-top" class="puzzle-piece">
-        <img src="img/puzzle2.png" alt="Espada izquierda inferior" id="piece-left-bottom" class="puzzle-piece">
-        <img src="img/puzzle3.png" alt="Espada derecha superior" id="piece-right-top" class="puzzle-piece">
-        <img src="img/puzzle4.png" alt="Espada derecha inferior" id="piece-right-bottom" class="puzzle-piece">
-      </div>
-
-      <!-- Texto debajo del puzzle -->
-      <div class="about-text" id="about-text">
-
-        <p>
-          Cada diseño está pensado para combinar elegancia, misterio y autenticidad, ofreciendo experiencias únicas que despiertan la imaginación. Avalon es más que moda: es un viaje narrativo que acompaña al usuario en cada detalle, invitándolo a formar parte de una leyenda atemporal.
-        </p>
-      </div>
-    </section>
+        </section>
 
 
 
@@ -151,60 +151,60 @@
 
 
 
-    <footer class="footer">
+        <footer class="footer">
 
-        <!-- SECCIÓN FOTOS TIPO CARTAS -->
-        <div class="footer-cards">
-            <div class="card card-1">
-                <img src="https://i.pinimg.com/1200x/28/06/94/280694b7e58ebd41077a46ae7a1f85b7.jpg" alt="">
-            </div>
-            <div class="card card-2">
-                <img src="https://i.pinimg.com/1200x/63/c7/4f/63c74f390017623845a28ae99814340b.jpg" alt="">
-            </div>
-            <div class="card card-3">
-                <img src="https://i.pinimg.com/1200x/1d/d4/10/1dd4103fe6aa10c6e3bdd768b6ce8445.jpg" alt="">
-            </div>
-            <div class="card card-4">
-                <img src="https://i.pinimg.com/736x/c9/79/79/c97979e5c9928e8d2f9e87dc44736b97.jpg" alt="">
-            </div>
-            <div class="card card-5">
-                <img src="https://i.pinimg.com/1200x/0a/37/4b/0a374b403137dc9141249f3481ccfc26.jpg"></div>
-            <div class="card card-6">
-                <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg"></div>
-        </div>
-
-        <!-- CONTENIDO FOOTER -->
-        <div class="footer-content">
-            <div>
-                <h4>Menú</h4>
-                <a href="catalogo.html">Catálogo</a>
-                <a href="contacto.html">Contacto</a>
+            <!-- SECCIÓN FOTOS TIPO CARTAS -->
+            <div class="footer-cards">
+                <div class="card card-1">
+                    <img src="https://i.pinimg.com/1200x/28/06/94/280694b7e58ebd41077a46ae7a1f85b7.jpg" alt="">
+                </div>
+                <div class="card card-2">
+                    <img src="https://i.pinimg.com/1200x/63/c7/4f/63c74f390017623845a28ae99814340b.jpg" alt="">
+                </div>
+                <div class="card card-3">
+                    <img src="https://i.pinimg.com/1200x/1d/d4/10/1dd4103fe6aa10c6e3bdd768b6ce8445.jpg" alt="">
+                </div>
+                <div class="card card-4">
+                    <img src="https://i.pinimg.com/736x/c9/79/79/c97979e5c9928e8d2f9e87dc44736b97.jpg" alt="">
+                </div>
+                <div class="card card-5">
+                    <img src="https://i.pinimg.com/1200x/0a/37/4b/0a374b403137dc9141249f3481ccfc26.jpg"></div>
+                <div class="card card-6">
+                    <img src="https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg"></div>
             </div>
 
-            <div>
-                <h4>Contacto</h4>
-                <p>info@avalon.com</p>
-                <p>Madrid, España</p>
+            <!-- CONTENIDO FOOTER -->
+            <div class="footer-content">
+                <div>
+                    <h4>Menú</h4>
+                    <a href="catalogo.html">Catálogo</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+
+                <div>
+                    <h4>Contacto</h4>
+                    <p>info@avalon.com</p>
+                    <p>Madrid, España</p>
+                </div>
+
+                <div>
+                    <h4>Buscar</h4>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <h4>Newsletter</h4>
+                    <input type="email">
+                    <button>Suscribirse</button>
+                </div>
             </div>
 
-            <div>
-                <h4>Buscar</h4>
-                <input type="text">
-            </div>
+        </footer>
 
-            <div>
-                <h4>Newsletter</h4>
-                <input type="email">
-                <button>Suscribirse</button>
-            </div>
-        </div>
-
-    </footer>
-
-    <script src="java/jquery-3.7.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="java/scrpt.js"></script>
-  </body>
+        <script src="java/jquery-3.7.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="java/scrpt.js"></script>
+    </body>
 </html>
