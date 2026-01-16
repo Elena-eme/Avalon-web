@@ -1718,7 +1718,7 @@ body {
 .about-text h2 {
     font-size: 4.5rem;
     margin-bottom: 20px;
-    font-family: "Fasthand", cursive;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -1810,7 +1810,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: "Fasthand", cursive;
+    font-family: "Poppins", sans-serif;
     font-size: 0.9em;
     text-transform: capitalize;
     color: #644171;
