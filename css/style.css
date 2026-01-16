@@ -1544,7 +1544,7 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 253, 245, 0.5) 40%, rgba(255,180,0,0) 70%);
+    background: radial-gradient(circle, rgba(255,255,150,0.9) 0%, rgba(255,220,100,0.5) 40%, rgba(255,180,0,0) 70%);
     opacity: 1;
     transform: scale(0); /* empezamos desde pequeño */
     filter: blur(1.5px);
@@ -1755,6 +1755,8 @@ body {
     position: absolute;
     cursor: grab;
     transition: all 0.5s ease; /* transición suave */
+    touch-action: none;     /* clave para que se pueda arrastrar sin que la página haga scroll */
+    user-select: none;
 }
 
 /* Posiciones correctas al hacer hover */
@@ -3243,7 +3245,7 @@ body {
 
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 1rem;
         text-align: center;
     }
 
@@ -3253,9 +3255,10 @@ body {
         color: #333;
     }
 
-    .footer input, .footer button {
+    .footer input, 
+    .footer button {
         width: 80%;
-        margin: 0.5rem 0;
+        margin: 0.8rem 0;
     }
 
     /* ===== CATALOG HERO ===== */
@@ -3403,6 +3406,30 @@ body {
         height: 260px;
     }
 
+    .crystal-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        gap: 24px;
+    }
+
+    .crystal-ball{
+        width: 260px;
+        height: 260px;
+    }
+
+    .swords-puzzle {
+        min-height: 20rem;
+    }
+
+    .about-puzzle {
+        min-height: 50vh;
+        padding: 1rem;
+    }
+
+}
+
+
     /* ===== ABOUT COLLAGE ===== */
     .about-collage {
         padding: 4rem 1.5rem;
@@ -3486,11 +3513,11 @@ body {
     .offset-right {
         transform: none;
     }
-
+/* 
     .crystal-ball{
         width: 300px;
         height: 300px;
-    }
+    } */
 
     .editorial-line {
         font-size: 7vw;
@@ -3719,8 +3746,6 @@ body {
         object-fit: cover !important;
         display: block;
     }
-}
-
 
 
 /* ================== <= 480px ================== */
@@ -3977,7 +4002,7 @@ body {
 /* ================= FORMULARIO ================= */
 
 .oracle-text h2{
-    font-family: "Averia Serif Libre", serif;
+    font-family:"Cinzel Decorative", serif;
     font-size:3.5rem;
     letter-spacing:6px;
     color:#e5e5e5;
