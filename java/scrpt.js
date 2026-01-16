@@ -254,40 +254,122 @@ $(document).ready(function () {
 });
 
 /* ================= JUEGO ARTURO ================= */
+/* ================= JUEGO ARTURO (desktop + tablet/mobile) ================= */
 $(function () {
-
-    if (!$('.artifact').length || !$('#arturo-win').length) return;
-
-    const correctOrder = [1, 3, 4, 5, 2];
+    const $items = $('.artifact');
     const $win = $('#arturo-win');
 
-    $('.artifact').draggable({
-        containment: 'body',
-        scroll: false,
-        stop: function () {
-            checkWin();
-        }
-    });
+    if (!$items.length || !$win.length) return;
+
+    const correctOrder = [1, 3, 4, 5, 2];
 
     function checkWin() {
-
         const items = $('.artifact');
         if (items.length !== correctOrder.length) return;
 
         const sorted = items.toArray()
-            .sort((a, b) => $(a).offset().left - $(b).offset().left)
-            .map(el => parseInt($(el).data('order'), 10));
+        .sort((a, b) => $(a).offset().left - $(b).offset().left)
+        .map(el => parseInt($(el).data('order'), 10));
 
         if (JSON.stringify(sorted) === JSON.stringify(correctOrder)) {
-            $win.addClass('active');
+        $win.addClass('active');
         }
     }
 
-    $('.close-postcard').on('click', function () {
+    $('.close-postcard').off('click.arturo').on('click.arturo', function () {
         $win.removeClass('active');
     });
 
+    // Si es pointer "fino" (desktop), dejamos jQuery UI (como lo tenías)
+    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+
+    if (!isCoarsePointer && $.fn.draggable) {
+        $items.draggable({
+        containment: '.arturo-game', // si prefieres como antes: 'body'
+        scroll: false,
+        stop: function () { checkWin(); }
+        });
+        return;
+    }
+
+    // ===== Tablet/Mobile: Pointer Events drag =====
+    const container = document.querySelector('.arturo-game') || document.body;
+    const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
+
+    let activeEl = null;
+    let startX = 0, startY = 0;
+    let startLeft = 0, startTop = 0;
+    let bounds = null;
+
+    function getBounds() {
+        return container.getBoundingClientRect();
+    }
+
+    function onDown(e) {
+        activeEl = e.currentTarget;
+        activeEl.setPointerCapture?.(e.pointerId);
+
+        bounds = getBounds();
+
+        const cs = window.getComputedStyle(activeEl);
+        const left = parseFloat(cs.left);
+        const top = parseFloat(cs.top);
+
+        // si no hay left/top definidos, los calculamos desde el rect
+        if (Number.isFinite(left)) startLeft = left;
+        else startLeft = activeEl.getBoundingClientRect().left - bounds.left;
+
+        if (Number.isFinite(top)) startTop = top;
+        else startTop = activeEl.getBoundingClientRect().top - bounds.top;
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+        activeEl.style.zIndex = '9999';
+        activeEl.style.cursor = 'grabbing';
+
+        e.preventDefault();
+    }
+
+    function onMove(e) {
+        if (!activeEl) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        const maxX = bounds.width - activeEl.offsetWidth;
+        const maxY = bounds.height - activeEl.offsetHeight;
+
+        const nextLeft = clamp(startLeft + dx, 0, maxX);
+        const nextTop = clamp(startTop + dy, 0, maxY);
+
+        activeEl.style.left = `${nextLeft}px`;
+        activeEl.style.top = `${nextTop}px`;
+
+        e.preventDefault();
+    }
+
+    function onUp() {
+        if (!activeEl) return;
+
+        activeEl.style.zIndex = '';
+        activeEl.style.cursor = 'grab';
+        activeEl = null;
+
+        checkWin();
+    }
+
+    $items.each(function () {
+        this.style.touchAction = 'none'; // refuerzo por si acaso
+        this.style.cursor = 'grab';
+        this.addEventListener('pointerdown', onDown);
+    });
+
+    window.addEventListener('pointermove', onMove, { passive: false });
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
 });
+
 
 /* ================= GLOW ================= */
 document.addEventListener("DOMContentLoaded", function () {
