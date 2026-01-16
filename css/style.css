@@ -1755,8 +1755,6 @@ body {
     position: absolute;
     cursor: grab;
     transition: all 0.5s ease; /* transición suave */
-    touch-action: none;     /* clave para que se pueda arrastrar sin que la página haga scroll */
-    user-select: none;
 }
 
 /* Posiciones correctas al hacer hover */
@@ -3406,25 +3404,17 @@ body {
         height: 260px;
     }
 
+    @media (max-width: 768px) {
     .crystal-section{
         display: flex;
-        flex-direction: column;
-        align-items: center; 
+        flex-direction: column;   /* texto arriba, círculo debajo */
+        align-items: flex-start;  /* alinea el círculo con el eje del texto (izquierda) */
         gap: 24px;
     }
 
     .crystal-ball{
-        width: 260px;
+        width: 260px;             /* más pequeño SOLO en móvil */
         height: 260px;
-    }
-
-    .swords-puzzle {
-        min-height: 20rem;
-    }
-
-    .about-puzzle {
-        min-height: 50vh;
-        padding: 1rem;
     }
 
 }
@@ -3513,11 +3503,11 @@ body {
     .offset-right {
         transform: none;
     }
-/* 
+
     .crystal-ball{
         width: 300px;
         height: 300px;
-    } */
+    }
 
     .editorial-line {
         font-size: 7vw;
@@ -3746,6 +3736,8 @@ body {
         object-fit: cover !important;
         display: block;
     }
+}
+
 
 
 /* ================== <= 480px ================== */
