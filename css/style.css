@@ -3784,6 +3784,14 @@ body {
     .footer-cards{
         display: none !important;
     }
+
+    .side-menu{ 
+        left: -100%; 
+    }
+
+    .side-menu.is-open{ 
+        left: 0; 
+    }
 }
 
 /* ================== <= 480px ================== */

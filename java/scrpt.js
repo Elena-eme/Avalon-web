@@ -1,25 +1,3 @@
-$(document).ready(function () {
-    // HAMBURGER
-    if ($('.hamburger').length && $('.side-menu').length && $('.overlay').length) {
-        $('.hamburger').click(function () {
-            $('.side-menu').addClass('open').css('left', '0');
-            $('.overlay').css({
-                opacity: 1,
-                pointerEvents: 'all'
-            });
-        });
-
-        $('.overlay').click(function () {
-            $('.side-menu').removeClass('open').css('left', '-250px');
-            $('.overlay').css({
-                opacity: 0,
-                pointerEvents: 'none'
-            });
-        });
-    }
-
-});
-
 /* ================= ORÁCULO + TEXTO ================= */
 $(function () {
     const $cards = $('.oracle-card');
@@ -846,21 +824,6 @@ $(document).ready(function () {
 
 })(jQuery);
 
-$(document).ready(function () {
-$(document).on('click', '.close-menu', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    $('.side-menu').removeClass('open').css('left', '-250px');
-
-    if (!$('#cart-popup').hasClass('active')) {
-    $('.overlay').css({
-        opacity: 0,
-        pointerEvents: 'none'
-    }).removeClass('active');
-    }
-});
-});
 
 /* ==== CHECKOUT + CONFIRMACIÓN ==== */
 
@@ -1276,4 +1239,58 @@ if ($editorial.length && !$editorial.hasClass('slick-initialized')) {
     });
 
     if (pending === 0) ScrollTrigger.refresh();
+});
+
+/* ================= MENU (DESKTOP + MOBILE) ================= */
+$(document).ready(function () {
+    const $menu = $('.side-menu');
+    const $overlay = $('.overlay');
+    const $hamburger = $('.hamburger');
+    const $close = $('.close-menu');
+
+    if (!$menu.length || !$overlay.length || !$hamburger.length) return;
+
+    function closedLeft() {
+        return window.matchMedia('(max-width: 768px)').matches ? '-100%' : '-250px';
+    }
+
+    function openMenu() {
+        $menu.addClass('open').css('left', '0');
+        $overlay.addClass('active'); // usa tu CSS .overlay.active
+    }
+
+    function closeMenu() {
+        $menu.removeClass('open').css('left', closedLeft());
+
+        // si el carrito NO está abierto, quitamos overlay
+        if (!$('#cart-popup').hasClass('active')) {
+        $overlay.removeClass('active');
+        }
+    }
+
+    // Estado correcto al cargar
+    $menu.css('left', closedLeft());
+
+    // Abrir
+    $hamburger.off('click.menu').on('click.menu', function (e) {
+        e.preventDefault();
+        openMenu();
+    });
+
+    // Cerrar con X
+    $close.off('click.menu').on('click.menu', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+    });
+
+    // Cerrar clic fuera
+    $overlay.off('click.menu').on('click.menu', function () {
+        closeMenu();
+    });
+
+    // Si cambias tamaño de pantalla, recoloca el menú cerrado correctamente
+    $(window).off('resize.menu').on('resize.menu', function () {
+        if (!$menu.hasClass('open')) $menu.css('left', closedLeft());
+    });
 });
