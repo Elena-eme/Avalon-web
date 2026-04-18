@@ -545,9 +545,9 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 38,
         currency: "€",
         images: [
-        "https://i.pinimg.com/1200x/b2/cb/89/b2cb89c5152aedc3ec64323c81e7a6f5.jpg",
-        "img/excalibur-veil2.png",
-        "img/excalibur-veil3.png"
+        "img/capa.pantalon.jpg",
+        "img/capa pantalon no cara.jpg",
+        "img/capa poniendo 2.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Una reliquia contemporánea: transparencia y estructura para vestir el mito."
