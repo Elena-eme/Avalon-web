@@ -559,7 +559,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 22,
         currency: "€",
         images: [
-        "https://i.pinimg.com/736x/f2/6c/63/f26c630378288001fb8bb386d0ba4b11.jpg"
+        "img/blancoipod.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Ligera, etérea, diseñada como una segunda piel."
@@ -571,7 +571,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/736x/28/7a/9c/287a9c9d2aae357b872b94f9793f1445.jpg"
+        "img/cojin pantalonnoface.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Un vestido para el crepúsculo: silencio, presencia y aura."
@@ -583,7 +583,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 42,
         currency: "€",
         images: [
-        "https://i.pinimg.com/1200x/14/ef/cd/14efcdb55143374cb2d902d62e5d0cca.jpg"
+        "img/faldasentadamedias.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Armadura sutil: protección simbólica con estética oscura."
@@ -595,7 +595,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 22,
         currency: "€",
         images: [
-        "https://i.pinimg.com/736x/aa/17/5f/aa175f48b185277cb799fbaadb1a1720.jpg"
+        "img/bailarinas conchas 2.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Minimalismo místico con ajuste preciso."
@@ -607,7 +607,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/736x/34/eb/59/34eb59c24afb32bc98d0e7f0721442eb.jpg"
+        "img/hood2.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Geometría limpia. Silueta con autoridad."
@@ -619,7 +619,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/1200x/a4/93/ed/a493edf8fc1ed23d347f00701fd31f56.jpg"
+        "img/pantalon bailarinas 2.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Transparencia y misterio: un susurro que se ve."
@@ -631,7 +631,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/736x/cc/3a/d6/cc3ad6cb26cdeb2fd8503f59412f0237.jpg"
+        "img/polkapantaloncoconchasnoface.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Nacida del lago: luz, velo y piel."
@@ -643,7 +643,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/736x/2b/1b/71/2b1b71173a9be2cabeb7708cf4de97a1.jpg"
+        "img/bolsopoka.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Una pieza para la huida elegante."
@@ -655,7 +655,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/1200x/c2/cf/8c/c2cf8c1d1927083c0608e1d909a6e5b5.jpg"
+        "img/pantaloncerca.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Presencia firme. La prueba de merecerla."
@@ -667,7 +667,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/1200x/ba/f4/01/baf4014a89f8e30eed0baa8418273c09.jpg"
+        "img/sudadera lila.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "Un velo como corona caída: belleza y duelo."
@@ -679,7 +679,7 @@ $(document).on("click", ".size-hover button", function (e) {
         price: 32,
         currency: "€",
         images: [
-        "https://i.pinimg.com/1200x/6b/b5/a6/6bb5a6233d91b55a6055c4e6d2f604cb.jpg"
+        "img/cojintumbada.jpg"
         ],
         sizes: ["XS", "S", "M", "L"],
         description: "La luz que queda cuando todo se apaga."
