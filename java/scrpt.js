@@ -250,6 +250,27 @@ $(function () {
 
     if (!$items.length || !$win.length) return;
 
+    // --- REPARTIR ARTEFACTOS AL INICIO ---
+    const $container = $('.arturo-game');
+    const containerWidth = $container.width();
+    const containerHeight = $container.height();
+
+    $items.each(function () {
+        // Buscamos el tamaño de cada reliquia para que no se corten en los bordes
+        const itemWidth = $(this).outerWidth() || 250;
+        const itemHeight = $(this).outerHeight() || 250;
+
+        // Calculamos posiciones aleatorias dentro del contenedor .hero / .arturo-game
+        const randomX = Math.random() * (containerWidth - itemWidth);
+        const randomY = Math.random() * (containerHeight - itemHeight);
+
+        $(this).css({
+            'left': randomX + 'px',
+            'top': randomY + 'px'
+        });
+    });
+    // -------------------------------------
+
     const correctOrder = [1, 3, 4, 5, 2];
 
     function checkWin() {
@@ -392,7 +413,6 @@ document.addEventListener("DOMContentLoaded", function () {
         glowContainer.appendChild(span);
     }
 });
-
 /* ================= ABOUT SWORDS ================= */
 $(window).on("scroll", function () {
     if (!$('.about-swords').length) return;
